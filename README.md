@@ -1,10 +1,10 @@
 # TaskTracker
-### About this Project:
+## About this Project:
 This is a (java) utility to track tasks
 
 ### CRC Cards
 
-### Getting Started
+## Getting Started
 
 # Weekly Checkin
 
