@@ -2,7 +2,7 @@
 ### About this Project:
 This is a (java) utility to track tasks
 
-#### CRC Cards
+### CRC Cards
 
 ### Getting Started
 
