@@ -1,5 +1,7 @@
 # TaskTracker
 ## About this Project:
+
+### Project Proposal
 This is a (java) utility to track tasks
 
 ### CRC Cards
