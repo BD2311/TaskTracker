@@ -27,9 +27,9 @@ insert images here.
 ## Week 2
 
 - [ ] Write code for classes X, Y, Z.
-- Develop test cases and test code as it is written.
-- Update project page with progress details.
-- Submit code written so far.
+- [ ] Develop test cases and test code as it is written.
+- [ ] Update project page with progress details.
+- [ ] Submit code written so far.
 
 ## Week 3
 
