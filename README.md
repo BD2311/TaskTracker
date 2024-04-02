@@ -1,6 +1,10 @@
 # TaskTracker
-### Description:
-    This is a (java) utility to track tasks
+### About this Project:
+This is a (java) utility to track tasks
+
+### Getting Started
+
+# Weekly Checkin
 
 ## Week 1
 
