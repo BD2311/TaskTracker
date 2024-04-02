@@ -9,6 +9,8 @@ insert images here.
 ### Example Class
 <insert image here of example class CRC cards>
 
+### Requirements
+
 ## Getting Started
 
 # Weekly Checkpoints
