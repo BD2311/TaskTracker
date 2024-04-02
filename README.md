@@ -6,7 +6,7 @@ This is a (java) utility to track tasks
 
 ## Getting Started
 
-# Weekly Checkin
+# Weekly Checkpoints
 
 ## Week 1
 
