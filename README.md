@@ -33,7 +33,7 @@ insert images here.
 
 ## Week 3
 
-- [ ] Finish writing classes. - [ ]
+- [ ] Finish writing classes.
 - [ ] Determine where exception handling is needed to ensure the program fails gracefully.
 - [ ] Design the GUI (sketch it out on paper) - include the design in the Weekly update!
 - [ ] Update project page with progress details.
