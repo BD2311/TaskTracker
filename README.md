@@ -6,7 +6,7 @@ This is a (java) utility to track tasks
 insert images here.
 
 ### Class Diagrams (UML)
-### Example Class
+#### Example Class
 <insert image here of example class CRC cards>
 
 ### Requirements
