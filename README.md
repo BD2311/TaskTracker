@@ -2,6 +2,7 @@
 ### About this Project:
 This is a (java) utility to track tasks
 
+<!-- GETTING STARTED -->
 ### Getting Started
 
 # Weekly Checkin
