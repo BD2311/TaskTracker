@@ -1,5 +1,5 @@
 # TaskTracker
-### Description
+### Description:
 This is a (java) utility to track tasks
 
 ## Week 1
