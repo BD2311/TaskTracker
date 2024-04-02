@@ -45,8 +45,24 @@ insert images here.
 
 ## Week 5
 
+- Write code to create a non-functional GUI (the "view" part of MVC).
+- Update project page with progress details.
+- Submit code written so far.
+
 ## Week 6
+
+- Add event handling to make the GUI functional (the "controller" part of MVC).
+- Update project page with progress details.
+- Submit code written so far.
 
 ## Week 7
 
+- Test, test, test, debug, and test some more.
+- Update project page with progress details.
+- Submit code written so far.
+
 ## Week 8
+
+- Debug any remaining problems.
+- Create project demonstration video, including information about how each LO is used as part of the project.
+- Submit final code on Canvas, and add videos to project page.
