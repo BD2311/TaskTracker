@@ -27,7 +27,7 @@ insert images here.
 
 ## Week 1
 
-- [ ] Write the project proposal.
+- [x] Write the project proposal.
 - [ ] Plan the object-oriented design, starting with CRC cards.  Determine classes (with fields and methods) and interfaces and their responsibilities. (The "model" part of MVC.)
 - [ ] Create the UML.
 - [ ] Begin writing project page.
