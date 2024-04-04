@@ -4,7 +4,7 @@
 ### Project Proposal
 #### Description
 TaskTracker is a utility programmed in Java designed to automate the tracking of progress on tasks.
-#### Requirements/Outcome
+#### Features/Requirements/Outcome
 - User will be able to create different types of tasks such as work task or personal task
 - User will be able to add requirements to each task
 - User will be able to check off requirements and system will automatically mark tasks as complete if all requirements are checked off
