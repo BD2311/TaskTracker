@@ -13,7 +13,7 @@ insert images here.
 
 ### Requirements
 
-## Getting Started
+## Getting Started:
 
 # Weekly Checkpoints
 
