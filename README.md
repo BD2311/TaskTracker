@@ -12,6 +12,7 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 - User will be able to add a new requirement to a task even if the task is complete which will move the task to be in progress
 #### Project Time Management
 Project will be worked on after class on Thursdays, Fridays, and Saturdays
+Hours worked throughout these days will vary but total time each week is expected to be at least 3 hours
 
 ### CRC Cards
 insert images here.
