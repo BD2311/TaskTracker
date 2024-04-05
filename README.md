@@ -15,7 +15,7 @@ Project will be worked on after class on Thursdays, Fridays, and Saturdays
 Hours worked throughout these days will vary but total time each week is expected to be at least 3 hours
 
 ### CRC Cards
-insert images here.
+![TaskTrackerClassDiagram](https://github.com/BD2311/TaskTracker/assets/164386430/5cf94afe-ae8d-4d34-9f54-074a8bfa1dcd)
 
 ### Class Diagrams (UML)
 #### Example Class
