@@ -17,7 +17,6 @@ Hours worked throughout these days will vary but total time each week is expecte
 ### CRC Cards
 ![TaskTrackerClassDiagram](https://github.com/BD2311/TaskTracker/assets/164386430/5cf94afe-ae8d-4d34-9f54-074a8bfa1dcd)
 
-### Class Diagrams (UML)
 #### Example Class
 <insert image here of example class CRC cards>
 
@@ -28,9 +27,9 @@ Hours worked throughout these days will vary but total time each week is expecte
 ## Week 1
 
 - [x] Write the project proposal.
-- [ ] Plan the object-oriented design, starting with CRC cards.  Determine classes (with fields and methods) and interfaces and their responsibilities. (The "model" part of MVC.)
-- [ ] Create the UML.
-- [ ] Begin writing project page.
+- [x] Plan the object-oriented design, starting with CRC cards.  Determine classes (with fields and methods) and interfaces and their responsibilities. (The "model" part of MVC.)
+- [x] Create the UML.
+- [x] Begin writing project page.
 
 ## Week 2
 
