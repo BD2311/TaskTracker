@@ -17,9 +17,6 @@ Hours worked throughout these days will vary but total time each week is expecte
 ### CRC Cards
 ![TaskTrackerClassDiagram](https://github.com/BD2311/TaskTracker/assets/164386430/5cf94afe-ae8d-4d34-9f54-074a8bfa1dcd)
 
-#### Example Class
-<insert image here of example class CRC cards>
-
 ## Getting Started:
 
 # Weekly Checkpoints
