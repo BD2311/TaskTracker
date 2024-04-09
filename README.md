@@ -11,7 +11,7 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 - User will be able to forcibly mark a task as complete even if a requirement is not fulfilled
 - User will be able to add a new requirement to a task even if the task is complete which will move the task to be in progress
 
-### CRC Card Diagram
+#### CRC Card Diagram
 ![TaskTrackerClassDiagram](https://github.com/BD2311/TaskTracker/assets/164386430/5cf94afe-ae8d-4d34-9f54-074a8bfa1dcd)
 
 ## Getting Started:
