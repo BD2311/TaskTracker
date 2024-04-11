@@ -27,8 +27,8 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 
 ## Week 2
 
-- [ ] Write code for classes X, Y, Z.
-- [ ] Develop test cases and test code as it is written.
+- [x] Write code for classes Requirement, Task, Category.
+- [x] Develop test cases and test code as it is written.
 - [ ] Update project page with progress details.
 - [ ] Submit code written so far.
 
