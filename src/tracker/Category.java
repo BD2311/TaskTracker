@@ -53,7 +53,7 @@ public class Category
 		_tasks.remove(taskToRemove);
 	}
 	
-	public void moveTaskToFromCategoryToNewCategory(Task taskToMove, Category newCategory)
+	public void moveTaskToFromCategory(Task taskToMove, Category newCategory)
 	{
 		if(_tasks.contains(taskToMove))
 		{
