@@ -60,10 +60,10 @@ public class TestCategory {
 
 		plannedCategory.addTask(homework);
 		assertTrue(plannedCategory.getTasks().contains(homework));
-		plannedCategory.moveTaskToFromCategoryToNewCategory(homework, workInProgressCategory);
+		plannedCategory.moveTaskToFromCategory(homework, workInProgressCategory);
 		assertFalse(plannedCategory.getTasks().contains(homework));
 		assertTrue(workInProgressCategory.getTasks().contains(homework));
-		workInProgressCategory.moveTaskToFromCategoryToNewCategory(homework, finishedCategory);
+		workInProgressCategory.moveTaskToFromCategory(homework, finishedCategory);
 		assertFalse(workInProgressCategory.getTasks().contains(homework));
 		assertTrue(finishedCategory.getTasks().contains(homework));
 	}
