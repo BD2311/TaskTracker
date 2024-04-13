@@ -50,7 +50,7 @@ public class TestCategory {
 	}
 
 	@Test
-	public void testMoveTaskToFromCategoryToNewCategory()
+	public void testMoveTaskToFromCategory()
 	{
 		Category plannedCategory = new Category("Planned");
 		Category workInProgressCategory = new Category("Work in Progress");
