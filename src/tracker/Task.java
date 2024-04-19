@@ -26,6 +26,11 @@ public class Task
 	{
 	}
 	
+	public Task(String taskName)
+	{
+		this._taskName = taskName;
+	}
+	
 	/**
 	 * Task constructor to create task starting with name and description
 	 * @param taskName
