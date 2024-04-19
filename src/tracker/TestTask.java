@@ -11,7 +11,6 @@ class TestTask
 	{
 		Task task = new Task();
 		task.setName("Homework");
-
 		assertEquals("Homework",task.getName());
 	}
 
@@ -20,7 +19,6 @@ class TestTask
 	{
 		Task task = new Task();
 		task.setTaskDescription("Calculus 3, Triple Integrals");
-
 		assertEquals("Calculus 3, Triple Integrals",task.getDescription());
 	}
 
