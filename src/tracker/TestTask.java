@@ -57,19 +57,16 @@ class TestTask
 		task.addRequirement(requirement1);
 		task.addRequirement(requirement2);
 
-		assertFalse(task.checkIfAllRequirementsAreComplete());	
+		assertFalse(task.isAllRequirementsComplete());	
 
 		requirement1.setComplete();
-
-		assertFalse(task.checkIfAllRequirementsAreComplete());		
+		assertFalse(task.isAllRequirementsComplete());		
 
 		requirement1.setComplete();
-
-		assertFalse(task.checkIfAllRequirementsAreComplete());	
+		assertFalse(task.isAllRequirementsComplete());	
 
 		requirement2.setComplete();
-
-		assertTrue(task.checkIfAllRequirementsAreComplete());
+		assertTrue(task.isAllRequirementsComplete());
 	}
 
 	@Test

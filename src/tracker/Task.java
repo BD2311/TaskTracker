@@ -108,7 +108,7 @@ public class Task
 	 * Checks if all requirements in a task's list of requirements is complete
 	 * @return true if all requirements in list are complete, false if some requirements are incomplete
 	 */
-	public boolean checkIfAllRequirementsAreComplete()
+	public boolean isAllRequirementsComplete()
 	{
 		for(Requirement requirement : _requirements)
 		{
