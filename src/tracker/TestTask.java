@@ -79,12 +79,12 @@ class TestTask
 		Task task2 = new Task("Test Task1", "Description");
 		Requirement requirement1 = new Requirement("Test Requirement");
 
-		assertFalse(task1.checkComplete());
+		assertFalse(task1.isComplete());
 
 		task1.setComplete();
 
-		assertTrue(task1.checkComplete());
+		assertTrue(task1.isComplete());
 
-		assertFalse(task2.checkComplete());
+		assertFalse(task2.isComplete());
 	}
 }

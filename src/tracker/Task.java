@@ -7,7 +7,7 @@ import java.util.List;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.04.10
+ * Version/date: 2024.04.19.001
  * 
  * Responsibilities of class: Holds list of requirements, knows when it is complete if list of requirements are complete
  */
@@ -42,7 +42,7 @@ public class Task
 	///// Methods /////
 	
 	/**
-	 * gets task name
+	 * Gets task name
 	 * @return task name
 	 */
 	public String getName()
@@ -51,7 +51,7 @@ public class Task
 	}
 	
 	/**
-	 * set task name
+	 * Set task name
 	 * @param newTaskName
 	 */
 	public void setName(String newTaskName)
@@ -60,7 +60,7 @@ public class Task
 	}
 	
 	/**
-	 * get task description
+	 * Get task description
 	 * @return task description
 	 */
 	public String getDescription()
@@ -69,7 +69,7 @@ public class Task
 	}
 	
 	/**
-	 * set task description
+	 * Set task description
 	 * @param newTaskDescription
 	 */
 	public void setTaskDescription(String newTaskDescription)
@@ -78,7 +78,7 @@ public class Task
 	}
 
 	/**
-	 * adds requirement to an existing task's list of requirements
+	 * Adds requirement to an existing task's list of requirements
 	 * @param requirementToAdd
 	 */
 	public void addRequirement(Requirement requirementToAdd)
@@ -87,7 +87,7 @@ public class Task
 	}
 
 	/**
-	 * removes requirement from an existing task's list of requirements
+	 * Removes requirement from an existing task's list of requirements
 	 * @param requirementToRemove
 	 */
 	public void removeRequirement(Requirement requirementToRemove)
@@ -96,7 +96,7 @@ public class Task
 	}
 
 	/**
-	 * gets list of requirements from an existing task
+	 * Gets list of requirements from an existing task
 	 * @return list of requirements
 	 */
 	public List<Requirement> getRequirements() 
@@ -105,7 +105,7 @@ public class Task
 	}
 
 	/**
-	 * checks if all requirements in a task's list of requirements is complete
+	 * Checks if all requirements in a task's list of requirements is complete
 	 * @return true if all requirements in list are complete, false if some requirements are incomplete
 	 */
 	public boolean checkIfAllRequirementsAreComplete()
@@ -121,20 +121,20 @@ public class Task
 	}
 
 	/**
-	 * manually sets a task complete
+	 * Gets status of complete
+	 * @return true if complete, false if not complete
+	 */
+	public boolean isComplete()
+	{
+		return this._complete;
+	}
+	
+	/**
+	 * Sets task complete
 	 */
 	public void setComplete()
 	{
 		this._complete = true;
-	}
-	
-	/**
-	 * checks if a task is complete
-	 * @return true if complete, false if not complete
-	 */
-	public boolean checkComplete()
-	{
-		return this._complete;
 	}
 
 }

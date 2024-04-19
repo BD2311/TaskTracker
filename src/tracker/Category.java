@@ -7,7 +7,7 @@ import java.util.List;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.04.10
+ * Version/date: 2024.04.19.001
  * 
  * Responsibilities of class: Allows creating Category objects, Category objects are effectively storages for a list of tasks 
  */
@@ -20,6 +20,10 @@ public class Category
 	
 	///// Constructors /////
 	
+	/**
+	 * Category constructor to create category with name
+	 * @param categoryName
+	 */
 	public Category(String categoryName)
 	{
 		this._categoryName = categoryName;
@@ -28,32 +32,57 @@ public class Category
 	
 	///// Methods /////
 	
+	/**
+	 * Gets name of category
+	 * @return
+	 */
 	public String getName()
 	{
 		return this._categoryName;
 	}
 	
+	/**
+	 * Sets name of category
+	 * @param newName
+	 */
 	public void setName(String newName)
 	{
 		 this._categoryName = newName;
 	}
 	
+	/**
+	 * Gets list of tasks of category
+	 * @return
+	 */
 	public List<Task> getTasks()
 	{
 		return this._tasks;
 	}
 	
+	/**
+	 * Adds task to category
+	 * @param taskToAdd
+	 */
 	public void addTask(Task taskToAdd)
 	{
 		_tasks.add(taskToAdd);
 	}
 	
+	/**
+	 * Removes task from category
+	 * @param taskToRemove
+	 */
 	public void removeTask(Task taskToRemove)
 	{
 		_tasks.remove(taskToRemove);
 	}
 	
-	public void moveTaskToFromCategory(Task taskToMove, Category newCategory)
+	/**
+	 * Moves task from this category to another
+	 * @param taskToMove
+	 * @param newCategory
+	 */
+	public void moveTaskFromToCategory(Task taskToMove, Category newCategory)
 	{
 		if(_tasks.contains(taskToMove))
 		{
