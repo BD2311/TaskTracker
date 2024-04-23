@@ -38,11 +38,11 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 
 ## Week 3
 
-- [ ] Finish writing classes.
-- [ ] Determine where exception handling is needed to ensure the program fails gracefully.
-- [ ] Design the GUI (sketch it out on paper) - include the design in the Weekly update!
-- [ ] Update project page with progress details.
-- [ ] Submit code written so far.
+- [X] Finish writing classes.
+- [X] Determine where exception handling is needed to ensure the program fails gracefully.
+- [X] Design the GUI (sketch it out on paper) - include the design in the Weekly update!
+- [X] Update project page with progress details.
+- [X] Submit code written so far.
 
 ## Week 4
 
