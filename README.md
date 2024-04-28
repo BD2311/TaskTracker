@@ -12,10 +12,10 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 - User will be able to add a new requirement to a task even if the task is complete which will move the task to be in progress
 
 #### Requirement Traceability Matrix
-| ID | Requirement | Source File | Test Status | 
-| test | test | test |
-| test | test | test |
-| test | test | test |
+| ID | Requirement | Source File | Test Status |
+| :- |    :---:    |    :---:    |     ---:    |
+| 1  | Requirement can be added to task | TestTask.java | Pass |
+
 
 ### Plan
 #### CRC Card Diagram
