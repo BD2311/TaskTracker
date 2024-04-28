@@ -12,16 +12,16 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 - User will be able to add a new requirement to a task even if the task is complete which will move the task to be in progress
 
 #### Requirement Traceability Matrix
-| ID | Requirement | Source File | Test Status |
-| :- |    :---:    |    :---:    |     ---:    |
-| 1  | Requirement can be set to complete | Requirement.java | Pass |
-| 2  | Task name can be set and accessed | Task.java | Pass |
-| 3  | Requirement can be added and removed from Task | Task.java | Pass |
-| 4  | Can check if all requirements in task is complete  | Task.java | Pass |
-| 5  | Can set a task to complete  | Task.java | Pass |
-| 6  | Category name can be set and accessed  | Category.java | Pass |
-| 7  | Task can be added and removed from Category | Category.java | Pass |
-| 8  | Task can be moved from Category to another Category | Category.java | Pass |
+| Requirement | Source File | Test Status |
+|    :---:    |    :---:    |     ---:    |
+| Requirement can be set to complete | Requirement.java | Pass |
+| Task name can be set and accessed | Task.java | Pass |
+| Requirement can be added and removed from Task | Task.java | Pass |
+| Can check if all requirements in task is complete | Task.java | Pass |
+| Can set a task to complete | Task.java | Pass |
+| Category name can be set and accessed | Category.java | Pass |
+| Task can be added and removed from Category | Category.java | Pass |
+| Task can be moved from Category to another Category | Category.java | Pass |
 
 
 ### Plan
