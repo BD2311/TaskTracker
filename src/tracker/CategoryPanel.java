@@ -33,8 +33,11 @@ public class CategoryPanel extends JPanel
 
 	public static void main(String args[])
 	{
+		JFrame showCategoryPanel = new JFrame();
 		Category testCategory = new Category("testCategory");
-		new CategoryPanel(testCategory);
-		
+		CategoryPanel testCategoryPanel = new CategoryPanel(testCategory);
+		showCategoryPanel.add(testCategoryPanel);
+		showCategoryPanel.pack();
+		showCategoryPanel.setVisible(true);
 	}
 }
