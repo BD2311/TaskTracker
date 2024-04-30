@@ -15,6 +15,7 @@ public class RequirementPanel extends JPanel
 	public RequirementPanel(Requirement requirement)
 	{
 		this._requirement = requirement;
+		initializeUI();
 	}
 	
 	///// Methods /////

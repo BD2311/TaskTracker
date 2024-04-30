@@ -15,6 +15,7 @@ public class TaskPanel extends JPanel
 	public TaskPanel(Task task)
 	{
 		this._task = task;
+		initializeUI();
 	}
 	
 	///// Methods /////
