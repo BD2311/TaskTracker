@@ -1,6 +1,8 @@
 package tracker;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 public class CategoryPanel extends JPanel
 {
