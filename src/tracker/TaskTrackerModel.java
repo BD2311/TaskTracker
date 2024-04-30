@@ -13,10 +13,9 @@ public class TaskTrackerModel
 {
 	///// Fields /////
 	
-	private Category plannedCategory = new Category("Planned");
-	private Category workInProgressCategory = new Category("Work in Progress");
-	private Category completeCategory = new Category("Complete");
-	
+	public Category planningCategory = new Category("Planning");
+	public Category inProgressCategory = new Category("In Progress");
+	public Category finishedCategory = new Category("Finished");
 	
 	///// Constructor /////
 	
