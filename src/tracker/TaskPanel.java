@@ -1,6 +1,6 @@
 package tracker;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -22,6 +22,21 @@ public class TaskPanel extends JPanel
 	
 	private void initializeUI()
 	{
+		JLabel taskLabel = new JLabel(_task.getName());
+		this.add(taskLabel);
 		
+		JButton addRequirementButton = new JButton("New Requirement");
+		this.add(addRequirementButton);
+	}
+	
+	public void addRequirementPanel(RequirementPanel requirementPanel)
+	{
+		this._task.addRequirement(requirementPanel.getRequirement()); // Add requirementPanel's requirement to TaskPanel's task
+		this.add(requirementPanel);
+	}
+	
+	public Task getTask()
+	{
+		return this._task;
 	}
 }

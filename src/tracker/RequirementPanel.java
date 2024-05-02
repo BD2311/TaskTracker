@@ -23,8 +23,8 @@ public class RequirementPanel extends JPanel
 	
 	private void initializeUI()
 	{
-		JLabel categoryLabel = new JLabel(_requirement.getName());
-		this.add(categoryLabel);
+		JLabel requirementLabel = new JLabel(_requirement.getName());
+		this.add(requirementLabel);
 		
 		JButton removeRequirementButton = new JButton("Remove");
 		add(removeRequirementButton);
@@ -33,5 +33,10 @@ public class RequirementPanel extends JPanel
 		this.add(requirementCheckbox);
 	
 		setVisible(true);
+	}
+	
+	public Requirement getRequirement()
+	{
+		return this._requirement;
 	}
 }

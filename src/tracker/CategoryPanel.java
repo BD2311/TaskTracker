@@ -28,15 +28,17 @@ public class CategoryPanel extends JPanel
 		JButton addTaskButton = new JButton("New Task");
 		this.add(addTaskButton);
 		
-		Requirement testRequirement = new Requirement("Test");
-		RequirementPanel testRequirementPanel = new RequirementPanel(testRequirement);
-		this.add(testRequirementPanel);
-	
+		
 		setVisible(true);
 	}
 	
 	public Category getCategory()
 	{
 		return this._category;
+	}
+	
+	public void addTaskPanel(TaskPanel taskPanel)
+	{
+		this._category.addTask(taskPanel.getTask());
 	}
 }
