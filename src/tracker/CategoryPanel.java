@@ -2,6 +2,7 @@ package tracker;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JFrame;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -90,6 +91,20 @@ public class CategoryPanel extends JPanel
 	{
 		this.removeTask(taskToMove); // Remove task from current panel
 	    categoryToMoveTo.addTask(taskToMove);
+	}
+	
+	public static void main(String args[])
+	{
+		JFrame displayFrame = new JFrame();
+		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
+		TaskPanel testTaskPanel = new TaskPanel("Task");
+		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement");
+		testTaskPanel.addRequirement(testRequirementPanel);
+		testCategoryPanel.addTask(testTaskPanel);
+		displayFrame.add(testCategoryPanel);
+		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		displayFrame.pack();
+		displayFrame.show();
 	}
 	
 }

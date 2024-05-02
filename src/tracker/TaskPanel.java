@@ -82,6 +82,8 @@ public class TaskPanel extends JPanel
 	{
 		JFrame displayFrame = new JFrame();
 		displayFrame.getContentPane().add(new TaskPanel("Test"));
+		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		displayFrame.pack();
 		displayFrame.show();
 	}
 }
