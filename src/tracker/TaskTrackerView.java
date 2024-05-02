@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class TaskTrackerView extends JFrame
 {
 	///// Fields /////
-	
+
 	private TaskTrackerModel _model;
 
 	///// Constructor /////
@@ -24,13 +24,12 @@ public class TaskTrackerView extends JFrame
 		this._model = model;
 		this.setLayout(new GridLayout());
 
-		CategoryPanel planningPanel = new CategoryPanel(_model.planningCategory);
-		CategoryPanel inProgressPanel = new CategoryPanel(_model.inProgressCategory);
-		CategoryPanel finishedPanel = new CategoryPanel(_model.finishedCategory);
+		this.add(_model.planningPanel);
+		this.add(_model.inProgressPanel);
+		this.add(_model.finishedPanel);
 
-		this.add(planningPanel);
-		this.add(inProgressPanel);
-		this.add(finishedPanel);
+		TaskPanel testTaskPanel = new TaskPanel("Test");
+		_model.planningPanel.addTask(testTaskPanel);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();

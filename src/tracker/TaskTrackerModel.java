@@ -13,9 +13,9 @@ public class TaskTrackerModel
 {
 	///// Fields /////
 	
-	public Category planningCategory = new Category("Planning");
-	public Category inProgressCategory = new Category("In Progress");
-	public Category finishedCategory = new Category("Finished");
+	public CategoryPanel planningPanel = new CategoryPanel("Planning");
+	public CategoryPanel inProgressPanel = new CategoryPanel("In Progress");
+	public CategoryPanel finishedPanel = new CategoryPanel("Finished");
 	
 	///// Constructor /////
 	

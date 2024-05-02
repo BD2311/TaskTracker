@@ -5,17 +5,28 @@ import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
+/**
+ * Lead Author(s):
+ * @author Branden Della bdella@email.com
+ * 
+ * Version/date: 2024.04.19.001
+ * 
+ * Responsibilities of class:
+ * 
+ * 
+ */
 public class RequirementPanel extends JPanel
 {
 	///// Fields /////
 	
-	private Requirement _requirement;
+	private String _name;
+	private boolean _complete; 
 	
 	///// Constructor /////
 	
-	public RequirementPanel(Requirement requirement)
+	public RequirementPanel(String requirementName)
 	{
-		this._requirement = requirement;
+		this._name = requirementName;
 		initializeUI();
 	}
 	
@@ -23,7 +34,7 @@ public class RequirementPanel extends JPanel
 	
 	private void initializeUI()
 	{
-		JLabel requirementLabel = new JLabel(_requirement.getName());
+		JLabel requirementLabel = new JLabel(this._name);
 		this.add(requirementLabel);
 		
 		JButton removeRequirementButton = new JButton("Remove");
@@ -35,8 +46,13 @@ public class RequirementPanel extends JPanel
 		setVisible(true);
 	}
 	
-	public Requirement getRequirement()
+	/**
+	 * Gets requirement name
+	 * @return
+	 */
+	public String getName()
 	{
-		return this._requirement;
+		return this._name;
 	}
+
 }
