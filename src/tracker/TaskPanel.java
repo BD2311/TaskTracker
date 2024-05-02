@@ -1,6 +1,8 @@
 package tracker;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 
@@ -31,14 +34,16 @@ public class TaskPanel extends JPanel
 	
 	private void initializeUI()
 	{
-		this.add(new JLabel(this._name));
+		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+		JPanel taskHeader = new JPanel();
+		taskHeader.setLayout(new GridLayout());
+		taskHeader.add(new JLabel(this._name));
 		JButton addRequirementButton = new JButton("New Requirement");
-		this.add(addRequirementButton);
-		
+		taskHeader.add(addRequirementButton);
 		JCheckBox completeCheckBox = new JCheckBox();
-		this.add(completeCheckBox);
+		taskHeader.add(completeCheckBox);
+		this.add(taskHeader, BorderLayout.NORTH);
 		
 		setVisible(true);
 	}
