@@ -33,7 +33,7 @@ public class Requirement
 	 * Gets requirement name
 	 * @return
 	 */
-	public String getRequirementName()
+	public String getName()
 	{
 		return this._requirementName;
 	}

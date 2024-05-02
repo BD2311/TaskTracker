@@ -1,5 +1,6 @@
 package tracker;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class RequirementPanel extends JPanel
@@ -20,6 +21,9 @@ public class RequirementPanel extends JPanel
 	
 	private void initializeUI()
 	{
-		
+		JLabel categoryLabel = new JLabel(_requirement.getName());
+		this.add(categoryLabel);
+	
+		setVisible(true);
 	}
 }
