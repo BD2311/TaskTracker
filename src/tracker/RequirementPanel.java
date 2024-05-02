@@ -19,7 +19,7 @@ public class RequirementPanel extends JPanel
 {
 	///// Fields /////
 	
-	private String _name;
+	private String _name = "Requirement";
 	private boolean _complete; 
 	
 	///// Constructor /////
@@ -34,8 +34,7 @@ public class RequirementPanel extends JPanel
 	
 	private void initializeUI()
 	{
-		JLabel requirementLabel = new JLabel(this._name);
-		this.add(requirementLabel);
+		this.add(new JLabel(this._name));
 		
 		JButton removeRequirementButton = new JButton("Remove");
 		add(removeRequirementButton);

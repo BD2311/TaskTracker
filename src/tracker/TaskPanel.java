@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -11,16 +12,11 @@ public class TaskPanel extends JPanel
 {
 	///// Fields /////
 	
-	private String _name;
+	private String _name = "Task";
 	private boolean _complete;
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();
 	
 	///// Constructor /////
-	
-	public TaskPanel()
-	{
-		initializeUI();
-	}
 	
 	public TaskPanel(String name)
 	{
@@ -32,14 +28,12 @@ public class TaskPanel extends JPanel
 	
 	private void initializeUI()
 	{
-		JLabel taskLabel = new JLabel(this._name);
-		this.add(taskLabel);
+		this.add(new JLabel(this._name));
 		
 		JButton addRequirementButton = new JButton("New Requirement");
 		this.add(addRequirementButton);
 		
-		RequirementPanel testRequirement = new RequirementPanel("Test");
-		this.addRequirementPanel(testRequirement);
+		setVisible(true);
 	}
 	
 	/**
@@ -60,20 +54,27 @@ public class TaskPanel extends JPanel
 		this._name = newName;
 	}
 	
-	public void addRequirementPanel(RequirementPanel requirementPanel)
+	public void addRequirement(RequirementPanel requirementPanel)
 	{
-		this._requirements.add(requirementPanel); // Add requirementPanel's requirement to TaskPanel's task
 		this.add(requirementPanel);
+		this._requirements.add(requirementPanel); // Add requirementPanel's requirement to TaskPanel's task
 	}
 	
-	public void removeRequirementPanel(RequirementPanel requirementPanel)
+	public void removeRequirement(RequirementPanel requirementPanel)
 	{
-		this._requirements.remove(requirementPanel);
 		this.remove(requirementPanel);
+		this._requirements.remove(requirementPanel);
 	}
 	
 	public List<RequirementPanel> getRequirements()
 	{
 		return this._requirements;
+	}
+	
+	public static void main(String args[])
+	{
+		JFrame displayFrame = new JFrame();
+		displayFrame.add(new TaskPanel("Test"));
+		displayFrame.show();
 	}
 }

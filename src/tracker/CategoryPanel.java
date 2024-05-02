@@ -10,7 +10,7 @@ public class CategoryPanel extends JPanel
 {
 	///// Fields /////
 	
-	private String _name;
+	private String _name = "Category";
 	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>();
 	
 	///// Constructor /////

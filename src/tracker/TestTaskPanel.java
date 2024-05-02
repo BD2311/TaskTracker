@@ -9,7 +9,7 @@ class TestTaskPanel
 	@Test
 	public void testSetGetTaskPanelName()
 	{
-		TaskPanel TaskPanel = new TaskPanel();
+		TaskPanel TaskPanel = new TaskPanel("Games");
 		TaskPanel.setName("Homework");
 		assertEquals("Homework",TaskPanel.getName());
 	}
@@ -20,7 +20,7 @@ class TestTaskPanel
 		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
-		TaskPanel.addRequirementPanel(RequirementPanel);
+		TaskPanel.addRequirement(RequirementPanel);
 
 		assertTrue(TaskPanel.getRequirements().contains(RequirementPanel));
 	}
@@ -31,8 +31,8 @@ class TestTaskPanel
 		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
-		TaskPanel.addRequirementPanel(RequirementPanel);
-		TaskPanel.removeRequirementPanel(RequirementPanel);
+		TaskPanel.addRequirement(RequirementPanel);
+		TaskPanel.removeRequirement(RequirementPanel);
 
 		assertFalse(TaskPanel.getRequirements().contains(RequirementPanel));
 	}
