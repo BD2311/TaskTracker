@@ -8,7 +8,7 @@ package tracker;
  * 
  * Responsibilities of class: Allows creating Requirement objects, Requirements are effectively check boxes
  */
-public class Requirement 
+public class Requirement
 {
 	///// Fields /////
 
