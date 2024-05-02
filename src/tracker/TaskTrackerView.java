@@ -1,6 +1,7 @@
 package tracker;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 
 public class TaskTrackerView extends JFrame
@@ -21,15 +22,15 @@ public class TaskTrackerView extends JFrame
 	private void initializeUI(TaskTrackerModel model)
 	{
 		this._model = model;
-		this.setLayout(new BorderLayout());
+		this.setLayout(new GridLayout());
 
 		CategoryPanel planningPanel = new CategoryPanel(_model.planningCategory);
 		CategoryPanel inProgressPanel = new CategoryPanel(_model.inProgressCategory);
 		CategoryPanel finishedPanel = new CategoryPanel(_model.finishedCategory);
 
-		this.add(planningPanel, BorderLayout.WEST);
-		this.add(inProgressPanel, BorderLayout.CENTER);
-		this.add(finishedPanel, BorderLayout.EAST);
+		this.add(planningPanel);
+		this.add(inProgressPanel);
+		this.add(finishedPanel);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
