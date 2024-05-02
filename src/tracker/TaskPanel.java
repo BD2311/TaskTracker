@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JCheckBox;
 
 public class TaskPanel extends JPanel
 {
@@ -32,6 +33,9 @@ public class TaskPanel extends JPanel
 		
 		JButton addRequirementButton = new JButton("New Requirement");
 		this.add(addRequirementButton);
+		
+		JCheckBox completeCheckBox = new JCheckBox();
+		this.add(completeCheckBox);
 		
 		setVisible(true);
 	}
