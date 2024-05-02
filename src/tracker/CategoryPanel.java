@@ -1,8 +1,8 @@
 package tracker;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class CategoryPanel extends JPanel
 {
@@ -20,26 +20,19 @@ public class CategoryPanel extends JPanel
 	
 	///// Methods /////
 	
-	public Category getCategory()
-	{
-		return this._category;
-	}
-	
 	public void initializeUI()
 	{
 		JLabel categoryLabel = new JLabel(_category.getName());
 		this.add(categoryLabel);
+		
+		JButton addTaskButton = new JButton("New Task");
+		add(addTaskButton);
 	
 		setVisible(true);
 	}
-
-	public static void main(String args[])
+	
+	public Category getCategory()
 	{
-		JFrame showCategoryPanel = new JFrame();
-		Category testCategory = new Category("testCategory");
-		CategoryPanel testCategoryPanel = new CategoryPanel(testCategory);
-		showCategoryPanel.add(testCategoryPanel);
-		showCategoryPanel.pack();
-		showCategoryPanel.setVisible(true);
+		return this._category;
 	}
 }

@@ -23,9 +23,9 @@ public class TaskTrackerView extends JFrame
 		this._model = model;
 		this.setLayout(new BorderLayout());
 
-		CategoryPanel planningPanel = new CategoryPanel(_model.planningCategory);
-		CategoryPanel inProgressPanel = new CategoryPanel(_model.inProgressCategory);
-		CategoryPanel finishedPanel = new CategoryPanel(_model.finishedCategory);
+		CategoryPanel1 planningPanel = new CategoryPanel1(_model.planningCategory);
+		CategoryPanel1 inProgressPanel = new CategoryPanel1(_model.inProgressCategory);
+		CategoryPanel1 finishedPanel = new CategoryPanel1(_model.finishedCategory);
 
 		this.add(planningPanel, BorderLayout.WEST);
 		this.add(inProgressPanel, BorderLayout.CENTER);

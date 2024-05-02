@@ -2,6 +2,8 @@ package tracker;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
 
 public class RequirementPanel extends JPanel
 {
@@ -23,6 +25,12 @@ public class RequirementPanel extends JPanel
 	{
 		JLabel categoryLabel = new JLabel(_requirement.getName());
 		this.add(categoryLabel);
+		
+		JButton removeRequirementButton = new JButton("Remove");
+		add(removeRequirementButton);
+		
+		JCheckBox requirementCheckbox = new JCheckBox();
+		this.add(requirementCheckbox);
 	
 		setVisible(true);
 	}
