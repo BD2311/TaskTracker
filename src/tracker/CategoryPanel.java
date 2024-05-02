@@ -2,8 +2,12 @@ package tracker;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class CategoryPanel extends JPanel
@@ -25,6 +29,8 @@ public class CategoryPanel extends JPanel
 	
 	public void initializeUI()
 	{
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		
 		JLabel categoryLabel = new JLabel(this._name);
 		this.add(categoryLabel);
 		

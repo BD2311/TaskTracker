@@ -1,8 +1,10 @@
 package tracker;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,6 +32,7 @@ public class TaskPanel extends JPanel
 	private void initializeUI()
 	{
 		this.add(new JLabel(this._name));
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		JButton addRequirementButton = new JButton("New Requirement");
 		this.add(addRequirementButton);
@@ -78,7 +81,7 @@ public class TaskPanel extends JPanel
 	public static void main(String args[])
 	{
 		JFrame displayFrame = new JFrame();
-		displayFrame.add(new TaskPanel("Test"));
+		displayFrame.getContentPane().add(new TaskPanel("Test"));
 		displayFrame.show();
 	}
 }
