@@ -53,5 +53,15 @@ public class RequirementPanel extends JPanel
 	{
 		return this._name;
 	}
+	
+	public void setComplete()
+	{
+		_complete = true;
+	}
+	
+	public boolean getComplete()
+	{
+		return this._complete;
+	}
 
 }
