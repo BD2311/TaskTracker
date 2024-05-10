@@ -45,7 +45,6 @@ public class RequirementPanel extends JPanel
 	private void initializeUI()
 	{
 		this.add(new JLabel(this._name));
-		this.setBorder(new TitledBorder("Requirement"));
 
 		JButton removeRequirementButton = new JButton("Remove");
 		removeRequirementButton.addActionListener(new ActionListener()
