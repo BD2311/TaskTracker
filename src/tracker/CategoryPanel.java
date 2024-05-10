@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class CategoryPanel extends JPanel
 {
@@ -43,7 +44,7 @@ public class CategoryPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent buttonPressed)
 			{
-				
+				JOptionPane.showInputDialog("What is the name of your task?");
 			}
 		});
 		this.add(addTaskButton);
