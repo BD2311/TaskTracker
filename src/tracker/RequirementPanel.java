@@ -95,16 +95,6 @@ public class RequirementPanel extends JPanel
 		return this._name;
 	}
 	
-	public void setComplete()
-	{
-		_complete = true;
-	}
-	
-	public boolean getComplete()
-	{
-		return this._complete;
-	}
-
 	/**
 	 * To check the completion of a requirement
 	 * @return 
@@ -128,10 +118,5 @@ public class RequirementPanel extends JPanel
 	public void setCompleteFalse()
 	{
 		this._complete = false;
-	}
-
-	public static void main(String args[])
-	{
-
 	}
 }
