@@ -63,6 +63,7 @@ public class RequirementPanel extends JPanel
 					parentTaskPanel.revalidate(); // Update layout
 					parentTaskPanel.repaint(); // Repaint the panel
 				}
+				
 			}
 		});
 		add(removeRequirementButton);

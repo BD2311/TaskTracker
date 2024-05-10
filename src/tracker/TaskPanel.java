@@ -1,6 +1,9 @@
 package tracker;
 
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,35 +17,100 @@ import javax.swing.JCheckBox;
 public class TaskPanel extends JPanel
 {
 	///// Fields /////
-	
+
 	private String _name = "Task";
 	private boolean _complete;
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();
-	
+
 	///// Constructor /////
-	
+
 	public TaskPanel(String name)
 	{
 		this._name = name;
 		initializeUI();
 	}
-	
+
 	///// Methods /////
-	
+
 	private void initializeUI()
 	{
 		this.add(new JLabel(this._name));
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+
 		JButton addRequirementButton = new JButton("New Requirement");
+		addRequirementButton.addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent buttonPressed) 
+					{
+						// TODO Auto-generated method stub
+						
+					}
+				});
 		this.add(addRequirementButton);
 		
-		JCheckBox completeCheckBox = new JCheckBox();
-		this.add(completeCheckBox);
+		JButton removeTaskButton = new JButton("Remove Task");
+		removeTaskButton.addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent buttonPressed) 
+					{
+						// TODO Auto-generated method stub
+						Container parentContainer = TaskPanel.this.getParent();
+
+						// If the parent container is an instance of TaskPanel,
+						// remove this RequirementPanel from it
+						if (parentContainer instanceof CategoryPanel) 
+						{
+							CategoryPanel parentCategoryPanel = (CategoryPanel) parentContainer;
+							parentCategoryPanel.removeTask(TaskPanel.this);
+							parentCategoryPanel.revalidate(); // Update layout
+							parentCategoryPanel.repaint(); // Repaint the panel
+						}			
+					}
+				});
+		this.add(removeTaskButton);
 		
+
+		JCheckBox completeCheckBox = new JCheckBox();
+		completeCheckBox.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent check) 
+			{
+				if(completeCheckBox.isSelected())
+				{
+					setCompleteTrue();
+					System.out.println(getName() + " complete? is: " + isComplete());
+				}
+				else
+				{
+					setCompleteFalse();
+					System.out.println(getName() + " complete? is: " + isComplete());
+				}
+			}
+		});
+		this.add(completeCheckBox);
+
 		setVisible(true);
 	}
+
+	public void setCompleteTrue() 
+	{
+		this._complete = true;
+	}
 	
+	public void setCompleteFalse()
+	{
+		this._complete = false;
+	}
+	
+	public boolean isComplete()
+	{
+		return this._complete;
+	}
+
 	/**
 	 * Gets task name
 	 * @return task name
@@ -51,7 +119,7 @@ public class TaskPanel extends JPanel
 	{
 		return this._name;
 	}
-	
+
 	/**
 	 * Set task name
 	 * @param newTaskName
@@ -60,24 +128,24 @@ public class TaskPanel extends JPanel
 	{
 		this._name = newName;
 	}
-	
+
 	public void addRequirement(RequirementPanel requirementPanel)
 	{
 		this.add(requirementPanel);
 		this._requirements.add(requirementPanel); // Add requirementPanel's requirement to TaskPanel's task
 	}
-	
+
 	public void removeRequirement(RequirementPanel requirementPanel)
 	{
 		this.remove(requirementPanel);
 		this._requirements.remove(requirementPanel);
 	}
-	
+
 	public List<RequirementPanel> getRequirements()
 	{
 		return this._requirements;
 	}
-	
+
 	public static void main(String args[])
 	{
 		JFrame displayFrame = new JFrame();

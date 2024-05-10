@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JFrame;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,33 +16,41 @@ import javax.swing.JButton;
 public class CategoryPanel extends JPanel
 {
 	///// Fields /////
-	
+
 	private String _name = "Category";
 	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>();
-	
+
 	///// Constructor /////
-	
+
 	public CategoryPanel(String name)
 	{
 		this._name = name;
 		initializeUI();
 	}
-	
+
 	///// Methods /////
-	
+
 	public void initializeUI()
 	{
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+
 		JLabel categoryLabel = new JLabel(this._name);
 		this.add(categoryLabel);
-		
+
 		JButton addTaskButton = new JButton("New Task");
+		addTaskButton.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent buttonPressed)
+			{
+				
+			}
+		});
 		this.add(addTaskButton);
-		
+
 		setVisible(true);
 	}
-	
+
 	/**
 	 * Adds task to tasks
 	 * @param taskPanel
@@ -50,7 +60,7 @@ public class CategoryPanel extends JPanel
 		this._tasks.add(taskPanel);
 		this.add(taskPanel);
 	}
-	
+
 	/**
 	 * Removes task from tasks
 	 * @param taskToRemove
@@ -58,8 +68,9 @@ public class CategoryPanel extends JPanel
 	public void removeTask(TaskPanel taskToRemove)
 	{
 		_tasks.remove(taskToRemove);
+		this.remove(taskToRemove);
 	}
-	
+
 	/**
 	 * Gets name of category
 	 * @return
@@ -68,16 +79,16 @@ public class CategoryPanel extends JPanel
 	{
 		return this._name;
 	}
-	
+
 	/**
 	 * Sets name of category
 	 * @param newName
 	 */
 	public void setName(String newName)
 	{
-		 this._name = newName;
+		this._name = newName;
 	}
-	
+
 	/**
 	 * Gets list of tasks of category
 	 * @return
@@ -86,13 +97,13 @@ public class CategoryPanel extends JPanel
 	{
 		return this._tasks;
 	}
-	
+
 	public void moveTaskTo(TaskPanel taskToMove, CategoryPanel categoryToMoveTo)
 	{
 		this.removeTask(taskToMove); // Remove task from current panel
-	    categoryToMoveTo.addTask(taskToMove);
+		categoryToMoveTo.addTask(taskToMove);
 	}
-	
+
 	public static void main(String args[])
 	{
 		JFrame displayFrame = new JFrame();
@@ -106,5 +117,5 @@ public class CategoryPanel extends JPanel
 		displayFrame.pack();
 		displayFrame.show();
 	}
-	
+
 }

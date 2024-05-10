@@ -10,9 +10,9 @@ class TestRequirementPanel {
 	public void testSetComplete() 
 	{
 		RequirementPanel requirement = new RequirementPanel("test");
-		assertFalse(requirement.getComplete());
-		requirement.setComplete();
-		assertTrue(requirement.getComplete());
+		assertFalse(requirement.isComplete());
+		requirement.setCompleteTrue();
+		assertTrue(requirement.isComplete());
 	}
 
 }
