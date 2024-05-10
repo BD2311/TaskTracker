@@ -2,6 +2,7 @@ package tracker;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
@@ -44,6 +45,7 @@ public class RequirementPanel extends JPanel
 	private void initializeUI()
 	{
 		this.add(new JLabel(this._name));
+		this.setBorder(new TitledBorder("Requirement"));
 
 		JButton removeRequirementButton = new JButton("Remove");
 		removeRequirementButton.addActionListener(new ActionListener()

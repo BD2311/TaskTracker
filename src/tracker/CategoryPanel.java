@@ -1,17 +1,17 @@
 package tracker;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JFrame;
 
-import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -34,10 +34,12 @@ public class CategoryPanel extends JPanel
 
 	public void initializeUI()
 	{
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setBorder(new TitledBorder("Category"));
+		this.setLayout(new BorderLayout());
+		JPanel categoryHeader = new JPanel();
 
 		JLabel categoryLabel = new JLabel(this._name);
-		this.add(categoryLabel);
+		categoryHeader.add(categoryLabel);
 
 		JButton addTaskButton = new JButton("New Task");
 		addTaskButton.addActionListener(new ActionListener()
@@ -54,7 +56,13 @@ public class CategoryPanel extends JPanel
 				}
 			}
 		});
-		this.add(addTaskButton);
+		categoryHeader.add(addTaskButton);
+		
+		JList taskList = new JList();
+		taskList.setBorder(new TitledBorder("Task List"));
+		
+		this.add(categoryHeader, BorderLayout.NORTH);
+		this.add(taskList, BorderLayout.CENTER);
 
 		setVisible(true);
 	}
