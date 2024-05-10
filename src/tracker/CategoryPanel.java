@@ -45,9 +45,12 @@ public class CategoryPanel extends JPanel
 			public void actionPerformed(ActionEvent buttonPressed)
 			{
 				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
+				if (taskName != null && !taskName.isEmpty())
+				{
 				CategoryPanel.this.addTask(new TaskPanel(taskName));
 				CategoryPanel.this.revalidate();
 				CategoryPanel.this.repaint();
+				}
 			}
 		});
 		this.add(addTaskButton);
