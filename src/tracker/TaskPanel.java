@@ -74,7 +74,7 @@ public class TaskPanel extends JPanel
 				}
 				default:
 				{
-
+					// Do nothing
 				}
 				}
 			}
