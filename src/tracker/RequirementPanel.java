@@ -17,6 +17,10 @@ import java.awt.event.ActionListener;
  * 
  * Responsibilities of class:
  * 
+ * Represents a panel displaying a single requirement.
+ * - Displaying the name of the requirement.
+ * - Providing functionality to mark the requirement as complete or incomplete.
+ * - Providing functionality to remove the requirement from its parent container (if it is a TaskPanel).
  * 
  */
 @SuppressWarnings("serial")
@@ -94,7 +98,7 @@ public class RequirementPanel extends JPanel
 	{
 		return this._name;
 	}
-	
+
 	/**
 	 * To check the completion of a requirement
 	 * @return 
