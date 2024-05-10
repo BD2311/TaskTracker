@@ -66,7 +66,7 @@ public class RequirementPanel extends JPanel
 				
 			}
 		});
-		add(removeRequirementButton);
+		this.add(removeRequirementButton);
 
 		JCheckBox requirementCheckbox = new JCheckBox();
 		requirementCheckbox.addActionListener(new ActionListener()

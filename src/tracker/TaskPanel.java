@@ -42,10 +42,12 @@ public class TaskPanel extends JPanel
 		addRequirementButton.addActionListener(new ActionListener()
 		{
 			@Override
-			public void actionPerformed(ActionEvent buttonPressed) 
+			public void actionPerformed(ActionEvent buttonPressed)
 			{
-				// TODO Auto-generated method stub
-
+				String requirementName = JOptionPane.showInputDialog("What is the name of your requirement?");
+				TaskPanel.this.addRequirement(new RequirementPanel(requirementName));
+				TaskPanel.this.revalidate();
+				TaskPanel.this.repaint();
 			}
 		});
 		this.add(addRequirementButton);
