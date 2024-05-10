@@ -1,6 +1,7 @@
 package tracker;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 
@@ -47,9 +48,9 @@ public class CategoryPanel extends JPanel
 				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
 				if (taskName != null && !taskName.isEmpty())
 				{
-				CategoryPanel.this.addTask(new TaskPanel(taskName));
-				CategoryPanel.this.revalidate();
-				CategoryPanel.this.repaint();
+					CategoryPanel.this.addTask(new TaskPanel(taskName));
+					CategoryPanel.this.revalidate();
+					CategoryPanel.this.repaint();
 				}
 			}
 		});
@@ -119,7 +120,7 @@ public class CategoryPanel extends JPanel
 		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement");
 		testTaskPanel.addRequirement(testRequirementPanel);
 		testCategoryPanel.addTask(testTaskPanel);
-		displayFrame.add(testCategoryPanel);
+		displayFrame.getContentPane().add(testCategoryPanel);
 		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		displayFrame.pack();
 		displayFrame.show();

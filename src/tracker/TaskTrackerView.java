@@ -27,12 +27,7 @@ public class TaskTrackerView extends JFrame
 		this.add(_model.planningPanel);
 		this.add(_model.inProgressPanel);
 		this.add(_model.finishedPanel);
-
-//		TaskPanel testTaskPanel = new TaskPanel("Test Task");
-//		RequirementPanel testRequirementPanel = new RequirementPanel("Test Requirement");
-//		testTaskPanel.addRequirement(testRequirementPanel);
-//		_model.planningPanel.addTask(testTaskPanel);
-
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
