@@ -58,11 +58,7 @@ public class CategoryPanel extends JPanel
 		});
 		categoryHeader.add(addTaskButton);
 		
-		JList taskList = new JList();
-		taskList.setBorder(new TitledBorder("Task List"));
-		
 		this.add(categoryHeader, BorderLayout.NORTH);
-		this.add(taskList, BorderLayout.CENTER);
 
 		setVisible(true);
 	}
