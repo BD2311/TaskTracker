@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 
 public class TaskPanel extends JPanel
@@ -39,38 +40,47 @@ public class TaskPanel extends JPanel
 
 		JButton addRequirementButton = new JButton("New Requirement");
 		addRequirementButton.addActionListener(new ActionListener()
-				{
-					@Override
-					public void actionPerformed(ActionEvent buttonPressed) 
-					{
-						// TODO Auto-generated method stub
-						
-					}
-				});
+		{
+			@Override
+			public void actionPerformed(ActionEvent buttonPressed) 
+			{
+				// TODO Auto-generated method stub
+
+			}
+		});
 		this.add(addRequirementButton);
-		
+
 		JButton removeTaskButton = new JButton("Remove Task");
 		removeTaskButton.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent buttonPressed) 
+			{
+				int answer =JOptionPane.showConfirmDialog(null, "Do you wish to remove " + TaskPanel.this.getName() + " ?");
+				Container parentContainer = TaskPanel.this.getParent();
+				switch(answer)
 				{
-					@Override
-					public void actionPerformed(ActionEvent buttonPressed) 
+				case 0:
+				{
+					// If the parent container is an instance of TaskPanel,
+					// remove this RequirementPanel from it
+					if (parentContainer instanceof CategoryPanel) 
 					{
-						// TODO Auto-generated method stub
-						Container parentContainer = TaskPanel.this.getParent();
+						CategoryPanel parentCategoryPanel = (CategoryPanel) parentContainer;
+						parentCategoryPanel.removeTask(TaskPanel.this);
+						parentCategoryPanel.revalidate(); // Update layout
+						parentCategoryPanel.repaint(); // Repaint the panel
+					}	
+				}
+				default:
+				{
 
-						// If the parent container is an instance of TaskPanel,
-						// remove this RequirementPanel from it
-						if (parentContainer instanceof CategoryPanel) 
-						{
-							CategoryPanel parentCategoryPanel = (CategoryPanel) parentContainer;
-							parentCategoryPanel.removeTask(TaskPanel.this);
-							parentCategoryPanel.revalidate(); // Update layout
-							parentCategoryPanel.repaint(); // Repaint the panel
-						}			
-					}
-				});
+				}
+				}
+			}
+		});
 		this.add(removeTaskButton);
-		
+
 
 		JCheckBox completeCheckBox = new JCheckBox();
 		completeCheckBox.addActionListener(new ActionListener()
@@ -100,12 +110,12 @@ public class TaskPanel extends JPanel
 	{
 		this._complete = true;
 	}
-	
+
 	public void setCompleteFalse()
 	{
 		this._complete = false;
 	}
-	
+
 	public boolean isComplete()
 	{
 		return this._complete;
