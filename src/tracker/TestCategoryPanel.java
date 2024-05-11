@@ -9,51 +9,47 @@ public class TestCategoryPanel
 {
 
 	@Test
-	public void testGetName()
+	public void testGetName() 
 	{
-		CategoryPanel CategoryPanel = new CategoryPanel("Test CategoryPanel");
-		assertEquals("Test CategoryPanel", CategoryPanel.getName());
+		CategoryPanel categoryPanel = new CategoryPanel("Test CategoryPanel");
+		assertEquals("Test CategoryPanel", categoryPanel.getName());
 	}
 
 	@Test
-	public void testSetName()
+	public void testSetName() 
 	{
-		CategoryPanel CategoryPanel = new CategoryPanel("Test CategoryPanel");
-		CategoryPanel.setName("New CategoryPanel Name");
-		assertEquals("New CategoryPanel Name", CategoryPanel.getName());
+		CategoryPanel categoryPanel = new CategoryPanel("Test CategoryPanel");
+		categoryPanel.setName("New CategoryPanel Name");
+		assertEquals("New CategoryPanel Name", categoryPanel.getName());
 	}
 
 	@Test
-	public void testAddTaskPanel()
+	public void testAddTaskPanel() 
 	{
-		CategoryPanel CategoryPanel = new CategoryPanel("Test CategoryPanel");
-		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
-		List<TaskPanel> TaskPanels = CategoryPanel.getTasks();
-		assertEquals(0, TaskPanels.size());
-		CategoryPanel.addTask(TaskPanel);
-		assertEquals(1, TaskPanels.size());
-		assertTrue(CategoryPanel.getTasks().contains(TaskPanel));
+		CategoryPanel categoryPanel = new CategoryPanel("Test CategoryPanel");
+		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
+		categoryPanel.addTask(taskPanel);
+		assertTrue(categoryPanel.getTaskScrollPane().getTaskPanels().contains(taskPanel));
 	}
 
 	@Test
-	public void testRemoveTaskPanel()
+	public void testRemoveTaskPanel() 
 	{
-		CategoryPanel CategoryPanel = new CategoryPanel("Test CategoryPanel");
-		TaskPanel TaskPanel1 = new TaskPanel("TaskPanel 1");
-		TaskPanel TaskPanel2 = new TaskPanel("TaskPanel 2");
-		CategoryPanel.addTask(TaskPanel1);
-		CategoryPanel.addTask(TaskPanel2);
-		assertEquals(2, CategoryPanel.getTasks().size());
+		CategoryPanel categoryPanel = new CategoryPanel("Test CategoryPanel");
+		TaskPanel taskPanel1 = new TaskPanel("TaskPanel 1");
+		TaskPanel taskPanel2 = new TaskPanel("TaskPanel 2");
+		categoryPanel.addTask(taskPanel1);
+		categoryPanel.addTask(taskPanel2);
+		assertEquals(2, categoryPanel.getTaskScrollPane().getTaskPanels().size());
 
-		CategoryPanel.removeTask(TaskPanel1);
-		assertEquals(1, CategoryPanel.getTasks().size());
-		assertFalse(CategoryPanel.getTasks().contains(TaskPanel1));
-		assertTrue(CategoryPanel.getTasks().contains(TaskPanel2));
+		categoryPanel.removeTask(taskPanel1);
+		assertEquals(1, categoryPanel.getTaskScrollPane().getTaskPanels().size());
+		assertFalse(categoryPanel.getTaskScrollPane().getTaskPanels().contains(taskPanel1));
+		assertTrue(categoryPanel.getTaskScrollPane().getTaskPanels().contains(taskPanel2));
 	}
 
 	@Test
-	public void testMoveTaskPanelToFromCategoryPanel()
-	{
+	public void testMoveTaskPanelToFromCategoryPanel() {
 		CategoryPanel planningPanel = new CategoryPanel("Planned");
 		CategoryPanel inProgressPanel = new CategoryPanel("Work in Progress");
 		CategoryPanel finishedPanel = new CategoryPanel("Finished");
@@ -61,17 +57,17 @@ public class TestCategoryPanel
 		TaskPanel homework = new TaskPanel("Homework");
 
 		// Add task to planning panel
-	    planningPanel.addTask(homework);
-	    assertTrue(planningPanel.getTasks().contains(homework));
+		planningPanel.addTask(homework);
+		assertTrue(planningPanel.getTaskScrollPane().getTaskPanels().contains(homework));
 
-	    // Move task to in-progress panel
-	    planningPanel.moveTaskTo(homework, inProgressPanel);
-	    assertTrue(inProgressPanel.getTasks().contains(homework));
-	    assertFalse(planningPanel.getTasks().contains(homework)); // Check if task is not in planning panel
+		// Move task to in-progress panel
+		planningPanel.moveTaskTo(homework, inProgressPanel);
+		assertTrue(inProgressPanel.getTaskScrollPane().getTaskPanels().contains(homework));
+		assertFalse(planningPanel.getTaskScrollPane().getTaskPanels().contains(homework)); // Check if task is not in planning panel
 
-	    // Move task to finished panel
-	    inProgressPanel.moveTaskTo(homework, finishedPanel);
-	    assertFalse(inProgressPanel.getTasks().contains(homework)); // Check if task is not in in-progress panel
-	    assertTrue(finishedPanel.getTasks().contains(homework)); // Check if task is in finished panel
+		// Move task to finished panel
+		inProgressPanel.moveTaskTo(homework, finishedPanel);
+		assertFalse(inProgressPanel.getTaskScrollPane().getTaskPanels().contains(homework)); // Check if task is not in in-progress panel
+		assertTrue(finishedPanel.getTaskScrollPane().getTaskPanels().contains(homework)); // Check if task is in finished panel
 	}
 }

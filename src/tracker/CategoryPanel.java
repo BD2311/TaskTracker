@@ -3,14 +3,11 @@ package tracker;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -20,7 +17,7 @@ public class CategoryPanel extends JPanel
 	///// Fields /////
 
 	private String _name = "Category";
-	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>();
+	private TaskScrollPane _taskScrollPane;
 
 	///// Constructor /////
 
@@ -57,8 +54,10 @@ public class CategoryPanel extends JPanel
 			}
 		});
 		categoryHeader.add(addTaskButton);
+		_taskScrollPane = new TaskScrollPane();
 		
 		this.add(categoryHeader, BorderLayout.NORTH);
+		this.add(_taskScrollPane, BorderLayout.CENTER);
 
 		setVisible(true);
 	}
@@ -69,8 +68,7 @@ public class CategoryPanel extends JPanel
 	 */
 	public void addTask(TaskPanel taskPanel)
 	{
-		this._tasks.add(taskPanel);
-		this.add(taskPanel);
+		_taskScrollPane.addTask(taskPanel);
 	}
 
 	/**
@@ -79,8 +77,7 @@ public class CategoryPanel extends JPanel
 	 */
 	public void removeTask(TaskPanel taskToRemove)
 	{
-		_tasks.remove(taskToRemove);
-		this.remove(taskToRemove);
+		_taskScrollPane.removeTask(taskToRemove);
 	}
 
 	/**
@@ -105,9 +102,9 @@ public class CategoryPanel extends JPanel
 	 * Gets list of tasks of category
 	 * @return
 	 */
-	public List<TaskPanel> getTasks()
+	public TaskScrollPane getTaskScrollPane()
 	{
-		return this._tasks;
+		return this._taskScrollPane;
 	}
 
 	public void moveTaskTo(TaskPanel taskToMove, CategoryPanel categoryToMoveTo)
