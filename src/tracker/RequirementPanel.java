@@ -1,12 +1,10 @@
 package tracker;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -46,10 +44,8 @@ public class RequirementPanel extends JPanel
 
 	private void initializeUI()
 	{
-		LineBorder lineBorder = new LineBorder(null, 1);
-		this.setBorder(lineBorder);
+		this.setBorder(new TitledBorder(this.getName()));
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		this.add(new JLabel(this._name));
 
 		JButton removeRequirementButton = new JButton("Remove");
 		removeRequirementButton.addActionListener(new ActionListener()
