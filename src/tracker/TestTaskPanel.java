@@ -20,7 +20,7 @@ class TestTaskPanel
 		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
-		TaskPanel.addRequirement(RequirementPanel);
+		TaskPanel.add(RequirementPanel);
 
 		assertTrue(TaskPanel.getRequirements().contains(RequirementPanel));
 	}
@@ -31,8 +31,8 @@ class TestTaskPanel
 		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
-		TaskPanel.addRequirement(RequirementPanel);
-		TaskPanel.removeRequirement(RequirementPanel);
+		TaskPanel.add(RequirementPanel);
+		TaskPanel.remove(RequirementPanel);
 
 		assertFalse(TaskPanel.getRequirements().contains(RequirementPanel));
 	}

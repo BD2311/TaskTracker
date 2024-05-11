@@ -2,11 +2,13 @@ package tracker;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,6 +46,9 @@ public class RequirementPanel extends JPanel
 
 	private void initializeUI()
 	{
+		LineBorder lineBorder = new LineBorder(null, 1);
+		this.setBorder(lineBorder);
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(new JLabel(this._name));
 
 		JButton removeRequirementButton = new JButton("Remove");
@@ -53,18 +58,18 @@ public class RequirementPanel extends JPanel
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				Container parentContainer = RequirementPanel.this.getParent();
-				System.out.println(parentContainer);
-
-				// If the parent container is an instance of TaskPanel,
-				// remove this RequirementPanel from it
+				while (parentContainer != null && !(parentContainer instanceof TaskPanel)) // Loop to find desired parent
+				{
+				    parentContainer = parentContainer.getParent();
+				}
+				System.out.println(parentContainer.getClass());
 				if (parentContainer instanceof TaskPanel) 
 				{
-					TaskPanel parentTaskPanel = (TaskPanel) parentContainer;
-					parentTaskPanel.removeRequirement(RequirementPanel.this);
+					TaskPanel parentTaskPanel = (TaskPanel) parentContainer; // Cast parentTaskPanel on TaskPanel
+					parentTaskPanel.remove(RequirementPanel.this);
 					parentTaskPanel.revalidate(); // Update layout
 					parentTaskPanel.repaint(); // Repaint the panel
 				}
-				
 			}
 		});
 		this.add(removeRequirementButton);
