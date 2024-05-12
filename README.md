@@ -71,14 +71,15 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 
 ## Week 6
 
-- [ ] Add event handling to make the GUI functional (the "controller" part of MVC).
-- [ ] Update project page with progress details.
-- [ ] Submit code written so far.
+- [X] Add event handling to make the GUI functional (the "controller" part of MVC).
+- [X] Update project page with progress details.
+- [X] Submit code written so far.
 
 ## Week 7
 
 - [ ] Test, test, test, debug, and test some more.
 - [ ] Update project page with progress details.
+- [ ] Implement calculation and update methods for the logic of the GUI (the "model" part of the MVC).
 - [ ] Submit code written so far.
 
 ## Week 8
