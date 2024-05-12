@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.04.19.001
+ * Version/date: 2024.05.12.001
  * 
  * Responsibilities of class:
  * 
@@ -29,11 +29,16 @@ public class RequirementPanel extends JPanel
 {
 	///// Fields /////
 
-	private String _name = "Requirement";
-	private boolean _complete; 
+	private String _name = "Requirement"; // Default requirement name
+	private boolean _complete; // Flag indicating whether the requirement is complete
 
 	///// Constructor /////
 
+	/**
+     * Constructs a RequirementPanel object with the specified requirement name.
+     * 
+     * @param requirementName The name of the requirement.
+     */
 	public RequirementPanel(String requirementName)
 	{
 		this._name = requirementName;
@@ -42,17 +47,21 @@ public class RequirementPanel extends JPanel
 
 	///// Methods /////
 
+	/**
+     * Initializes the user interface of the requirement panel.
+     */
 	private void initializeUI()
 	{
-		this.setBorder(new TitledBorder(this.getName()));
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.setBorder(new TitledBorder(this.getName())); // Set border with requirement name
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));  // Use flow layout with left alignment
 
-		JButton removeRequirementButton = new JButton("Remove");
+		JButton removeRequirementButton = new JButton("Remove"); // Create button to remove requirement
 		removeRequirementButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
+				// Find the parent container which should be a TaskPanel and remove this requirement panel
 				Container parentContainer = RequirementPanel.this.getParent();
 				while (parentContainer != null && !(parentContainer instanceof TaskPanel)) // Loop to find desired parent
 				{
@@ -68,44 +77,48 @@ public class RequirementPanel extends JPanel
 				}
 			}
 		});
-		this.add(removeRequirementButton);
+		this.add(removeRequirementButton); // Add removeRequirementButton to requirement panel
 
+		// Checkbox to mark requirement as complete
 		JCheckBox requirementCheckbox = new JCheckBox();
 		requirementCheckbox.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent check)
 			{
+				// Toggle completion status based on checkbox state
 				if (requirementCheckbox.isSelected()) 
 				{
-					setCompleteTrue();
+					setCompleteTrue(); // Mark requirement as complete
 					System.out.println(getName() + " complete? is: " + isComplete());
 				} 
 				else 
 				{
-					setCompleteFalse();
+					setCompleteFalse(); // Mark requirement as incomplete
 					System.out.println(getName() + " complete? is: " + isComplete());
 				}
 			}
 		});
-		this.add(requirementCheckbox);
+		this.add(requirementCheckbox); // Add requirementCheckbox to requirement panel
 
-		setVisible(true);
+		setVisible(true); // Make the requirement panel visible
 	}
 
 	/**
-	 * Gets requirement name
-	 * @return
-	 */
+     * Gets the name of the requirement.
+     * 
+     * @return The name of the requirement.
+     */
 	public String getName()
 	{
 		return this._name;
 	}
 
 	/**
-	 * To check the completion of a requirement
-	 * @return 
-	 */
+     * Checks if the requirement is complete.
+     * 
+     * @return True if the requirement is complete, false otherwise.
+     */
 	public boolean isComplete()
 	{
 		return this._complete;

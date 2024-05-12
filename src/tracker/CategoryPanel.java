@@ -18,17 +18,35 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+/**
+ * Lead Author(s):
+ * @author Branden Della bdella@email.com
+ * 
+ * Version/date: 2024.05.12.001
+ * 
+ * Responsibilities of class:
+ * 
+ * Represents a panel displaying a category information and scroll pane of tasks.
+ * - Displaying the category header.
+ * - Providing functionality to adding tasks
+ * 
+ */
 @SuppressWarnings("serial")
 public class CategoryPanel extends JPanel
 {
 	///// Fields /////
 
-	private String _name = "Category";
-	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>();
-	private JPanel _tasksPanelContainer;
+	private String _name = "Category"; // Default category name
+	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>(); // List to store task panels
+	private JPanel _tasksPanelContainer; // Container panel for task panels
 
 	///// Constructor /////
 
+	/**
+	 * Constructs a CategoryPanel object with the specified name.
+	 * 
+	 * @param name The name of the category.
+	 */
 	public CategoryPanel(String name)
 	{
 		this._name = name;
@@ -37,13 +55,18 @@ public class CategoryPanel extends JPanel
 
 	///// Methods /////
 
+	/**
+	 * Initializes the user interface of the category panel.
+	 */
 	private void initializeUI()
 	{
-		this.setBorder(new TitledBorder("Category"));
-		this.setLayout(new BorderLayout());
+
+		this.setBorder(new TitledBorder("Category")); // Set border with category name
+		this.setLayout(new BorderLayout()); // Use border layout for components
 		JPanel categoryHeader = new JPanel();
 		categoryHeader.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+		// Create and configure category header
 		JLabel categoryLabel = new JLabel(this._name);
 		categoryHeader.add(categoryLabel);
 
@@ -61,21 +84,25 @@ public class CategoryPanel extends JPanel
 			}
 		});
 		categoryHeader.add(addTaskButton);
+
+		// Create container panel for task panels with vertical box layout
 		_tasksPanelContainer = new JPanel();
 		_tasksPanelContainer.setLayout((LayoutManager) new BoxLayout(_tasksPanelContainer, BoxLayout.Y_AXIS));
 		JScrollPane scrollPane = new JScrollPane(_tasksPanelContainer);
 		scrollPane.setBorder(new TitledBorder("Tasks"));
 
+		// Add components to the category panel
 		this.add(categoryHeader, BorderLayout.NORTH);
 		this.add(scrollPane, BorderLayout.CENTER);
 
-		setVisible(true);
+		setVisible(true); // Make the category panel visible
 	}
 
 	/**
-	 * Adds task to tasks
-	 * @param taskPanel
-	 */
+     * Adds a task panel to the category.
+     * 
+     * @param taskPanel The task panel to be added.
+     */
 	public void add(TaskPanel taskPanel)
 	{
 		_tasks.add(taskPanel);
@@ -85,9 +112,10 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-	 * Removes task from tasks
-	 * @param taskToRemove
-	 */
+     * Removes a task panel from the category.
+     * 
+     * @param taskPanel The task panel to be removed.
+     */
 	public void remove(TaskPanel taskPanel)
 	{
 		_tasks.remove(taskPanel);
@@ -97,43 +125,62 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-	 * Gets name of category
-	 * @return
-	 */
+     * Gets the name of the category.
+     * 
+     * @return The name of the category.
+     */
 	public String getName()
 	{
 		return this._name;
 	}
 
 	/**
-	 * Sets name of category
-	 * @param newName
-	 */
+     * Sets the name of the category.
+     * 
+     * @param newName The new name for the category.
+     */
 	public void setName(String newName)
 	{
 		this._name = newName;
 	}
 
 	/**
-	 * Gets list of tasks of category
-	 * @return
-	 */
+     * Gets the list of tasks in the category.
+     * 
+     * @return The list of tasks in the category.
+     */
 	public List<TaskPanel> getTasks()
 	{
 		return this._tasks;
 	}
-	
+
+	/**
+     * Gets the container panel for tasks.
+     * 
+     * @return The container panel for tasks.
+     */
 	public JPanel getTasksPanelContainer()
 	{
 		return this._tasksPanelContainer;
 	}
 
+	/**
+     * Moves a task panel to another category panel.
+     * 
+     * @param taskToMove The task panel to move.
+     * @param categoryToMoveTo The category panel to move the task panel to.
+     */
 	public void moveTaskTo(TaskPanel taskToMove, CategoryPanel categoryToMoveTo)
 	{
 		this.remove(taskToMove); // Remove task from current panel
 		categoryToMoveTo.add(taskToMove);
 	}
 
+	/**
+     * Main method for testing the CategoryPanel class.
+     * 
+     * @param args Command line arguments (unused).
+     */
 	@SuppressWarnings("deprecation")
 	public static void main(String args[])
 	{

@@ -6,6 +6,19 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
+/**
+ * Lead Author(s):
+ * @author Branden Della bdella@email.com
+ * 
+ * Version/date: 2024.05.12.001
+ * 
+ * Responsibilities of class:
+ * 
+ * This class represents the view of the Task Tracker application. It is responsible for 
+ * displaying the planning, in-progress, and finished panels of tasks.
+ * 
+ * The main method instantiates an object of this class, triggering the display of the Task Tracker UI.
+ */
 @SuppressWarnings("serial")
 public class TaskTrackerView extends JFrame {
 	///// Fields /////
@@ -14,6 +27,9 @@ public class TaskTrackerView extends JFrame {
 
 	///// Constructor /////
 
+	/**
+	 * Constructs a TaskTrackerView object with default settings.
+	 */
 	public TaskTrackerView() 
 	{
 		initializeUI(new TaskTrackerModel());
@@ -21,6 +37,11 @@ public class TaskTrackerView extends JFrame {
 
 	///// Methods /////
 
+	/**
+	 * Initializes the user interface of the Task Tracker.
+	 * 
+	 * @param model The TaskTrackerModel object representing the data model for the Task Tracker.
+	 */
 	private void initializeUI(TaskTrackerModel model)
 	{
 		this._model = model;
@@ -36,6 +57,12 @@ public class TaskTrackerView extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+     * Calculates the minimum size of the Task Tracker window based on the preferred sizes
+     * of its components.
+     * 
+     * @return The minimum size of the Task Tracker window.
+     */
 	private Dimension calculateMinimumSize() 
 	{
 		int width = 0;
@@ -56,6 +83,11 @@ public class TaskTrackerView extends JFrame {
 		return new Dimension(width, height);
 	}
 
+	/**
+     * The main method to instantiate and display the Task Tracker application.
+     * 
+     * @param args Command line arguments (unused).
+     */
 	public static void main(String args[]) 
 	{
 		new TaskTrackerView();
