@@ -1,17 +1,26 @@
 # TaskTracker
-## About this Project:
+## Table of Contents:
+
+[Project Proposal] (https://github.com/BD2311/TaskTracker/#project-proposal)
+[Features/Objectives] (https://github.com/BD2311/TaskTracker/#featuresobjectives)
+[Requirement Traceability Matrix] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#requirement-traceability-matrix)
+[CRC Card Diagram] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#crc-card-diagram)
+[Graphical User Interface Wireframe] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#graphical-user-interface-wireframe)
+[Weekly Checkpoints] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#weekly-checkpoints)
+
+
 
 ### Project Proposal
-#### Description
 TaskTracker is a utility programmed in Java designed to automate the tracking of progress on tasks.
-#### Features/Objectives
+
+### Features/Objectives
 - User will be able to create different types of tasks such as work task or personal task
 - User will be able to add requirements to each task
 - User will be able to check off requirements and system will automatically mark tasks as complete if all requirements are checked off
 - User will be able to forcibly mark a task as complete even if a requirement is not fulfilled
 - User will be able to add a new requirement to a task even if the task is complete which will move the task to be in progress
 
-#### Requirement Traceability Matrix
+### Requirement Traceability Matrix
 | Requirement | Source File | Test Status |
 |    :---:    |    :---:    |     ---:    |
 | Requirement can be set to complete | RequirementPanel.java | Pass |
@@ -23,15 +32,11 @@ TaskTracker is a utility programmed in Java designed to automate the tracking of
 | Task can be added and removed from Category | CategoryPanel.java | Pass |
 | Task can be moved from Category to another Category | CategoryPanel.java | Pass |
 
-
-### Plan
-#### CRC Card Diagram
+### CRC Card Diagram
 ![TaskTrackerClassDiagram](https://github.com/BD2311/TaskTracker/assets/164386430/5cf94afe-ae8d-4d34-9f54-074a8bfa1dcd)
 
-#### Graphical User Interface Wireframe
+### Graphical User Interface Wireframe
 ![TaskTrackerGUISketch](https://github.com/BD2311/TaskTracker/assets/164386430/44cea94e-fa3c-41aa-b440-549782d90872)
-
-## Getting Started:
 
 # Weekly Checkpoints
 
