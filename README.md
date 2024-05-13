@@ -1,12 +1,12 @@
 # TaskTracker
 ## Table of Contents:
 
-[Project Proposal] (https://github.com/BD2311/TaskTracker/#project-proposal)
-[Features/Objectives] (https://github.com/BD2311/TaskTracker/#featuresobjectives)
-[Requirement Traceability Matrix] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#requirement-traceability-matrix)
-[CRC Card Diagram] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#crc-card-diagram)
-[Graphical User Interface Wireframe] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#graphical-user-interface-wireframe)
-[Weekly Checkpoints] (https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#weekly-checkpoints)
+[Project Proposal](https://github.com/BD2311/TaskTracker/#project-proposal)
+[Features/Objectives](https://github.com/BD2311/TaskTracker/#featuresobjectives)
+[Requirement Traceability Matrix](https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#requirement-traceability-matrix)
+[CRC Card Diagram](https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#crc-card-diagram)
+[Graphical User Interface Wireframe](https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#graphical-user-interface-wireframe)
+[Weekly Checkpoints](https://github.com/BD2311/TaskTracker/?tab=readme-ov-file#weekly-checkpoints)
 
 
 
