@@ -81,6 +81,10 @@ public class CategoryPanel extends JPanel
 				{
 					add(new TaskPanel(taskName));
 				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "You must specify a name for a task.");
+				}
 			}
 		});
 		categoryHeader.add(addTaskButton);

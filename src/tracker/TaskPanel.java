@@ -76,9 +76,13 @@ public class TaskPanel extends JPanel
 			{
 				// Prompt user for requirement name and add a new requirement panel
 				String requirementName = JOptionPane.showInputDialog("What is the name of your requirement?");
-				if (requirementName != null && !requirementName.isEmpty()) 
+				if (requirementName != null && !requirementName.isEmpty()) // Validate input
 				{
 					TaskPanel.this.add(new RequirementPanel(requirementName));
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "You must specify a name for a requirement.");
 				}
 			}
 		});
