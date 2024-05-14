@@ -40,6 +40,7 @@ public class TaskPanel extends JPanel
 	private boolean _complete; // Flag indicating whether the task is complete
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();  // List to store requirement panels
 	private JPanel requirementsPanelContainer; // Container panel for requirement panels
+	public CategoryPanel parentCategory = this.getParentCategory();
 
 	///// Constructor /////
 
@@ -126,6 +127,14 @@ public class TaskPanel extends JPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				_complete = completeCheckBox.isSelected(); // Update completion status
+				if(_complete == true)
+				{
+					setCompleteTrue();
+				}
+				else
+				{
+					setCompleteFalse();
+				}
 				System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 			}
 		});
@@ -143,6 +152,22 @@ public class TaskPanel extends JPanel
 
 		setVisible(true); // Make the task panel visible
 	}
+	
+	/**
+	 * Get the parent category panel that contains this task.
+	 * 
+	 * @return parent The category panel that contains this task
+	 */
+	public CategoryPanel getParentCategory() 
+	{
+        // Traverse up the component hierarchy until a CategoryPanel is found
+        Container parent = getParent();
+        while (parent != null && !(parent instanceof CategoryPanel)) 
+        {
+            parent = parent.getParent();
+        }
+        return (CategoryPanel) parent; // Cast to CategoryPanel or return null if not found
+    }
 
 	/**
 	 * Sets the name of the task.
@@ -206,17 +231,27 @@ public class TaskPanel extends JPanel
      * 
      * @return True if the task is complete, false otherwise.
      */
-	public boolean isComplete()
+	public void checkIfAllRequirementsComplete()
 	{
 		for(RequirementPanel requirement : _requirements)
 		{
 			if(!requirement.isComplete())
 			{
-				return false;
+				setCompleteFalse();
 			}
+			else
+			setCompleteTrue();
 		}
-		
-		return true;
+	}
+	
+	/**
+     * Checks if the task is complete.
+     * 
+     * @return True if the task is complete, false otherwise.
+     */
+	public boolean isComplete()
+	{
+		return this._complete;
 	}
 
 	/**
@@ -225,6 +260,10 @@ public class TaskPanel extends JPanel
 	public void setCompleteTrue()
 	{
 		this._complete = true;
+		for(RequirementPanel requirement : _requirements) // Set all requirements of this task to complete
+		{
+			requirement.setCompleteTrue();
+		}
 	}
 
 	/**
@@ -233,6 +272,10 @@ public class TaskPanel extends JPanel
 	public void setCompleteFalse()
 	{
 		this._complete = false;
+		for(RequirementPanel requirement : _requirements) // Set all requirements of this task to incomplete
+		{
+			requirement.setCompleteFalse();
+		}
 	}
 
 	/**

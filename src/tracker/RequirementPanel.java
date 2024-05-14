@@ -31,6 +31,7 @@ public class RequirementPanel extends JPanel
 
 	private String _name = "Requirement"; // Default requirement name
 	private boolean _complete; // Flag indicating whether the requirement is complete
+	private JCheckBox completionCheckBox;
 
 	///// Constructor /////
 
@@ -80,14 +81,14 @@ public class RequirementPanel extends JPanel
 		this.add(removeRequirementButton); // Add removeRequirementButton to requirement panel
 
 		// Checkbox to mark requirement as complete
-		JCheckBox requirementCheckbox = new JCheckBox();
-		requirementCheckbox.addActionListener(new ActionListener()
+		completionCheckBox = new JCheckBox();
+		completionCheckBox.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent check)
 			{
 				// Toggle completion status based on checkbox state
-				if (requirementCheckbox.isSelected()) 
+				if (completionCheckBox.isSelected()) 
 				{
 					setCompleteTrue(); // Mark requirement as complete
 					System.out.println(getName() + " complete? is: " + isComplete());
@@ -99,7 +100,7 @@ public class RequirementPanel extends JPanel
 				}
 			}
 		});
-		this.add(requirementCheckbox); // Add requirementCheckbox to requirement panel
+		this.add(completionCheckBox); // Add requirementCheckbox to requirement panel
 
 		setVisible(true); // Make the requirement panel visible
 	}
@@ -130,6 +131,7 @@ public class RequirementPanel extends JPanel
 	public void setCompleteTrue()
 	{
 		this._complete = true;
+		completionCheckBox.setSelected(true);
 	}
 
 	/**
@@ -138,5 +140,6 @@ public class RequirementPanel extends JPanel
 	public void setCompleteFalse()
 	{
 		this._complete = false;
+		completionCheckBox.setSelected(false);
 	}
 }

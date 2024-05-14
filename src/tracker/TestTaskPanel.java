@@ -44,11 +44,20 @@ class TestTaskPanel
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 		RequirementPanel RequirementPanel2 = new RequirementPanel("Test RequirementPanel2");
 		
-		taskPanel.add(RequirementPanel);
-		RequirementPanel.setCompleteTrue();
-		assertTrue(taskPanel.isComplete());
+//		taskPanel.add(RequirementPanel);
+//		RequirementPanel.setCompleteTrue();
+//		taskPanel.checkIfAllRequirementsComplete();
+//		assertTrue(taskPanel.isComplete());
+//		
+//		taskPanel.add(RequirementPanel2);
+//		taskPanel.checkIfAllRequirementsComplete();
+//		assertFalse(taskPanel.isComplete());
+//		RequirementPanel2.setCompleteTrue();
+//		taskPanel.checkIfAllRequirementsComplete();
+//		assertTrue(taskPanel.isComplete());
 		
-		taskPanel.add(RequirementPanel2);
+		taskPanel.add(RequirementPanel);
+		taskPanel.checkIfAllRequirementsComplete();
 		assertFalse(taskPanel.isComplete());
 		
 		
