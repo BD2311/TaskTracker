@@ -208,7 +208,15 @@ public class TaskPanel extends JPanel
      */
 	public boolean isComplete()
 	{
-		return this._complete;
+		for(RequirementPanel requirement : _requirements)
+		{
+			if(!requirement.isComplete())
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	/**

@@ -9,31 +9,50 @@ class TestTaskPanel
 	@Test
 	public void testSetGetTaskPanelName()
 	{
-		TaskPanel TaskPanel = new TaskPanel("Games");
-		TaskPanel.setName("Homework");
-		assertEquals("Homework",TaskPanel.getName());
+		TaskPanel taskPanel = new TaskPanel("Games");
+		taskPanel.setName("Homework");
+		assertEquals("Homework",taskPanel.getName());
 	}
 
 	@Test
 	public void testAddRequirementPanel() 
 	{
-		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
+		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
-		TaskPanel.add(RequirementPanel);
+		taskPanel.add(RequirementPanel);
 
-		assertTrue(TaskPanel.getRequirements().contains(RequirementPanel));
+		assertTrue(taskPanel.getRequirements().contains(RequirementPanel));
 	}
 
 	@Test
 	public void testRemoveRequirementPanel() 
 	{
-		TaskPanel TaskPanel = new TaskPanel("Test TaskPanel");
+		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
-		TaskPanel.add(RequirementPanel);
-		TaskPanel.remove(RequirementPanel);
+		taskPanel.add(RequirementPanel);
+		taskPanel.remove(RequirementPanel);
 
-		assertFalse(TaskPanel.getRequirements().contains(RequirementPanel));
+		assertFalse(taskPanel.getRequirements().contains(RequirementPanel));
+	}
+	
+	@Test
+	public void testIfAllRequirementsComplete()
+	{
+		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
+		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
+		RequirementPanel RequirementPanel2 = new RequirementPanel("Test RequirementPanel2");
+		
+		taskPanel.add(RequirementPanel);
+		RequirementPanel.setCompleteTrue();
+		assertTrue(taskPanel.isComplete());
+		
+		taskPanel.add(RequirementPanel2);
+		assertFalse(taskPanel.isComplete());
+		
+		
+		
+		
 	}
 }
