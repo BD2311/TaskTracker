@@ -116,8 +116,6 @@ public class TaskPanel extends JPanel
 				if (answer == JOptionPane.YES_OPTION) 
 				{
 					_parentCategory.remove(TaskPanel.this);
-					_parentCategory.revalidate(); // Update layout
-					_parentCategory.repaint(); // Repaint the parent container
 				}
 			}
 		});
