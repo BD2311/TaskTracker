@@ -221,7 +221,7 @@ public class TaskPanel extends JPanel
 	}
 
 	/**
-	 * Checks if the task is complete.
+	 * Checks if the task is complete by traversing completion status of all requirements.
 	 * 
 	 * @return True if the task is complete, false otherwise.
 	 */
@@ -240,7 +240,12 @@ public class TaskPanel extends JPanel
 		return true;
 	}
 
-	public void setAllRequirementsComplete(boolean complete)
+	/**
+	 * Sets all requirements within a task to desired boolean
+	 * 
+	 * @param complete boolean
+	 */
+	private void setAllRequirementsComplete(boolean complete)
 	{
 		for(RequirementPanel requirement : _requirements)
 		{
