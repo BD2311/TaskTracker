@@ -21,13 +21,12 @@ import javax.swing.JOptionPane;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.05.12.001
+ * Version/date: 2024.05.15.001
  * 
  * Responsibilities of class:
  * 
  * Represents a panel displaying a category information and scroll pane of tasks.
  * - Displaying the category header.
- * - Providing functionality to adding tasks
  * 
  */
 @SuppressWarnings("serial")
@@ -38,6 +37,7 @@ public class CategoryPanel extends JPanel
 	private String _name = "Category"; // Default category name
 	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>(); // List to store task panels
 	private JPanel _tasksPanelContainer; // Container panel for task panels
+	private JPanel _categoryHeader;
 	private TaskTrackerModel _model;
 
 	///// Constructor /////
@@ -75,30 +75,30 @@ public class CategoryPanel extends JPanel
 
 		this.setBorder(new TitledBorder("Category")); // Set border with category name
 		this.setLayout(new BorderLayout()); // Use border layout for components
-		JPanel categoryHeader = new JPanel();
-		categoryHeader.setLayout(new FlowLayout(FlowLayout.LEFT));
+		_categoryHeader = new JPanel();
+		_categoryHeader.setLayout(new FlowLayout(FlowLayout.LEFT));
 
 		// Create and configure category header
 		JLabel categoryLabel = new JLabel(this._name);
-		categoryHeader.add(categoryLabel);
+		_categoryHeader.add(categoryLabel);
 
-		JButton addTaskButton = new JButton("New Task");
-		addTaskButton.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
-				if (taskName != null) // Check if user has clicked "OK"
-				{
-					if(!taskName.isEmpty()) // Check if taskName is empty
-						add(new TaskPanel(taskName, CategoryPanel.this, CategoryPanel.this.getModel()));
-					else
-						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-				}
-			}
-		});
-		categoryHeader.add(addTaskButton);
+//		JButton addTaskButton = new JButton("New Task");
+//		addTaskButton.addActionListener(new ActionListener()
+//		{
+//			@Override
+//			public void actionPerformed(ActionEvent e) 
+//			{
+//				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
+//				if (taskName != null) // Check if user has clicked "OK"
+//				{
+//					if(!taskName.isEmpty()) // Check if taskName is empty
+//						add(new TaskPanel(taskName, CategoryPanel.this, CategoryPanel.this.getModel()));
+//					else
+//						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+//				}
+//			}
+//		});
+//		_categoryHeader.add(addTaskButton);
 
 		// Create container panel for task panels with vertical box layout
 		_tasksPanelContainer = new JPanel();
@@ -107,7 +107,7 @@ public class CategoryPanel extends JPanel
 		scrollPane.setBorder(new TitledBorder("Tasks"));
 
 		// Add components to the category panel
-		this.add(categoryHeader, BorderLayout.NORTH);
+		this.add(_categoryHeader, BorderLayout.NORTH);
 		this.add(scrollPane, BorderLayout.CENTER);
 
 		setVisible(true); // Make the category panel visible
@@ -182,6 +182,11 @@ public class CategoryPanel extends JPanel
 	public JPanel getTasksPanelContainer()
 	{
 		return this._tasksPanelContainer;
+	}
+	
+	public JPanel getCategoryHeader()
+	{
+		return this._categoryHeader;
 	}
 
 	/**
