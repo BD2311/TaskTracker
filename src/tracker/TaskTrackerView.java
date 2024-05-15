@@ -20,7 +20,8 @@ import javax.swing.JFrame;
  * The main method instantiates an object of this class, triggering the display of the Task Tracker UI.
  */
 @SuppressWarnings("serial")
-public class TaskTrackerView extends JFrame {
+public class TaskTrackerView extends JFrame 
+{
 	///// Fields /////
 
 	private TaskTrackerModel _model;
