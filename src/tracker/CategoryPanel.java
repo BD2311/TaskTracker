@@ -70,7 +70,7 @@ public class CategoryPanel extends JPanel
 	/**
 	 * Initializes the user interface of the category panel.
 	 */
-	private void initializeUI()
+	protected void initializeUI()
 	{
 
 		this.setBorder(new TitledBorder("Category")); // Set border with category name
