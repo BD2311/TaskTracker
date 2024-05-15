@@ -31,7 +31,7 @@ public class RequirementPanel extends JPanel
 
 	private String _name = "Requirement"; // Default requirement name
 	private boolean _complete; // Flag indicating whether the requirement is complete
-	private JCheckBox completionCheckBox;
+	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
 	private TaskPanel _parentTask; // Parent reference to TaskPanel that holds this requirement
 
 	///// Constructor /////
@@ -71,6 +71,7 @@ public class RequirementPanel extends JPanel
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				_parentTask.remove(RequirementPanel.this);
+				RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
 				_parentTask.revalidate(); // Update layout
 				_parentTask.repaint(); // Repaint the panel
 			}
@@ -87,14 +88,14 @@ public class RequirementPanel extends JPanel
 				// Toggle completion status based on checkbox state
 				if (completionCheckBox.isSelected()) 
 				{
-					setCompleteTrue(); // Mark requirement as complete
-					
-					
+					setComplete(true); // Mark requirement as complete
+					RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
 				} 
 				else 
 				{
-					setCompleteFalse(); // Mark requirement as incomplete
-					
+					setComplete(false); // Mark requirement as incomplete
+					completionCheckBox.setSelected(false);
+					RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
 				}
 			}
 		});
@@ -129,20 +130,12 @@ public class RequirementPanel extends JPanel
 	}
 
 	/**
-	 * Set the completion of a requirement to true
+	 * Set the completion of a requirement
 	 */
-	public void setCompleteTrue()
+	public void setComplete(boolean complete)
 	{
-		this._complete = true;
+		this._complete = complete;
 		completionCheckBox.setSelected(true);
-	}
-
-	/**
-	 * Set the completion of a requirement to false
-	 */
-	public void setCompleteFalse()
-	{
-		this._complete = false;
-		completionCheckBox.setSelected(false);
+		System.out.println(this.getName() + " is " + this.isComplete());
 	}
 }

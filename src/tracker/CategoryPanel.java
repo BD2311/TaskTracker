@@ -77,13 +77,12 @@ public class CategoryPanel extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
-				if (taskName != null && !taskName.isEmpty()) 
+				if (taskName != null) // Check if user has clicked "OK"
 				{
-					add(new TaskPanel(taskName, CategoryPanel.this));
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "You must specify a name for a task.");
+					if(!taskName.isEmpty()) // Check if taskName is empty
+						add(new TaskPanel(taskName, CategoryPanel.this));
+					else
+						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
@@ -103,10 +102,10 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-     * Adds a task panel to the category.
-     * 
-     * @param taskPanel The task panel to be added.
-     */
+	 * Adds a task panel to the category.
+	 * 
+	 * @param taskPanel The task panel to be added.
+	 */
 	public void add(TaskPanel taskPanel)
 	{
 		_tasks.add(taskPanel);
@@ -116,10 +115,10 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-     * Removes a task panel from the category.
-     * 
-     * @param taskPanel The task panel to be removed.
-     */
+	 * Removes a task panel from the category.
+	 * 
+	 * @param taskPanel The task panel to be removed.
+	 */
 	public void remove(TaskPanel taskPanel)
 	{
 		_tasks.remove(taskPanel);
@@ -129,51 +128,51 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-     * Gets the name of the category.
-     * 
-     * @return The name of the category.
-     */
+	 * Gets the name of the category.
+	 * 
+	 * @return The name of the category.
+	 */
 	public String getName()
 	{
 		return this._name;
 	}
 
 	/**
-     * Sets the name of the category.
-     * 
-     * @param newName The new name for the category.
-     */
+	 * Sets the name of the category.
+	 * 
+	 * @param newName The new name for the category.
+	 */
 	public void setName(String newName)
 	{
 		this._name = newName;
 	}
 
 	/**
-     * Gets the list of tasks in the category.
-     * 
-     * @return The list of tasks in the category.
-     */
+	 * Gets the list of tasks in the category.
+	 * 
+	 * @return The list of tasks in the category.
+	 */
 	public List<TaskPanel> getTasks()
 	{
 		return this._tasks;
 	}
 
 	/**
-     * Gets the container panel for tasks.
-     * 
-     * @return The container panel for tasks.
-     */
+	 * Gets the container panel for tasks.
+	 * 
+	 * @return The container panel for tasks.
+	 */
 	public JPanel getTasksPanelContainer()
 	{
 		return this._tasksPanelContainer;
 	}
 
 	/**
-     * Moves a task panel to another category panel.
-     * 
-     * @param taskToMove The task panel to move.
-     * @param categoryToMoveTo The category panel to move the task panel to.
-     */
+	 * Moves a task panel to another category panel.
+	 * 
+	 * @param taskToMove The task panel to move.
+	 * @param categoryToMoveTo The category panel to move the task panel to.
+	 */
 	public void moveTaskTo(TaskPanel taskToMove, CategoryPanel categoryToMoveTo)
 	{
 		this.remove(taskToMove); // Remove task from current panel
@@ -181,10 +180,10 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-     * Main method for testing the CategoryPanel class.
-     * 
-     * @param args Command line arguments (unused).
-     */
+	 * Main method for testing the CategoryPanel class.
+	 * 
+	 * @param args Command line arguments (unused).
+	 */
 	@SuppressWarnings("deprecation")
 	public static void main(String args[])
 	{

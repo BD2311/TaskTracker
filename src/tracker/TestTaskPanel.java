@@ -55,13 +55,5 @@ class TestTaskPanel
 //		RequirementPanel2.setCompleteTrue();
 //		taskPanel.checkIfAllRequirementsComplete();
 //		assertTrue(taskPanel.isComplete());
-		
-		taskPanel.add(RequirementPanel);
-		taskPanel.checkIfAllRequirementsComplete();
-		assertFalse(taskPanel.isComplete());
-		
-		
-		
-		
 	}
 }

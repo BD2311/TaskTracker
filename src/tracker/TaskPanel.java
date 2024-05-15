@@ -40,6 +40,7 @@ public class TaskPanel extends JPanel
 	private boolean _complete; // Flag indicating whether the task is complete
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();  // List to store requirement panels
 	private JPanel requirementsPanelContainer; // Container panel for requirement panels
+	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
 	private CategoryPanel _parentCategory; // Parent reference to CategoryPanel that holds this task
 
 	///// Constructor /////
@@ -54,7 +55,7 @@ public class TaskPanel extends JPanel
 		this._name = name;
 		initializeUI();
 	}
-	
+
 	/**
 	 * Constructs a TaskPanel object with the specified name and CategoryPanel.
 	 * 
@@ -90,13 +91,12 @@ public class TaskPanel extends JPanel
 			{
 				// Prompt user for requirement name and add a new requirement panel
 				String requirementName = JOptionPane.showInputDialog("What is the name of your requirement?");
-				if (requirementName != null && !requirementName.isEmpty()) // Validate input
+				if (requirementName != null) // Check if user presses "OK"
 				{
-					TaskPanel.this.add(new RequirementPanel(requirementName, TaskPanel.this));
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "You must specify a name for a requirement.");
+					if(!requirementName.isEmpty())
+						TaskPanel.this.add(new RequirementPanel(requirementName, TaskPanel.this));
+					else
+						JOptionPane.showMessageDialog(null, "You must specify a name for a requirement.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
@@ -109,7 +109,7 @@ public class TaskPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+
 				// Confirm task deletion
 				int answer = JOptionPane.showConfirmDialog(null, "Do you wish to delete the task " + TaskPanel.this.getName() + "?");
 				if (answer == JOptionPane.YES_OPTION) 
@@ -123,25 +123,24 @@ public class TaskPanel extends JPanel
 		taskHeader.add(removeTaskButton); // Add removeTaskButton to task header
 
 		// Complete Check Box
-		JCheckBox completeCheckBox = new JCheckBox(); // Create check box to mark task complete
-		completeCheckBox.addActionListener(new ActionListener() 
+		completionCheckBox = new JCheckBox(); // Create check box to mark task complete
+		completionCheckBox.addActionListener(new ActionListener() 
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				_complete = completeCheckBox.isSelected(); // Update completion status
+				_complete = completionCheckBox.isSelected(); // Update completion status
 				if(_complete == true)
 				{
-					setCompleteTrue();
+					setComplete(true);
 				}
 				else
 				{
-					setCompleteFalse();
+					setComplete(false);
 				}
-				System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 			}
 		});
-		taskHeader.add(completeCheckBox); // Add completeCheckBox to task header
+		taskHeader.add(completionCheckBox); // Add completeCheckBox to task header
 
 		// Create container panel for requirement panels with vertical box layout
 		requirementsPanelContainer = new JPanel();
@@ -228,17 +227,19 @@ public class TaskPanel extends JPanel
 	 * 
 	 * @return True if the task is complete, false otherwise.
 	 */
-	public void checkIfAllRequirementsComplete()
+	public boolean setTaskCompleteIfAllRequirementsAreComplete()
 	{
 		for(RequirementPanel requirement : _requirements)
 		{
 			if(!requirement.isComplete())
 			{
-				setCompleteFalse();
+				System.out.println("Not all requirements are complete");
+				return false;
 			}
-			else
-				setCompleteTrue();
 		}
+		setComplete(true);
+		System.out.println("Setting task to true");
+		return true;
 	}
 
 	/**
@@ -254,25 +255,15 @@ public class TaskPanel extends JPanel
 	/**
 	 * Sets the completion status of the task to true.
 	 */
-	public void setCompleteTrue()
+	public void setComplete(boolean complete)
 	{
-		this._complete = true;
-		for(RequirementPanel requirement : _requirements) // Set all requirements of this task to complete
-		{
-			requirement.setCompleteTrue();
-		}
-	}
-
-	/**
-	 * Sets the completion status of the task to false.
-	 */
-	public void setCompleteFalse()
-	{
-		this._complete = false;
-		for(RequirementPanel requirement : _requirements) // Set all requirements of this task to incomplete
-		{
-			requirement.setCompleteFalse();
-		}
+		this._complete = complete;
+		completionCheckBox.setSelected(complete);
+		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
+//		for(RequirementPanel requirement : _requirements) // Set all requirements of this task to complete
+//		{
+//			requirement.setComplete(complete);
+//		}
 	}
 
 	/**
