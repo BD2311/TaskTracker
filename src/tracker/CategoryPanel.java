@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
-import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
