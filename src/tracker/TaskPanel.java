@@ -31,7 +31,7 @@ import javax.swing.JCheckBox;
  * 
  */
 @SuppressWarnings("serial")
-public class TaskPanel extends JPanel
+public class TaskPanel extends JPanel implements Completable
 {
 	///// Fields /////
 
