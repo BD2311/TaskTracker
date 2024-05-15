@@ -41,6 +41,7 @@ public class TaskPanel extends JPanel
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();  // List to store requirement panels
 	private JPanel requirementsPanelContainer; // Container panel for requirement panels
 	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
+	private JButton addRequirementButton;
 	private CategoryPanel _parentCategory; // Parent reference to CategoryPanel that holds this task
 
 	///// Constructor /////
@@ -83,7 +84,7 @@ public class TaskPanel extends JPanel
 
 
 		// Add Requirement Button
-		JButton addRequirementButton = new JButton("New Requirement"); // Create button to add requirements
+		addRequirementButton = new JButton("New Requirement"); // Create button to add requirements
 		addRequirementButton.addActionListener(new ActionListener()
 		{
 			@Override
@@ -258,12 +259,31 @@ public class TaskPanel extends JPanel
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
+		if(complete) // Disable addRequirementButton if task is complete, do not let user add more tasks
+			addRequirementButton.setEnabled(false);
+		else
+			addRequirementButton.setEnabled(true);
 		completionCheckBox.setSelected(complete);
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
-//		for(RequirementPanel requirement : _requirements) // Set all requirements of this task to complete
-//		{
-//			requirement.setComplete(complete);
-//		}
+		setAllRequirementsComplete(complete);
+	}
+
+	public void setAllRequirementsComplete(boolean complete)
+	{
+		for(RequirementPanel requirement : _requirements)
+		{
+			requirement.setComplete(complete);
+			if(complete)
+			{
+				requirement.getCompletionCheckBox().setEnabled(false);
+				requirement.getRemoveButton().setEnabled(false);
+			}
+			else
+			{
+				requirement.getCompletionCheckBox().setEnabled(true);
+				requirement.getRemoveButton().setEnabled(true);
+			}
+		}
 	}
 
 	/**

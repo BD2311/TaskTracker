@@ -32,6 +32,7 @@ public class RequirementPanel extends JPanel
 	private String _name = "Requirement"; // Default requirement name
 	private boolean _complete; // Flag indicating whether the requirement is complete
 	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
+	private JButton removeRequirementButton; // Reference to the remove button component
 	private TaskPanel _parentTask; // Parent reference to TaskPanel that holds this requirement
 
 	///// Constructor /////
@@ -64,7 +65,7 @@ public class RequirementPanel extends JPanel
 		this.setBorder(new TitledBorder(this.getName())); // Set border with requirement name
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));  // Use flow layout with left alignment
 
-		JButton removeRequirementButton = new JButton("Remove"); // Create button to remove requirement
+		removeRequirementButton = new JButton("Remove"); // Create button to remove requirement
 		removeRequirementButton.addActionListener(new ActionListener()
 		{
 			@Override
@@ -108,6 +109,16 @@ public class RequirementPanel extends JPanel
 	{
 		return this._parentTask;
 	}
+	
+	public JCheckBox getCompletionCheckBox()
+	{
+		return this.completionCheckBox;
+	}
+	
+	public JButton getRemoveButton()
+	{
+		return this.removeRequirementButton;
+	}
 
 	/**
 	 * Gets the name of the requirement.
@@ -135,7 +146,7 @@ public class RequirementPanel extends JPanel
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
-		completionCheckBox.setSelected(true);
+		completionCheckBox.setSelected(complete);
 		System.out.println(this.getName() + " is " + this.isComplete());
 	}
 }
