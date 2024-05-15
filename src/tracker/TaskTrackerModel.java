@@ -1,8 +1,5 @@
 package tracker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Lead Author(s):
  * @author Branden Della bdella@email.com
@@ -29,25 +26,15 @@ public class TaskTrackerModel
 
 	///// Methods /////
 	
-	public void sortTasks(List<TaskPanel> allTasks)
+	public void sortTasks(TaskPanel taskToSort)
 	{
-		allTasks = getAllTasks(); // Before sortingTasks get all tasks
-		
-		
-	}
-
-	/**
-	 * 
-	 * 
-	 * @return all tasks within each CategoryPanel
-	 */
-	private List<TaskPanel> getAllTasks()
-	{
-		List<TaskPanel> allTasks = new ArrayList<TaskPanel>();
-		allTasks.addAll(planningPanel.getTasks());
-		allTasks.addAll(inProgressPanel.getTasks());
-		allTasks.addAll(finishedPanel.getTasks());
-		
-		return allTasks;
+			if(taskToSort.isPartiallyComplete())
+			{
+				taskToSort.getParentCategory().moveTaskTo(taskToSort, inProgressPanel);
+			}
+			else if(taskToSort.isComplete())
+			{
+				taskToSort.getParentCategory().moveTaskTo(taskToSort, finishedPanel);
+			}
 	}
 }
