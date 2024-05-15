@@ -130,13 +130,9 @@ public class TaskPanel extends JPanel
 			{
 				_complete = completionCheckBox.isSelected(); // Update completion status
 				if(_complete == true)
-				{
 					setComplete(true);
-				}
 				else
-				{
 					setComplete(false);
-				}
 			}
 		});
 		taskHeader.add(completionCheckBox); // Add completeCheckBox to task header
@@ -153,7 +149,12 @@ public class TaskPanel extends JPanel
 
 		setVisible(true); // Make the task panel visible
 	}
-	
+
+	/**
+	 * Get the model
+	 * 
+	 * @return model
+	 */
 	public TaskTrackerModel getModel()
 	{
 		return this._model;
@@ -168,7 +169,7 @@ public class TaskPanel extends JPanel
 	{
 		return this._parentCategory;
 	}
-	
+
 	public void setParentCategory(CategoryPanel categoryPanel) 
 	{
 		this._parentCategory = categoryPanel;
@@ -268,7 +269,7 @@ public class TaskPanel extends JPanel
 			requirement.getRemoveButton().setEnabled(!complete);
 		}
 	}
-	
+
 	public boolean hasNoRequirements()
 	{
 		if(this.getRequirements().isEmpty()) 
