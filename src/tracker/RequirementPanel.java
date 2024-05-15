@@ -32,25 +32,33 @@ public class RequirementPanel extends JPanel
 	private String _name = "Requirement"; // Default requirement name
 	private boolean _complete; // Flag indicating whether the requirement is complete
 	private JCheckBox completionCheckBox;
+	private TaskPanel _parentTask; // Parent reference to TaskPanel that holds this requirement
 
 	///// Constructor /////
 
 	/**
-     * Constructs a RequirementPanel object with the specified requirement name.
-     * 
-     * @param requirementName The name of the requirement.
-     */
+	 * Constructs a RequirementPanel object with the specified requirement name.
+	 * 
+	 * @param requirementName The name of the requirement.
+	 */
 	public RequirementPanel(String requirementName)
 	{
 		this._name = requirementName;
 		initializeUI();
 	}
 
+	public RequirementPanel(String requirementName, TaskPanel parentTask)
+	{
+		this._name = requirementName;
+		this._parentTask = parentTask;
+		initializeUI();
+	}
+
 	///// Methods /////
 
 	/**
-     * Initializes the user interface of the requirement panel.
-     */
+	 * Initializes the user interface of the requirement panel.
+	 */
 	private void initializeUI()
 	{
 		this.setBorder(new TitledBorder(this.getName())); // Set border with requirement name
@@ -62,20 +70,9 @@ public class RequirementPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
-				// Find the parent container which should be a TaskPanel and remove this requirement panel
-				Container parentContainer = RequirementPanel.this.getParent();
-				while (parentContainer != null && !(parentContainer instanceof TaskPanel)) // Loop to find desired parent
-				{
-				    parentContainer = parentContainer.getParent();
-				}
-				System.out.println(parentContainer.getClass());
-				if (parentContainer instanceof TaskPanel) 
-				{
-					TaskPanel parentTaskPanel = (TaskPanel) parentContainer; // Cast parentTaskPanel on TaskPanel
-					parentTaskPanel.remove(RequirementPanel.this);
-					parentTaskPanel.revalidate(); // Update layout
-					parentTaskPanel.repaint(); // Repaint the panel
-				}
+				_parentTask.remove(RequirementPanel.this);
+				_parentTask.revalidate(); // Update layout
+				_parentTask.repaint(); // Repaint the panel
 			}
 		});
 		this.add(removeRequirementButton); // Add removeRequirementButton to requirement panel
@@ -91,12 +88,13 @@ public class RequirementPanel extends JPanel
 				if (completionCheckBox.isSelected()) 
 				{
 					setCompleteTrue(); // Mark requirement as complete
-					System.out.println(getName() + " complete? is: " + isComplete());
+					
+					
 				} 
 				else 
 				{
 					setCompleteFalse(); // Mark requirement as incomplete
-					System.out.println(getName() + " complete? is: " + isComplete());
+					
 				}
 			}
 		});
@@ -105,21 +103,26 @@ public class RequirementPanel extends JPanel
 		setVisible(true); // Make the requirement panel visible
 	}
 
+	public TaskPanel getParentTask()
+	{
+		return this._parentTask;
+	}
+
 	/**
-     * Gets the name of the requirement.
-     * 
-     * @return The name of the requirement.
-     */
+	 * Gets the name of the requirement.
+	 * 
+	 * @return The name of the requirement.
+	 */
 	public String getName()
 	{
 		return this._name;
 	}
 
 	/**
-     * Checks if the requirement is complete.
-     * 
-     * @return True if the requirement is complete, false otherwise.
-     */
+	 * Checks if the requirement is complete.
+	 * 
+	 * @return True if the requirement is complete, false otherwise.
+	 */
 	public boolean isComplete()
 	{
 		return this._complete;

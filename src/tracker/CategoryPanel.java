@@ -191,7 +191,7 @@ public class CategoryPanel extends JPanel
 		JFrame displayFrame = new JFrame();
 		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
 		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
-		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement");
+		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
 		testTaskPanel.add(testRequirementPanel);
 		testCategoryPanel.add(testTaskPanel);
 		displayFrame.getContentPane().add(testCategoryPanel);
