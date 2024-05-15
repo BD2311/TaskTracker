@@ -204,6 +204,7 @@ public class TaskPanel extends JPanel
 	{
 		_requirements.add(requirementPanel); // add to list
 		requirementsPanelContainer.add(requirementPanel); // add to panel
+		getModel().sortTasks(this);
 		revalidate();
 		repaint();
 	}
@@ -217,6 +218,7 @@ public class TaskPanel extends JPanel
 	{
 		_requirements.remove(requirementPanel); // remove from list
 		requirementsPanelContainer.remove(requirementPanel); // remove from panel
+		getModel().sortTasks(this);
 		revalidate();
 		repaint();
 	}
