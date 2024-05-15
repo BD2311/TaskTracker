@@ -243,6 +243,18 @@ public class TaskPanel extends JPanel
 		return true;
 	}
 
+	public void setAllRequirementsComplete(boolean complete)
+	{
+		for(RequirementPanel requirement : _requirements)
+		{
+			requirement.setComplete(complete);
+			requirement.getCompletionCheckBox().setEnabled(!complete);
+			requirement.getRemoveButton().setEnabled(!complete);
+
+		}
+	}
+
+
 	/**
 	 * Checks if the task is complete.
 	 * 
@@ -259,31 +271,10 @@ public class TaskPanel extends JPanel
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
-		if(complete) // Disable addRequirementButton if task is complete, do not let user add more tasks
-			addRequirementButton.setEnabled(false);
-		else
-			addRequirementButton.setEnabled(true);
+		addRequirementButton.setEnabled(!complete);
 		completionCheckBox.setSelected(complete);
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 		setAllRequirementsComplete(complete);
-	}
-
-	public void setAllRequirementsComplete(boolean complete)
-	{
-		for(RequirementPanel requirement : _requirements)
-		{
-			requirement.setComplete(complete);
-			if(complete)
-			{
-				requirement.getCompletionCheckBox().setEnabled(false);
-				requirement.getRemoveButton().setEnabled(false);
-			}
-			else
-			{
-				requirement.getCompletionCheckBox().setEnabled(true);
-				requirement.getRemoveButton().setEnabled(true);
-			}
-		}
 	}
 
 	/**
