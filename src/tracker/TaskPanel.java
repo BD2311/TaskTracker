@@ -42,6 +42,7 @@ public class TaskPanel extends JPanel
 	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
 	private JButton addRequirementButton;
 	private CategoryPanel _parentCategory; // Parent reference to CategoryPanel that holds this task
+	private TaskTrackerModel _model;
 
 	///// Constructor /////
 
@@ -62,10 +63,11 @@ public class TaskPanel extends JPanel
 	 * @param name
 	 * @param parentCategory
 	 */
-	public TaskPanel(String name, CategoryPanel parentCategory) 
+	public TaskPanel(String name, CategoryPanel parentCategory, TaskTrackerModel model) 
 	{
 		this._name = name;
 		this._parentCategory = parentCategory;
+		this._model = model;
 		initializeUI();
 	}
 
@@ -81,7 +83,6 @@ public class TaskPanel extends JPanel
 		JPanel taskHeader = new JPanel(); // Create panel for task header
 		taskHeader.setLayout(new FlowLayout(FlowLayout.LEFT)); // Use flow layout with left alignment
 
-
 		// Add Requirement Button
 		addRequirementButton = new JButton("New Requirement"); // Create button to add requirements
 		addRequirementButton.addActionListener(new ActionListener()
@@ -94,7 +95,7 @@ public class TaskPanel extends JPanel
 				if (requirementName != null) // Check if user presses "OK"
 				{
 					if(!requirementName.isEmpty())
-						TaskPanel.this.add(new RequirementPanel(requirementName, TaskPanel.this));
+						TaskPanel.this.add(new RequirementPanel(requirementName, TaskPanel.this, TaskPanel.this.getModel()));
 					else
 						JOptionPane.showMessageDialog(null, "You must specify a name for a requirement.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
@@ -152,6 +153,11 @@ public class TaskPanel extends JPanel
 
 		setVisible(true); // Make the task panel visible
 	}
+	
+	public TaskTrackerModel getModel()
+	{
+		return this._model;
+	}
 
 	/**
 	 * Get the parent category panel that contains this task.
@@ -161,6 +167,11 @@ public class TaskPanel extends JPanel
 	public CategoryPanel getParentCategory() 
 	{
 		return this._parentCategory;
+	}
+	
+	public void setParentCategory(CategoryPanel categoryPanel) 
+	{
+		this._parentCategory = categoryPanel;
 	}
 
 	/**
@@ -255,6 +266,15 @@ public class TaskPanel extends JPanel
 			requirement.getRemoveButton().setEnabled(!complete);
 		}
 	}
+	
+	public boolean hasNoRequirements()
+	{
+		if(this.getRequirements().isEmpty()) 
+		{
+			return true;
+		}
+		return false;
+	}
 
 	public boolean isPartiallyComplete()
 	{
@@ -287,6 +307,7 @@ public class TaskPanel extends JPanel
 		completionCheckBox.setSelected(complete);
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 		setAllRequirementsComplete(complete);
+		getModel().sortTasks(this);
 	}
 
 	/**

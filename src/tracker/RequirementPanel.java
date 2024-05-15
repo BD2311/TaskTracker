@@ -33,6 +33,7 @@ public class RequirementPanel extends JPanel
 	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
 	private JButton removeRequirementButton; // Reference to the remove button component
 	private TaskPanel _parentTask; // Parent reference to TaskPanel that holds this requirement
+	private TaskTrackerModel _model;
 
 	///// Constructor /////
 
@@ -47,10 +48,11 @@ public class RequirementPanel extends JPanel
 		initializeUI();
 	}
 
-	public RequirementPanel(String requirementName, TaskPanel parentTask)
+	public RequirementPanel(String requirementName, TaskPanel parentTask, TaskTrackerModel model)
 	{
 		this._name = requirementName;
 		this._parentTask = parentTask;
+		this._model = model;
 		initializeUI();
 	}
 
@@ -72,6 +74,8 @@ public class RequirementPanel extends JPanel
 			{
 				_parentTask.remove(RequirementPanel.this);
 				RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
+				RequirementPanel.this.getModel().sortTasks(_parentTask);
+				
 				_parentTask.revalidate(); // Update layout
 				_parentTask.repaint(); // Repaint the panel
 			}
@@ -90,18 +94,25 @@ public class RequirementPanel extends JPanel
 				{
 					setComplete(true); // Mark requirement as complete
 					RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
+					RequirementPanel.this.getModel().sortTasks(_parentTask);
 				} 
 				else 
 				{
 					setComplete(false); // Mark requirement as incomplete
 					completionCheckBox.setSelected(false);
 					RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
+					RequirementPanel.this.getModel().sortTasks(_parentTask);
 				}
 			}
 		});
 		this.add(completionCheckBox); // Add requirementCheckbox to requirement panel
 
 		setVisible(true); // Make the requirement panel visible
+	}
+	
+	public TaskTrackerModel getModel()
+	{
+		return this._model;
 	}
 
 	public TaskPanel getParentTask()

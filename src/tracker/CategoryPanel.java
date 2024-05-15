@@ -39,6 +39,7 @@ public class CategoryPanel extends JPanel
 	private String _name = "Category"; // Default category name
 	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>(); // List to store task panels
 	private JPanel _tasksPanelContainer; // Container panel for task panels
+	private TaskTrackerModel _model;
 
 	///// Constructor /////
 
@@ -50,6 +51,18 @@ public class CategoryPanel extends JPanel
 	public CategoryPanel(String name)
 	{
 		this._name = name;
+		initializeUI();
+	}
+	
+	/**
+	 * Constructs a CategoryPanel object with the specified name and model.
+	 * 
+	 * @param name The name of the category.
+	 */
+	public CategoryPanel(String name, TaskTrackerModel model)
+	{
+		this._name = name;
+		this._model = model;
 		initializeUI();
 	}
 
@@ -80,7 +93,7 @@ public class CategoryPanel extends JPanel
 				if (taskName != null) // Check if user has clicked "OK"
 				{
 					if(!taskName.isEmpty()) // Check if taskName is empty
-						add(new TaskPanel(taskName, CategoryPanel.this));
+						add(new TaskPanel(taskName, CategoryPanel.this, CategoryPanel.this.getModel()));
 					else
 						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
@@ -99,6 +112,11 @@ public class CategoryPanel extends JPanel
 		this.add(scrollPane, BorderLayout.CENTER);
 
 		setVisible(true); // Make the category panel visible
+	}
+	
+	public TaskTrackerModel getModel()
+	{
+		return this._model;
 	}
 
 	/**
@@ -187,15 +205,15 @@ public class CategoryPanel extends JPanel
 	@SuppressWarnings("deprecation")
 	public static void main(String args[])
 	{
-		JFrame displayFrame = new JFrame();
-		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
-		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
-		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
-		testTaskPanel.add(testRequirementPanel);
-		testCategoryPanel.add(testTaskPanel);
-		displayFrame.getContentPane().add(testCategoryPanel);
-		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		displayFrame.pack();
-		displayFrame.show();
+//		JFrame displayFrame = new JFrame();
+//		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
+//		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
+//		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
+//		testTaskPanel.add(testRequirementPanel);
+//		testCategoryPanel.add(testTaskPanel);
+//		displayFrame.getContentPane().add(testCategoryPanel);
+//		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		displayFrame.pack();
+//		displayFrame.show();
 	}
 }
