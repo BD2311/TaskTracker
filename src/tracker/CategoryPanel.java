@@ -79,7 +79,7 @@ public class CategoryPanel extends JPanel
 				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
 				if (taskName != null && !taskName.isEmpty()) 
 				{
-					add(new TaskPanel(taskName));
+					add(new TaskPanel(taskName, CategoryPanel.this));
 				}
 				else
 				{
@@ -190,7 +190,7 @@ public class CategoryPanel extends JPanel
 	{
 		JFrame displayFrame = new JFrame();
 		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
-		TaskPanel testTaskPanel = new TaskPanel("Task");
+		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
 		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement");
 		testTaskPanel.add(testRequirementPanel);
 		testCategoryPanel.add(testTaskPanel);

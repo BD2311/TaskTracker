@@ -40,7 +40,7 @@ public class TaskPanel extends JPanel
 	private boolean _complete; // Flag indicating whether the task is complete
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();  // List to store requirement panels
 	private JPanel requirementsPanelContainer; // Container panel for requirement panels
-	public CategoryPanel parentCategory = this.getParentCategory();
+	private CategoryPanel _parentCategory; // Parent reference to CategoryPanel that holds this task
 
 	///// Constructor /////
 
@@ -54,6 +54,19 @@ public class TaskPanel extends JPanel
 		this._name = name;
 		initializeUI();
 	}
+	
+	/**
+	 * Constructs a TaskPanel object with the specified name and CategoryPanel.
+	 * 
+	 * @param name
+	 * @param parentCategory
+	 */
+	public TaskPanel(String name, CategoryPanel parentCategory) 
+	{
+		this._name = name;
+		this._parentCategory = parentCategory;
+		initializeUI();
+	}
 
 	///// Methods /////
 
@@ -61,7 +74,7 @@ public class TaskPanel extends JPanel
 	 * Initializes the user interface of the task panel.
 	 */
 	private void initializeUI() 
-	{
+	{	
 		this.setBorder(new TitledBorder(this.getName())); // Set border with task name
 		this.setLayout(new BorderLayout()); // Use border layout for components
 		JPanel taskHeader = new JPanel(); // Create panel for task header
@@ -96,24 +109,14 @@ public class TaskPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				
 				// Confirm task deletion
 				int answer = JOptionPane.showConfirmDialog(null, "Do you wish to delete the task " + TaskPanel.this.getName() + "?");
 				if (answer == JOptionPane.YES_OPTION) 
 				{
-					// Find the parent container which should be a CategoryPanel and remove this task panel
-					Container parentContainer = TaskPanel.this.getParent();
-					while (parentContainer != null && !(parentContainer instanceof CategoryPanel)) // Loop to find desired parent
-					{
-						parentContainer = parentContainer.getParent();
-					}
-					//					System.out.println(parentContainer.getClass());
-					if (parentContainer instanceof CategoryPanel)
-					{
-						CategoryPanel categoryPanel = (CategoryPanel) parentContainer; // Cast parentContainer onto CategoryPanel
-						categoryPanel.remove(TaskPanel.this);
-						categoryPanel.revalidate(); // Update layout
-						categoryPanel.repaint(); // Repaint the parent container
-					}
+					_parentCategory.remove(TaskPanel.this);
+					_parentCategory.revalidate(); // Update layout
+					_parentCategory.repaint(); // Repaint the parent container
 				}
 			}
 		});
@@ -152,7 +155,7 @@ public class TaskPanel extends JPanel
 
 		setVisible(true); // Make the task panel visible
 	}
-	
+
 	/**
 	 * Get the parent category panel that contains this task.
 	 * 
@@ -160,14 +163,8 @@ public class TaskPanel extends JPanel
 	 */
 	public CategoryPanel getParentCategory() 
 	{
-        // Traverse up the component hierarchy until a CategoryPanel is found
-        Container parent = getParent();
-        while (parent != null && !(parent instanceof CategoryPanel)) 
-        {
-            parent = parent.getParent();
-        }
-        return (CategoryPanel) parent; // Cast to CategoryPanel or return null if not found
-    }
+		return this._parentCategory;
+	}
 
 	/**
 	 * Sets the name of the task.
@@ -191,10 +188,10 @@ public class TaskPanel extends JPanel
 	}
 
 	/**
-     * Adds a requirement panel to the task.
-     * 
-     * @param requirementPanel The requirement panel to be added.
-     */
+	 * Adds a requirement panel to the task.
+	 * 
+	 * @param requirementPanel The requirement panel to be added.
+	 */
 	public void add(RequirementPanel requirementPanel)
 	{
 		_requirements.add(requirementPanel); // add to list
@@ -204,10 +201,10 @@ public class TaskPanel extends JPanel
 	}
 
 	/**
-     * Removes a requirement panel from the task.
-     * 
-     * @param requirementPanel The requirement panel to be removed.
-     */
+	 * Removes a requirement panel from the task.
+	 * 
+	 * @param requirementPanel The requirement panel to be removed.
+	 */
 	public void remove(RequirementPanel requirementPanel)
 	{
 		_requirements.remove(requirementPanel); // remove from list
@@ -217,20 +214,20 @@ public class TaskPanel extends JPanel
 	}
 
 	/**
-     * Gets the list of requirements in the task.
-     * 
-     * @return The list of requirements in the task.
-     */
+	 * Gets the list of requirements in the task.
+	 * 
+	 * @return The list of requirements in the task.
+	 */
 	public List<RequirementPanel> getRequirements()
 	{
 		return this._requirements;
 	}
 
 	/**
-     * Checks if the task is complete.
-     * 
-     * @return True if the task is complete, false otherwise.
-     */
+	 * Checks if the task is complete.
+	 * 
+	 * @return True if the task is complete, false otherwise.
+	 */
 	public void checkIfAllRequirementsComplete()
 	{
 		for(RequirementPanel requirement : _requirements)
@@ -240,23 +237,23 @@ public class TaskPanel extends JPanel
 				setCompleteFalse();
 			}
 			else
-			setCompleteTrue();
+				setCompleteTrue();
 		}
 	}
-	
+
 	/**
-     * Checks if the task is complete.
-     * 
-     * @return True if the task is complete, false otherwise.
-     */
+	 * Checks if the task is complete.
+	 * 
+	 * @return True if the task is complete, false otherwise.
+	 */
 	public boolean isComplete()
 	{
 		return this._complete;
 	}
 
 	/**
-     * Sets the completion status of the task to true.
-     */
+	 * Sets the completion status of the task to true.
+	 */
 	public void setCompleteTrue()
 	{
 		this._complete = true;
@@ -267,8 +264,8 @@ public class TaskPanel extends JPanel
 	}
 
 	/**
-     * Sets the completion status of the task to false.
-     */
+	 * Sets the completion status of the task to false.
+	 */
 	public void setCompleteFalse()
 	{
 		this._complete = false;
@@ -279,10 +276,10 @@ public class TaskPanel extends JPanel
 	}
 
 	/**
-     * Main method for testing the TaskPanel class.
-     * 
-     * @param args Command line arguments (unused).
-     */
+	 * Main method for testing the TaskPanel class.
+	 * 
+	 * @param args Command line arguments (unused).
+	 */
 	public static void main(String args[])
 	{
 		JFrame displayFrame = new JFrame();

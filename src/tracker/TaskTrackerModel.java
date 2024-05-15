@@ -25,4 +25,9 @@ public class TaskTrackerModel
 	}
 	
 	///// Methods /////
+	
+	public void moveCompleteTaskToFinishedPanel(TaskPanel completeTask)
+	{
+		
+	}
 }
