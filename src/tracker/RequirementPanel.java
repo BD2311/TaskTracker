@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
  * 
  */
 @SuppressWarnings("serial")
-public class RequirementPanel extends JPanel
+public class RequirementPanel extends JPanel implements Completable
 {
 	///// Fields /////
 
@@ -73,8 +73,11 @@ public class RequirementPanel extends JPanel
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				_parentTask.remove(RequirementPanel.this);
-				RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
-				RequirementPanel.this.getModel().sortTasks(_parentTask);
+//				RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
+				if (!RequirementPanel.this.getParentTask().getRequirements().isEmpty())
+				{
+					RequirementPanel.this.getParentTask().getModel().sortTasks(RequirementPanel.this.getParentTask());
+				}
 				
 				_parentTask.revalidate(); // Update layout
 				_parentTask.repaint(); // Repaint the panel
