@@ -74,7 +74,7 @@ public class RequirementPanel extends JPanel implements Completable
 			{
 				_parentTask.remove(RequirementPanel.this);
 //				RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
-				if (!RequirementPanel.this.getParentTask().getRequirements().isEmpty())
+				if (!RequirementPanel.this.getParentTask().getRequirements().isEmpty()) // If a task has no requirements when a requirement is removed, sort it
 				{
 					RequirementPanel.this.getParentTask().getModel().sortTasks(RequirementPanel.this.getParentTask());
 				}
