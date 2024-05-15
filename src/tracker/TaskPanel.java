@@ -1,7 +1,6 @@
 package tracker;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -245,10 +244,10 @@ public class TaskPanel extends JPanel
 	{
 		for(RequirementPanel requirement : _requirements)
 		{
-			requirement.setComplete(complete);
+			requirement.setComplete(complete); // Set all requirements to complete
+			// Disable or enable all requirement's components
 			requirement.getCompletionCheckBox().setEnabled(!complete);
 			requirement.getRemoveButton().setEnabled(!complete);
-
 		}
 	}
 
