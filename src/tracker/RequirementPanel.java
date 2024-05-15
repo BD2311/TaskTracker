@@ -148,6 +148,7 @@ public class RequirementPanel extends JPanel implements Completable
 	 * 
 	 * @return True if the requirement is complete, false otherwise.
 	 */
+	@Override
 	public boolean isComplete()
 	{
 		return this._complete;
@@ -156,6 +157,7 @@ public class RequirementPanel extends JPanel implements Completable
 	/**
 	 * Set the completion of a requirement
 	 */
+	@Override
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;

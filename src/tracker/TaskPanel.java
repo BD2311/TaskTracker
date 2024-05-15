@@ -295,6 +295,7 @@ public class TaskPanel extends JPanel implements Completable
 	 * 
 	 * @return True if the task is complete, false otherwise.
 	 */
+	@Override
 	public boolean isComplete()
 	{
 		return this._complete;
@@ -303,6 +304,7 @@ public class TaskPanel extends JPanel implements Completable
 	/**
 	 * Sets the completion status of the task to true.
 	 */
+	@Override
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
