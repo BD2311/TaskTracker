@@ -256,6 +256,16 @@ public class TaskPanel extends JPanel
 		}
 	}
 
+	public boolean isPartiallyComplete()
+	{
+		for (RequirementPanel requirement : _requirements)
+		{
+			if(requirement.isComplete());
+			return true;
+		}
+		return false;
+	}
+
 
 	/**
 	 * Checks if the task is complete.
