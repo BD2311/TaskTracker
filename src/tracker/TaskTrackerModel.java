@@ -4,7 +4,7 @@ package tracker;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.04.19.001
+ * Version/date: 2024.05.15.001
  * 
  * Responsibilities of class: Holds logic for computing actions handeling task tracker
  */
@@ -21,7 +21,7 @@ public class TaskTrackerModel
 
 	public TaskTrackerModel()
 	{
-		planningPanel = new CategoryPanel("Planning", this);
+		planningPanel = new CategoryPanelWithAddTaskButton("Planning", this);
 		inProgressPanel = new CategoryPanel("In Progress", this);
 		finishedPanel = new CategoryPanel("Finished", this);
 	}
