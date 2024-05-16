@@ -52,7 +52,7 @@ public class CategoryPanel extends JPanel
 		this._name = name;
 		initializeUI();
 	}
-	
+
 	/**
 	 * Constructs a CategoryPanel object with the specified name and model.
 	 * 
@@ -82,23 +82,23 @@ public class CategoryPanel extends JPanel
 		JLabel categoryLabel = new JLabel(this._name);
 		_categoryHeader.add(categoryLabel);
 
-//		JButton addTaskButton = new JButton("New Task");
-//		addTaskButton.addActionListener(new ActionListener()
-//		{
-//			@Override
-//			public void actionPerformed(ActionEvent e) 
-//			{
-//				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
-//				if (taskName != null) // Check if user has clicked "OK"
-//				{
-//					if(!taskName.isEmpty()) // Check if taskName is empty
-//						add(new TaskPanel(taskName, CategoryPanel.this, CategoryPanel.this.getModel()));
-//					else
-//						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-//				}
-//			}
-//		});
-//		_categoryHeader.add(addTaskButton);
+		//		JButton addTaskButton = new JButton("New Task");
+		//		addTaskButton.addActionListener(new ActionListener()
+		//		{
+		//			@Override
+		//			public void actionPerformed(ActionEvent e) 
+		//			{
+		//				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
+		//				if (taskName != null) // Check if user has clicked "OK"
+		//				{
+		//					if(!taskName.isEmpty()) // Check if taskName is empty
+		//						add(new TaskPanel(taskName, CategoryPanel.this, CategoryPanel.this.getModel()));
+		//					else
+		//						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+		//				}
+		//			}
+		//		});
+		//		_categoryHeader.add(addTaskButton);
 
 		// Create container panel for task panels with vertical box layout
 		_tasksPanelContainer = new JPanel();
@@ -112,7 +112,7 @@ public class CategoryPanel extends JPanel
 
 		setVisible(true); // Make the category panel visible
 	}
-	
+
 	public TaskTrackerModel getModel()
 	{
 		return this._model;
@@ -174,13 +174,13 @@ public class CategoryPanel extends JPanel
 	{
 		return this._tasks;
 	}
-	
+
 	public String getTasksStatus()
 	{
 		StringBuilder listOfTasks = new StringBuilder();
 		for (TaskPanel task : _tasks) 
 		{
-			listOfTasks.append("    ").append(task.toString()).append("\n");
+			listOfTasks.append(" > ").append(task.toString()).append("\n");
 		}
 		return listOfTasks.toString();
 	}
@@ -194,7 +194,7 @@ public class CategoryPanel extends JPanel
 	{
 		return this._tasksPanelContainer;
 	}
-	
+
 	public JPanel getCategoryHeader()
 	{
 		return this._categoryHeader;
@@ -211,11 +211,13 @@ public class CategoryPanel extends JPanel
 		this.remove(taskToMove); // Remove task from current panel
 		categoryToMoveTo.add(taskToMove);
 	}
-	
+
 	@Override
 	public String toString()
 	{
-		return "Category: " + getName() + "\n" + getTasksStatus();
+		return getName() + ":"
+				+ "\n--------------------------------"
+				+ "\n" + getTasksStatus();
 	}
 
 	/**
@@ -226,15 +228,15 @@ public class CategoryPanel extends JPanel
 	@SuppressWarnings("deprecation")
 	public static void main(String args[])
 	{
-//		JFrame displayFrame = new JFrame();
-//		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
-//		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
-//		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
-//		testTaskPanel.add(testRequirementPanel);
-//		testCategoryPanel.add(testTaskPanel);
-//		displayFrame.getContentPane().add(testCategoryPanel);
-//		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		displayFrame.pack();
-//		displayFrame.show();
+		//		JFrame displayFrame = new JFrame();
+		//		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
+		//		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
+		//		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
+		//		testTaskPanel.add(testRequirementPanel);
+		//		testCategoryPanel.add(testTaskPanel);
+		//		displayFrame.getContentPane().add(testCategoryPanel);
+		//		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//		displayFrame.pack();
+		//		displayFrame.show();
 	}
 }

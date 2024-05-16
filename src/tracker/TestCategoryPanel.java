@@ -72,19 +72,18 @@ public class TestCategoryPanel
 	@Test
 	public void testCategoryToString()
 	{
-		CategoryPanel inProgress = new CategoryPanel("In Progress");
-		TaskPanel homework = new TaskPanel("Homework");
-		RequirementPanel math = new RequirementPanel("Math");
-		RequirementPanel english = new RequirementPanel("English");
-		RequirementPanel history = new RequirementPanel("History");
-		RequirementPanel science = new RequirementPanel("Science");
+		TaskTrackerModel model = new TaskTrackerModel();
+		CategoryPanel inProgress = new CategoryPanel("In Progress", model);
+		TaskPanel homework = new TaskPanel("Homework", inProgress, model);
+		RequirementPanel math = new RequirementPanel("Math", homework, model);
+		RequirementPanel english = new RequirementPanel("English", homework, model);
+		RequirementPanel history = new RequirementPanel("History", homework, model);
+		RequirementPanel science = new RequirementPanel("Science", homework, model);
 		
-//		math.setComplete(true);
-		homework.add(math);
-		homework.add(english);
-		homework.add(history);
-		homework.add(science);
-		inProgress.add(homework);
+		TaskPanel videogames = new TaskPanel("Video Games", inProgress, model);
+		RequirementPanel levelUp = new RequirementPanel("Level Up", videogames, model);
+		
+		levelUp.setComplete(true);
 		
 		System.out.println(inProgress);
 	}
