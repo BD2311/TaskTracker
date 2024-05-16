@@ -95,7 +95,10 @@ public class TaskPanel extends JPanel implements Completable
 				if (requirementName != null) // Check if user presses "OK"
 				{
 					if(!requirementName.isEmpty())
+					{
 						TaskPanel.this.add(new RequirementPanel(requirementName, TaskPanel.this, TaskPanel.this.getModel()));
+						TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+					}
 					else
 						JOptionPane.showMessageDialog(null, "You must specify a name for a requirement.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
@@ -116,6 +119,7 @@ public class TaskPanel extends JPanel implements Completable
 				if (answer == JOptionPane.YES_OPTION) 
 				{
 					_parentCategory.remove(TaskPanel.this);
+					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
 				}
 			}
 		});
@@ -130,9 +134,15 @@ public class TaskPanel extends JPanel implements Completable
 			{
 				_complete = completionCheckBox.isSelected(); // Update completion status
 				if(_complete == true)
+				{
 					setComplete(true);
+					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+				}
 				else
+				{
 					setComplete(false);
+					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+				}
 			}
 		});
 		taskHeader.add(completionCheckBox); // Add completeCheckBox to task header
@@ -205,7 +215,6 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		_requirements.add(requirementPanel); // add to list
 		requirementsPanelContainer.add(requirementPanel); // add to panel
-		getModel().sortTasks(this);
 		revalidate();
 		repaint();
 	}
@@ -219,7 +228,6 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		_requirements.remove(requirementPanel); // remove from list
 		requirementsPanelContainer.remove(requirementPanel); // remove from panel
-		getModel().sortTasks(this);
 		revalidate();
 		repaint();
 	}
@@ -249,7 +257,7 @@ public class TaskPanel extends JPanel implements Completable
 				return false;
 			}
 		}
-//		setComplete(true);
+		//		setComplete(true);
 		System.out.println("Setting task to true");
 		return true;
 	}
@@ -312,7 +320,6 @@ public class TaskPanel extends JPanel implements Completable
 		completionCheckBox.setSelected(complete);
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 		setAllRequirementsComplete(complete);
-		getModel().sortTasks(this);
 	}
 
 	/**
