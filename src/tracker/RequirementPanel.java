@@ -188,6 +188,6 @@ public class RequirementPanel extends JPanel implements Completable
 	@Override
 	public String toString()
 	{
-		return "Requirement: " + getName() + " Status: " + getStatus();
+		return "Requirement: " + getName() + ", Status: " + getStatus();
 	}
 }

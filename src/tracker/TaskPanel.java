@@ -278,9 +278,9 @@ public class TaskPanel extends JPanel implements Completable
 	}
 
 	/**
+	 * Checks if task has any requirements
 	 * 
-	 * 
-	 * @return
+	 * @return true if no requirements, false if contains requirements
 	 */
 	public boolean hasNoRequirements()
 	{
@@ -291,6 +291,11 @@ public class TaskPanel extends JPanel implements Completable
 		return false;
 	}
 
+	/**
+	 * Checks if task has any complete requirements
+	 * 
+	 * @return true if atleast one requirement is complete, false if no requirement is complete
+	 */
 	public boolean isPartiallyComplete()
 	{
 		for (RequirementPanel requirement : _requirements)
@@ -299,6 +304,21 @@ public class TaskPanel extends JPanel implements Completable
 				return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Gets a list of all requirements in this task.
+	 * 
+	 * @return A string representing the list of requirements.
+	 */
+	public String getRequirementsStatus() 
+	{
+		StringBuilder listOfRequirements = new StringBuilder();
+		for (RequirementPanel requirement : _requirements) 
+		{
+			listOfRequirements.append("    ").append(requirement.toString()).append("\n");
+		}
+		return listOfRequirements.toString();
 	}
 
 	@Override
@@ -316,7 +336,7 @@ public class TaskPanel extends JPanel implements Completable
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 		setAllRequirementsComplete(complete);
 	}
-	
+
 	@Override
 	public String getStatus() 
 	{
@@ -324,11 +344,11 @@ public class TaskPanel extends JPanel implements Completable
 			return "Complete";
 		return "Incomplete";
 	}
-	
+
 	@Override
 	public String toString()
 	{
-		return "Task: " + this.getName() + " Status: " + getStatus();
+		return "Task: " + this.getName() + ", Status: " + getStatus() + "\n" + getRequirementsStatus();
 	}
 
 	/**
