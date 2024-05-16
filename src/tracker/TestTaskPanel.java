@@ -34,18 +34,20 @@ class TestTaskPanel
 
 		assertFalse(taskPanel.getRequirements().contains(RequirementPanel));
 	}
-	
+
 	@Test
 	public void testCheckIfAllRequirementsComplete()
 	{
 		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
-		
+
 		taskPanel.add(RequirementPanel);
-		taskPanel.setComplete(taskPanel.checkIfAllRequirementsAreComplete()); // Set complete if all reqs are complete
+		if(taskPanel.checkIfAllRequirementsAreComplete()) // If all requirements are complete, set task to complete
+			taskPanel.setComplete(true);
 		assertFalse(taskPanel.isComplete());
 		RequirementPanel.setComplete(true);
-		taskPanel.setComplete(taskPanel.checkIfAllRequirementsAreComplete()); // Set complete if all reqs are complete
+		if(taskPanel.checkIfAllRequirementsAreComplete()) // If all requirements are complete, set task to complete
+			taskPanel.setComplete(true);
 		assertTrue(taskPanel.isComplete());
 	}
 }
