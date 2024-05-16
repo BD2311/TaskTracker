@@ -74,8 +74,8 @@ public class RequirementPanel extends JPanel implements Completable
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				_parentTask.remove(RequirementPanel.this);
-				if (!_parentTask.getRequirements().isEmpty() && _parentTask.checkIfAllRequirementsAreComplete()) // Check if parent has any requirements and check if all requirements of parent are complete
-					_parentTask.setComplete(true); // Set parent task to complete if all requirements are complete
+				if(!_parentTask.getRequirements().isEmpty())
+					_parentTask.setCompleteIfAllRequirementsAreComplete(true);
 				System.out.println(RequirementPanel.this.getParentTask().getName() + " " + RequirementPanel.this.getParentTask().isComplete());
 				RequirementPanel.this.getParentTask().getModel().sortTasks(RequirementPanel.this.getParentTask());
 				_parentTask.revalidate(); // Update layout
@@ -91,27 +91,20 @@ public class RequirementPanel extends JPanel implements Completable
 			@Override
 			public void actionPerformed(ActionEvent check)
 			{
-				// Toggle completion status based on checkbox state
-				if (completionCheckBox.isSelected()) 
-				{
-					setComplete(true); // Mark requirement as complete
-					if(_parentTask.checkIfAllRequirementsAreComplete()) // Check is parent task is complete after checking this requirement
-						_parentTask.setComplete(true); // Set parent task to complete if all requirements are checked to be complete
-					RequirementPanel.this.getModel().sortTasks(_parentTask);
-				} 
-				else 
-				{
-					setComplete(false); // Mark requirement as incomplete
-					completionCheckBox.setSelected(false);
-					if(!_parentTask.checkIfAllRequirementsAreComplete()) // Check is parent task is complete after checking this requirement
-						_parentTask.setComplete(false); // Set parent task to incomplete if not all requirements are checked to be complete
-					RequirementPanel.this.getModel().sortTasks(_parentTask);
-				}
+				_complete = completionCheckBox.isSelected(); // Update completion status
+				if(_parentTask.checkIfAllRequirementsAreComplete())
+					_parentTask.setComplete(_complete);
 			}
 		});
 		this.add(completionCheckBox); // Add requirementCheckbox to requirement panel
 
 		setVisible(true); // Make the requirement panel visible
+	}
+	
+	public void setEnabled(boolean enable)
+	{
+		completionCheckBox.setEnabled(enable);
+		removeRequirementButton.setEnabled(enable);
 	}
 
 	/**
@@ -182,7 +175,7 @@ public class RequirementPanel extends JPanel implements Completable
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
-		completionCheckBox.setSelected(complete);
+		_parentTask.setCompleteIfAllRequirementsAreComplete(complete);
 		System.out.println(this.getName() + " is " + this.isComplete());
 	}
 
