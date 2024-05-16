@@ -205,7 +205,7 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		_requirements.add(requirementPanel); // add to list
 		requirementsPanelContainer.add(requirementPanel); // add to panel
-		getModel().sortTasks(this);
+//		getModel().sortTasks(this);
 		revalidate();
 		repaint();
 	}
@@ -239,7 +239,7 @@ public class TaskPanel extends JPanel implements Completable
 	 * 
 	 * @return True if the task is complete, false otherwise.
 	 */
-	public boolean setTaskCompleteIfAllRequirementsAreComplete()
+	public boolean checkIfAllRequirementsAreComplete()
 	{
 		for(RequirementPanel requirement : _requirements)
 		{
@@ -249,7 +249,7 @@ public class TaskPanel extends JPanel implements Completable
 				return false;
 			}
 		}
-		setComplete(true);
+//		setComplete(true);
 		System.out.println("Setting task to true");
 		return true;
 	}
