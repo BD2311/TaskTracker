@@ -283,8 +283,8 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		for (RequirementPanel requirement : _requirements)
 		{
-			if(requirement.isComplete());
-			return true;
+			if(requirement.isComplete())
+				return true;
 		}
 		return false;
 	}
