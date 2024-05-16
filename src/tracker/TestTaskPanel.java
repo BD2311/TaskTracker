@@ -19,9 +19,7 @@ class TestTaskPanel
 	{
 		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
-
 		taskPanel.add(RequirementPanel);
-
 		assertTrue(taskPanel.getRequirements().contains(RequirementPanel));
 	}
 
@@ -38,16 +36,16 @@ class TestTaskPanel
 	}
 	
 	@Test
-	public void testIfAllRequirementsComplete()
+	public void testCheckIfAllRequirementsComplete()
 	{
 		TaskPanel taskPanel = new TaskPanel("Test TaskPanel");
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 		
 		taskPanel.add(RequirementPanel);
-		taskPanel.setTaskCompleteIfAllRequirementsAreComplete();
+		taskPanel.setComplete(taskPanel.checkIfAllRequirementsAreComplete()); // Set complete if all reqs are complete
 		assertFalse(taskPanel.isComplete());
 		RequirementPanel.setComplete(true);
-		taskPanel.setTaskCompleteIfAllRequirementsAreComplete();
+		taskPanel.setComplete(taskPanel.checkIfAllRequirementsAreComplete()); // Set complete if all reqs are complete
 		assertTrue(taskPanel.isComplete());
 	}
 }
