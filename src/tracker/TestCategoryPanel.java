@@ -68,4 +68,24 @@ public class TestCategoryPanel
 		assertFalse(inProgressPanel.getTasks().contains(homework)); // Check if task is not in in-progress panel
 		assertTrue(finishedPanel.getTasks().contains(homework)); // Check if task is in finished panel
 	}
+	
+	@Test
+	public void testCategoryToString()
+	{
+		CategoryPanel inProgress = new CategoryPanel("In Progress");
+		TaskPanel homework = new TaskPanel("Homework");
+		RequirementPanel math = new RequirementPanel("Math");
+		RequirementPanel english = new RequirementPanel("English");
+		RequirementPanel history = new RequirementPanel("History");
+		RequirementPanel science = new RequirementPanel("Science");
+		
+//		math.setComplete(true);
+		homework.add(math);
+		homework.add(english);
+		homework.add(history);
+		homework.add(science);
+		inProgress.add(homework);
+		
+		System.out.println(inProgress);
+	}
 }

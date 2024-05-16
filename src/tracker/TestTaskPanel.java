@@ -50,4 +50,22 @@ class TestTaskPanel
 			taskPanel.setComplete(true);
 		assertTrue(taskPanel.isComplete());
 	}
+	
+	@Test
+	public void testTaskToString()
+	{
+		TaskPanel homework = new TaskPanel("Homework");
+		RequirementPanel math = new RequirementPanel("Math");
+		RequirementPanel english = new RequirementPanel("English");
+		RequirementPanel history = new RequirementPanel("History");
+		RequirementPanel science = new RequirementPanel("Science");
+		
+		math.setComplete(true);
+		homework.add(math);
+		homework.add(english);
+		homework.add(history);
+		homework.add(science);
+		
+		System.out.println(homework.toString());
+	}
 }
