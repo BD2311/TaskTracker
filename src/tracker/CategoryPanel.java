@@ -125,6 +125,7 @@ public class CategoryPanel extends JPanel
 	 */
 	public void add(TaskPanel taskPanel)
 	{
+		taskPanel.setParentCategory(this);
 		_tasks.add(taskPanel);
 		_tasksPanelContainer.add(taskPanel);
 		revalidate();
@@ -197,6 +198,7 @@ public class CategoryPanel extends JPanel
 	 */
 	public void moveTaskTo(TaskPanel taskToMove, CategoryPanel categoryToMoveTo)
 	{
+		taskToMove.setParentCategory(categoryToMoveTo);
 		this.remove(taskToMove); // Remove task from current panel
 		categoryToMoveTo.add(taskToMove);
 	}
