@@ -68,6 +68,7 @@ public class TaskPanel extends JPanel implements Completable
 		this._name = name;
 		this._parentCategory = parentCategory;
 		this._model = model;
+		parentCategory.add(this);
 		initializeUI();
 	}
 
@@ -135,12 +136,12 @@ public class TaskPanel extends JPanel implements Completable
 				_complete = completionCheckBox.isSelected(); // Update completion status
 				if(_complete == true)
 				{
-					setComplete(true);
+					TaskPanel.this.setComplete(true);
 					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
 				}
 				else
 				{
-					setComplete(false);
+					TaskPanel.this.setComplete(false);
 					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
 				}
 			}
@@ -316,7 +317,7 @@ public class TaskPanel extends JPanel implements Completable
 		StringBuilder listOfRequirements = new StringBuilder();
 		for (RequirementPanel requirement : _requirements) 
 		{
-			listOfRequirements.append("    ").append(requirement.toString()).append("\n");
+			listOfRequirements.append(" >> ").append(requirement.toString()).append("\n");
 		}
 		return listOfRequirements.toString();
 	}
@@ -348,7 +349,9 @@ public class TaskPanel extends JPanel implements Completable
 	@Override
 	public String toString()
 	{
-		return "Task: " + this.getName() + ", Status: " + getStatus() + "\n" + getRequirementsStatus();
+		return "Task: " + this.getName() + ", Status: " + getStatus()
+		+ "\n----------------"
+		+ "\n" + getRequirementsStatus();
 	}
 
 	/**
