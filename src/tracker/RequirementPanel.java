@@ -74,10 +74,10 @@ public class RequirementPanel extends JPanel implements Completable
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				_parentTask.remove(RequirementPanel.this);
-				if(!_parentTask.getRequirements().isEmpty())
-					_parentTask.setCompleteIfAllRequirementsAreComplete(true);
-				System.out.println(RequirementPanel.this.getParentTask().getName() + " " + RequirementPanel.this.getParentTask().isComplete());
-				RequirementPanel.this.getParentTask().getModel().sortTasks(RequirementPanel.this.getParentTask());
+				if(!_parentTask.getRequirements().isEmpty() && _parentTask.checkIfAllRequirementsAreComplete()) // If task has requirements and if all reqs are complete
+					_parentTask.setComplete(true);
+
+				RequirementPanel.this.getModel().sortTasks(RequirementPanel.this.getParentTask());
 				_parentTask.revalidate(); // Update layout
 				_parentTask.repaint(); // Repaint the panel
 			}
@@ -92,8 +92,10 @@ public class RequirementPanel extends JPanel implements Completable
 			public void actionPerformed(ActionEvent check)
 			{
 				_complete = completionCheckBox.isSelected(); // Update completion status
-				if(_parentTask.checkIfAllRequirementsAreComplete())
+				if(_parentTask.checkIfAllRequirementsAreComplete()) // Check if all requirements in the task is complete
 					_parentTask.setComplete(_complete);
+//				_parentTask.setCompleteIfAllRequirementsAreComplete(_complete);
+				RequirementPanel.this.getModel().sortTasks(_parentTask);
 			}
 		});
 		this.add(completionCheckBox); // Add requirementCheckbox to requirement panel

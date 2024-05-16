@@ -133,8 +133,8 @@ public class TaskPanel extends JPanel implements Completable
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				_complete = completionCheckBox.isSelected(); // Update completion status
-				TaskPanel.this.setComplete(_complete);
+				TaskPanel.this.setComplete(completionCheckBox.isSelected()); // Update completion status
+				TaskPanel.this.setEnabledAllRequirements(_complete);
 				TaskPanel.this.setAllRequirementsComplete(_complete);
 				TaskPanel.this.getModel().sortTasks(TaskPanel.this);
 			}
@@ -258,7 +258,9 @@ public class TaskPanel extends JPanel implements Completable
 	public void setCompleteIfAllRequirementsAreComplete(boolean complete)
 	{
 		if(checkIfAllRequirementsAreComplete());
-		setComplete(complete);
+		{
+			setComplete(complete);
+		}
 	}
 
 	/**
@@ -266,13 +268,20 @@ public class TaskPanel extends JPanel implements Completable
 	 * 
 	 * @param complete boolean
 	 */
+	public void setEnabledAllRequirements(boolean complete)
+	{
+		for(RequirementPanel requirement : _requirements)
+		{
+			requirement.getCompletionCheckBox().setSelected(complete);
+			requirement.setEnabled(!complete); // Disable or enable all requirement's components
+		}
+	}
+
 	public void setAllRequirementsComplete(boolean complete)
 	{
 		for(RequirementPanel requirement : _requirements)
 		{
-			requirement.setComplete(complete); // Set all requirements to complete
-			requirement.getCompletionCheckBox().setSelected(complete);
-			requirement.setEnabled(!complete); // Disable or enable all requirement's components
+			requirement.setComplete(complete);
 		}
 	}
 
@@ -332,6 +341,7 @@ public class TaskPanel extends JPanel implements Completable
 		this._complete = complete;
 		addRequirementButton.setEnabled(!complete);
 		completionCheckBox.setSelected(complete);
+		setEnabledAllRequirements(complete);
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 	}
 
