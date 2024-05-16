@@ -174,6 +174,16 @@ public class CategoryPanel extends JPanel
 	{
 		return this._tasks;
 	}
+	
+	public String getTasksStatus()
+	{
+		StringBuilder listOfTasks = new StringBuilder();
+		for (TaskPanel task : _tasks) 
+		{
+			listOfTasks.append("    ").append(task.toString()).append("\n");
+		}
+		return listOfTasks.toString();
+	}
 
 	/**
 	 * Gets the container panel for tasks.
@@ -200,6 +210,12 @@ public class CategoryPanel extends JPanel
 	{
 		this.remove(taskToMove); // Remove task from current panel
 		categoryToMoveTo.add(taskToMove);
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Category: " + getName() + "\n" + getTasksStatus();
 	}
 
 	/**
