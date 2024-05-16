@@ -134,18 +134,9 @@ public class TaskPanel extends JPanel implements Completable
 			public void actionPerformed(ActionEvent e)
 			{
 				_complete = completionCheckBox.isSelected(); // Update completion status
-				if(_complete)
-				{
-					TaskPanel.this.setComplete(true);
-					TaskPanel.this.setAllRequirementsComplete(true);
-					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
-				}
-				else
-				{
-					TaskPanel.this.setComplete(false);
-					TaskPanel.this.setAllRequirementsComplete(false);
-					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
-				}
+				TaskPanel.this.setComplete(_complete);
+				TaskPanel.this.setAllRequirementsComplete(_complete);
+				TaskPanel.this.getModel().sortTasks(TaskPanel.this);
 			}
 		});
 		taskHeader.add(completionCheckBox); // Add completeCheckBox to task header
