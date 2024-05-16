@@ -28,25 +28,28 @@ public class TaskTrackerModel
 
 	///// Methods /////
 
-	public void sortTasks(TaskPanel taskToSort)
+	public void sortTasks(TaskPanel taskToSort) 
 	{
-		if(taskToSort.hasNoRequirements())
+		if (taskToSort.isComplete()) 
 		{
-			taskToSort.getParentCategory().moveTaskTo(taskToSort, planningPanel);
-			taskToSort.setParentCategory(planningPanel);
-			System.out.println(taskToSort.getName() + " has no requirements");
-		}
-		if(taskToSort.isPartiallyComplete())
-		{
-			taskToSort.getParentCategory().moveTaskTo(taskToSort, inProgressPanel);
-			taskToSort.setParentCategory(inProgressPanel);
-			System.out.println(taskToSort.getName() + " has atleast one complete requirements");
-		}
-		if(taskToSort.isComplete())
-		{
+			// Task is already complete
 			taskToSort.getParentCategory().moveTaskTo(taskToSort, finishedPanel);
 			taskToSort.setParentCategory(finishedPanel);
 			System.out.println(taskToSort.getName() + " has all requirements complete");
+		} 
+		else if (taskToSort.isPartiallyComplete()) 
+		{
+			// Task has at least one complete requirement but not all
+			taskToSort.getParentCategory().moveTaskTo(taskToSort, inProgressPanel);
+			taskToSort.setParentCategory(inProgressPanel);
+			System.out.println(taskToSort.getName() + " has at least one complete requirement");
+		} 
+		else 
+		{
+			// Task has no complete requirements
+			taskToSort.getParentCategory().moveTaskTo(taskToSort, planningPanel);
+			taskToSort.setParentCategory(planningPanel);
+			System.out.println(taskToSort.getName() + " has no requirements");
 		}
 	}
 }
