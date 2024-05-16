@@ -119,7 +119,7 @@ public class TaskPanel extends JPanel implements Completable
 				if (answer == JOptionPane.YES_OPTION) 
 				{
 					_parentCategory.remove(TaskPanel.this);
-					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+					System.out.println(TaskPanel.this.getParentCategory().getName());
 				}
 			}
 		});
