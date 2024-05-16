@@ -53,7 +53,7 @@ public class CategoryPanelWithAddTaskButton extends CategoryPanel
 				if (taskName != null) // Check if user has clicked "OK"
 				{
 					if(!taskName.isEmpty()) // Check if taskName is empty
-						add(new TaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel()));
+						new TaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
 					else
 						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
