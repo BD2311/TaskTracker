@@ -78,8 +78,8 @@ public class TaskTrackerView extends JFrame
 		}
 
 		// Add some padding (e.g., 20 pixels) to the width and height
-		width += 20;
-		height += 20;
+		width += 1000;
+		height += 500;
 
 		return new Dimension(width, height);
 	}
