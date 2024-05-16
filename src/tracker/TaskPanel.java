@@ -205,7 +205,7 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		_requirements.add(requirementPanel); // add to list
 		requirementsPanelContainer.add(requirementPanel); // add to panel
-//		getModel().sortTasks(this);
+		getModel().sortTasks(this);
 		revalidate();
 		repaint();
 	}
