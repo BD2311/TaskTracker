@@ -142,6 +142,14 @@ public class RequirementPanel extends JPanel implements Completable
 	{
 		return this._name;
 	}
+	
+	@Override
+	public String getStatus() 
+	{
+		if(isComplete())
+			return "Complete";
+		return "Incomplete";
+	}
 
 	/**
 	 * Checks if the requirement is complete.
@@ -163,5 +171,11 @@ public class RequirementPanel extends JPanel implements Completable
 		this._complete = complete;
 		completionCheckBox.setSelected(complete);
 		System.out.println(this.getName() + " is " + this.isComplete());
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Requirement: " + getName() + " Status: " + getStatus();
 	}
 }

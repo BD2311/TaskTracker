@@ -257,7 +257,6 @@ public class TaskPanel extends JPanel implements Completable
 				return false;
 			}
 		}
-		//		setComplete(true);
 		System.out.println("Setting task to true");
 		return true;
 	}
@@ -320,6 +319,20 @@ public class TaskPanel extends JPanel implements Completable
 		completionCheckBox.setSelected(complete);
 		System.out.println(getName() + " complete? is: " + isComplete()); // Output completion status
 		setAllRequirementsComplete(complete);
+	}
+	
+	@Override
+	public String getStatus() 
+	{
+		if(isComplete())
+			return "Complete";
+		return "Incomplete";
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Task: " + this.getName() + " Status: " + getStatus();
 	}
 
 	/**
