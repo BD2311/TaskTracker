@@ -53,6 +53,7 @@ public class RequirementPanel extends JPanel implements Completable
 		this._name = requirementName;
 		this._parentTask = parentTask;
 		this._model = model;
+		parentTask.add(this);
 		initializeUI();
 	}
 
