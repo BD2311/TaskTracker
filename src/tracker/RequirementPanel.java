@@ -73,12 +73,10 @@ public class RequirementPanel extends JPanel implements Completable
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				_parentTask.remove(RequirementPanel.this);
-//				RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
-				if (!RequirementPanel.this.getParentTask().getRequirements().isEmpty()) // If a task has no requirements when a requirement is removed, sort it
-				{
-					RequirementPanel.this.getParentTask().getModel().sortTasks(RequirementPanel.this.getParentTask());
-				}
-				
+				if (!_parentTask.getRequirements().isEmpty() && _parentTask.checkIfAllRequirementsAreComplete())
+					_parentTask.setComplete(true); // Set parent task to complete if all requirements are complete
+				System.out.println(RequirementPanel.this.getParentTask().getName() + " " + RequirementPanel.this.getParentTask().isComplete());
+				RequirementPanel.this.getParentTask().getModel().sortTasks(RequirementPanel.this.getParentTask());
 				_parentTask.revalidate(); // Update layout
 				_parentTask.repaint(); // Repaint the panel
 			}
@@ -96,14 +94,16 @@ public class RequirementPanel extends JPanel implements Completable
 				if (completionCheckBox.isSelected()) 
 				{
 					setComplete(true); // Mark requirement as complete
-					RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
+					if(_parentTask.checkIfAllRequirementsAreComplete())
+						_parentTask.setComplete(true);
 					RequirementPanel.this.getModel().sortTasks(_parentTask);
 				} 
 				else 
 				{
 					setComplete(false); // Mark requirement as incomplete
 					completionCheckBox.setSelected(false);
-					RequirementPanel.this.getParentTask().setTaskCompleteIfAllRequirementsAreComplete();
+					if(!_parentTask.checkIfAllRequirementsAreComplete())
+						_parentTask.setComplete(false);
 					RequirementPanel.this.getModel().sortTasks(_parentTask);
 				}
 			}
@@ -112,7 +112,7 @@ public class RequirementPanel extends JPanel implements Completable
 
 		setVisible(true); // Make the requirement panel visible
 	}
-	
+
 	public TaskTrackerModel getModel()
 	{
 		return this._model;
@@ -122,12 +122,12 @@ public class RequirementPanel extends JPanel implements Completable
 	{
 		return this._parentTask;
 	}
-	
+
 	public JCheckBox getCompletionCheckBox()
 	{
 		return this.completionCheckBox;
 	}
-	
+
 	public JButton getRemoveButton()
 	{
 		return this.removeRequirementButton;
