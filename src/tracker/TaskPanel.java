@@ -20,7 +20,7 @@ import javax.swing.JCheckBox;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.05.15.001
+ * Version/date: 2024.05.15.002
  * 
  * Responsibilities of class:
  * 
@@ -277,6 +277,11 @@ public class TaskPanel extends JPanel implements Completable
 		}
 	}
 
+	/**
+	 * 
+	 * 
+	 * @return
+	 */
 	public boolean hasNoRequirements()
 	{
 		if(this.getRequirements().isEmpty()) 
@@ -296,21 +301,12 @@ public class TaskPanel extends JPanel implements Completable
 		return false;
 	}
 
-
-	/**
-	 * Checks if the task is complete.
-	 * 
-	 * @return True if the task is complete, false otherwise.
-	 */
 	@Override
 	public boolean isComplete()
 	{
 		return this._complete;
 	}
 
-	/**
-	 * Sets the completion status of the task to true.
-	 */
 	@Override
 	public void setComplete(boolean complete)
 	{
