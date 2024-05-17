@@ -1,5 +1,15 @@
 package tracker;
 
+import java.awt.Desktop;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.swing.JFileChooser;
+
 /**
  * Lead Author(s):
  * @author Branden Della bdella@email.com
@@ -59,6 +69,34 @@ public class TaskTrackerModel
 			System.out.println(planningPanel.toString());
 			System.out.println(inProgressPanel.toString());
 			System.out.println(finishedPanel.toString());
+		}
+	}
+
+	public void exportTasks()
+	{
+		try 
+		{
+			String fileName = "myTasks.txt";
+			BufferedWriter outputWriter = new BufferedWriter(new FileWriter(fileName));
+			outputWriter.write(planningPanel.toString());
+			outputWriter.write(inProgressPanel.toString());
+			outputWriter.write(finishedPanel.toString());
+			outputWriter.close();
+
+			// Open the file after writing
+			File file = new File(fileName);
+			if (Desktop.isDesktopSupported()) 
+			{
+				Desktop desktop = Desktop.getDesktop();
+				if (file.exists()) 
+				{
+					desktop.open(file);
+				}
+			} 
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
 		}
 	}
 }
