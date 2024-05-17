@@ -62,7 +62,7 @@ public class RequirementPanel extends JPanel implements Completable
 	/**
 	 * Initializes the user interface of the requirement panel.
 	 */
-	private void initializeUI()
+	protected void initializeUI()
 	{
 		this.setBorder(new TitledBorder(this.getName())); // Set border with requirement name
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));  // Use flow layout with left alignment
@@ -94,19 +94,12 @@ public class RequirementPanel extends JPanel implements Completable
 				_complete = completionCheckBox.isSelected(); // Update completion status
 				if(_parentTask.checkIfAllRequirementsAreComplete()) // Check if all requirements in the task is complete
 					_parentTask.setComplete(_complete);
-//				_parentTask.setCompleteIfAllRequirementsAreComplete(_complete);
 				RequirementPanel.this.getModel().sortTasks(_parentTask);
 			}
 		});
 		this.add(completionCheckBox); // Add requirementCheckbox to requirement panel
 
 		setVisible(true); // Make the requirement panel visible
-	}
-	
-	public void setEnabled(boolean enable)
-	{
-		completionCheckBox.setEnabled(enable);
-		removeRequirementButton.setEnabled(enable);
 	}
 
 	/**
@@ -157,6 +150,13 @@ public class RequirementPanel extends JPanel implements Completable
 	public String getName()
 	{
 		return this._name;
+	}
+	
+	@Override
+	public void setEnabled(boolean enable)
+	{
+		completionCheckBox.setEnabled(enable);
+		removeRequirementButton.setEnabled(enable);
 	}
 	
 	@Override

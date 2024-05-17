@@ -77,7 +77,7 @@ public class TaskPanel extends JPanel implements Completable
 	/**
 	 * Initializes the user interface of the task panel.
 	 */
-	private void initializeUI() 
+	protected void initializeUI() 
 	{	
 		this.setBorder(new TitledBorder(this.getName())); // Set border with task name
 		this.setLayout(new BorderLayout()); // Use border layout for components
@@ -174,6 +174,11 @@ public class TaskPanel extends JPanel implements Completable
 		return this._parentCategory;
 	}
 
+	/**
+	 * Sets the parentCategory to a CategoryPanel
+	 * 
+	 * @param categoryPanel
+	 */
 	public void setParentCategory(CategoryPanel categoryPanel) 
 	{
 		this._parentCategory = categoryPanel;
@@ -255,6 +260,11 @@ public class TaskPanel extends JPanel implements Completable
 		return true;
 	}
 
+	/**
+	 * If all requirements are complete, set this to complete
+	 * 
+	 * @param complete
+	 */
 	public void setCompleteIfAllRequirementsAreComplete(boolean complete)
 	{
 		if(checkIfAllRequirementsAreComplete());

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * Lead Author(s):
  * @author Branden Della bdella@email.com
  * 
- * Version/date: 2024.05.15.001
+ * Version/date: 2024.05.17.001
  * 
  * Responsibilities of class:
  * 
@@ -59,6 +59,7 @@ public class TaskTrackerView extends JFrame
 		categoryContainer.setLayout(new GridLayout());
 		exportButtonContainer.setLayout(new FlowLayout());
 
+		// Add categories to 
 		categoryContainer.add(_model.planningPanel);
 		categoryContainer.add(_model.inProgressPanel);
 		categoryContainer.add(_model.finishedPanel);
@@ -69,8 +70,7 @@ public class TaskTrackerView extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				_model.exportTasks();
-				JOptionPane.showMessageDialog(null, "Exported Tasks");
+				_model.exportTasks(); // Write the tasks with categorys to the file and open file
 			}
 		});
 		exportButtonContainer.add(exportButton);

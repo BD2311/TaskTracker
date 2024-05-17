@@ -3,12 +3,8 @@ package tracker;
 import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.swing.JFileChooser;
 
 /**
  * Lead Author(s):
@@ -18,7 +14,6 @@ import javax.swing.JFileChooser;
  * 
  * Responsibilities of class: Holds logic for computing actions handeling task tracker
  */
-
 public class TaskTrackerModel 
 {
 	///// Fields /////
@@ -29,6 +24,9 @@ public class TaskTrackerModel
 
 	///// Constructor /////
 
+	/**
+	 * Constructs the model of 
+	 */
 	public TaskTrackerModel()
 	{
 		planningPanel = new CategoryPanelWithAddTaskButton("Planning", this);
@@ -40,9 +38,8 @@ public class TaskTrackerModel
 
 	public void sortTasks(TaskPanel taskToSort) 
 	{
-		if (taskToSort.isComplete()) 
+		if (taskToSort.isComplete()) // If a task is complete
 		{
-			// Task is already complete
 			taskToSort.getParentCategory().moveTaskTo(taskToSort, finishedPanel);
 			taskToSort.setParentCategory(finishedPanel);
 			System.out.println(taskToSort.toString());
@@ -50,9 +47,8 @@ public class TaskTrackerModel
 			System.out.println(inProgressPanel.toString());
 			System.out.println(finishedPanel.toString());
 		} 
-		else if (taskToSort.isPartiallyComplete()) 
+		else if (taskToSort.isPartiallyComplete()) // If a task has atleast one complete requirement
 		{
-			// Task has at least one complete requirement but not all
 			taskToSort.getParentCategory().moveTaskTo(taskToSort, inProgressPanel);
 			taskToSort.setParentCategory(inProgressPanel);
 			System.out.println(taskToSort.toString());
@@ -60,9 +56,8 @@ public class TaskTrackerModel
 			System.out.println(inProgressPanel.toString());
 			System.out.println(finishedPanel.toString());
 		} 
-		else 
+		else // Task has no complete requirements
 		{
-			// Task has no complete requirements
 			taskToSort.getParentCategory().moveTaskTo(taskToSort, planningPanel);
 			taskToSort.setParentCategory(planningPanel);
 			System.out.println(taskToSort.toString());
@@ -72,6 +67,9 @@ public class TaskTrackerModel
 		}
 	}
 
+	/**
+	 * Creates a text file where it writes and displays the categories
+	 */
 	public void exportTasks()
 	{
 		try 

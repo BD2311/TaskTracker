@@ -82,24 +82,6 @@ public class CategoryPanel extends JPanel
 		JLabel categoryLabel = new JLabel(this._name);
 		_categoryHeader.add(categoryLabel);
 
-		//		JButton addTaskButton = new JButton("New Task");
-		//		addTaskButton.addActionListener(new ActionListener()
-		//		{
-		//			@Override
-		//			public void actionPerformed(ActionEvent e) 
-		//			{
-		//				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
-		//				if (taskName != null) // Check if user has clicked "OK"
-		//				{
-		//					if(!taskName.isEmpty()) // Check if taskName is empty
-		//						add(new TaskPanel(taskName, CategoryPanel.this, CategoryPanel.this.getModel()));
-		//					else
-		//						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-		//				}
-		//			}
-		//		});
-		//		_categoryHeader.add(addTaskButton);
-
 		// Create container panel for task panels with vertical box layout
 		_tasksPanelContainer = new JPanel();
 		_tasksPanelContainer.setLayout((LayoutManager) new BoxLayout(_tasksPanelContainer, BoxLayout.Y_AXIS));
