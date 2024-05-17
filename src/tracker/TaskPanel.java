@@ -274,9 +274,9 @@ public class TaskPanel extends JPanel implements Completable
 	}
 
 	/**
-	 * Sets all requirements within a task to complete
+	 * Sets enabled all requirements within a task to complete
 	 * 
-	 * @param complete boolean
+	 * @param complete
 	 */
 	public void setEnabledAllRequirements(boolean complete)
 	{
@@ -287,6 +287,11 @@ public class TaskPanel extends JPanel implements Completable
 		}
 	}
 
+	/**
+	 * Sets all requirements within this to complete
+	 * 
+	 * @param complete
+	 */
 	public void setAllRequirementsComplete(boolean complete)
 	{
 		for(RequirementPanel requirement : _requirements)
