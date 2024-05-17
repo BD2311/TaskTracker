@@ -209,8 +209,8 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		_requirements.add(requirementPanel); // add to list
 		requirementsPanelContainer.add(requirementPanel); // add to panel
-		revalidate();
-		repaint();
+		requirementsPanelContainer.revalidate();
+		requirementsPanelContainer.repaint();
 	}
 
 	/**
@@ -222,8 +222,8 @@ public class TaskPanel extends JPanel implements Completable
 	{
 		_requirements.remove(requirementPanel); // remove from list
 		requirementsPanelContainer.remove(requirementPanel); // remove from panel
-		revalidate();
-		repaint();
+		requirementsPanelContainer.revalidate();
+		requirementsPanelContainer.repaint();
 	}
 
 	/**
