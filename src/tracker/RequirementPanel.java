@@ -177,7 +177,7 @@ public class RequirementPanel extends JPanel implements Completable
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
-		_parentTask.setCompleteIfAllRequirementsAreComplete(complete);
+//		_parentTask.setCompleteIfAllRequirementsAreComplete(complete);
 		System.out.println(this.getName() + " is " + this.isComplete());
 	}
 
