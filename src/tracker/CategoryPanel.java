@@ -93,8 +93,10 @@ public class CategoryPanel extends JPanel
 		setVisible(true); // Make the category panel visible
 	}
 
-	public TaskTrackerModel getModel()
+	public TaskTrackerModel getModel() throws ModelNotFoundException
 	{
+		if(this._model == null)
+			throw new ModelNotFoundException();
 		return this._model;
 	}
 
