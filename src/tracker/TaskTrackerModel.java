@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Lead Author(s):
@@ -75,7 +77,9 @@ public class TaskTrackerModel
 		try 
 		{
 			String fileName = "myTasks.txt";
+			String currentDate = new SimpleDateFormat("yyyy.MM.dd HH.mm").format(new Date());
 			BufferedWriter outputWriter = new BufferedWriter(new FileWriter(fileName));
+			outputWriter.write("myTasks exported on: " + currentDate + "\n");
 			outputWriter.write(planningPanel.toString());
 			outputWriter.write(inProgressPanel.toString());
 			outputWriter.write(finishedPanel.toString());
