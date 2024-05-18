@@ -47,7 +47,7 @@ public class TaskPanel extends JPanel implements Completable
 	///// Constructor /////
 
 	/**
-	 * Constructs a TaskPanel object with the specified name.
+	 * Constructs a TaskPanel with name.
 	 * 
 	 * @param name The name of the task.
 	 */
@@ -56,12 +56,27 @@ public class TaskPanel extends JPanel implements Completable
 		this._name = name;
 		initializeUI();
 	}
+	
+	/**
+	 * Constructs a TaskPanel with name and reference to parentCategory
+	 * 
+	 * @param name The name of the Task.
+	 * @param parentCategory The reference to the parentCategory
+	 */
+	public TaskPanel(String name, CategoryPanel parentCategory)
+	{
+		this._name = name;
+		this._parentCategory = parentCategory;
+		parentCategory.add(this);
+		initializeUI();
+	}
 
 	/**
-	 * Constructs a TaskPanel object with the specified name and CategoryPanel.
+	 * Constructs a TaskPanel with name, reference to parentCategory, and reference to model.
 	 * 
-	 * @param name
-	 * @param parentCategory
+	 * @param name The name of the Task.
+	 * @param parentCategory The reference to the parentCategory
+	 * @param model The reference to the model
 	 */
 	public TaskPanel(String name, CategoryPanel parentCategory, TaskTrackerModel model) 
 	{
@@ -267,7 +282,7 @@ public class TaskPanel extends JPanel implements Completable
 	 */
 	public void setCompleteIfAllRequirementsAreComplete(boolean complete)
 	{
-		if(checkIfAllRequirementsAreComplete());
+		if(checkIfAllRequirementsAreComplete() == true);
 		{
 			setComplete(complete);
 		}

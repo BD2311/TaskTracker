@@ -8,14 +8,11 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 /**
  * Lead Author(s):
@@ -43,7 +40,7 @@ public class CategoryPanel extends JPanel
 	///// Constructor /////
 
 	/**
-	 * Constructs a CategoryPanel object with the specified name.
+	 * Constructs a CategoryPanel object with name.
 	 * 
 	 * @param name The name of the category.
 	 */
@@ -54,9 +51,10 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-	 * Constructs a CategoryPanel object with the specified name and model.
+	 * Constructs a CategoryPanel with name and reference to model.
 	 * 
 	 * @param name The name of the category.
+	 * @param model The reference to the model
 	 */
 	public CategoryPanel(String name, TaskTrackerModel model)
 	{
@@ -204,21 +202,23 @@ public class CategoryPanel extends JPanel
 
 	/**
 	 * Main method for testing the CategoryPanel class.
+	 * - Tests visual representation of a Category
+	 * - (Bug) Functionality conflicts with sort tasks method
 	 * 
 	 * @param args Command line arguments (unused).
 	 */
 	@SuppressWarnings("deprecation")
 	public static void main(String args[])
 	{
-		//		JFrame displayFrame = new JFrame();
-		//		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
-		//		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
-		//		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
-		//		testTaskPanel.add(testRequirementPanel);
-		//		testCategoryPanel.add(testTaskPanel);
-		//		displayFrame.getContentPane().add(testCategoryPanel);
-		//		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//		displayFrame.pack();
-		//		displayFrame.show();
+		JFrame displayFrame = new JFrame();
+		CategoryPanel testCategoryPanel = new CategoryPanel("Category");
+		TaskPanel testTaskPanel = new TaskPanel("Task", testCategoryPanel);
+		RequirementPanel testRequirementPanel = new RequirementPanel("Requirement", testTaskPanel);
+		testTaskPanel.add(testRequirementPanel);
+		testCategoryPanel.add(testTaskPanel);
+		displayFrame.getContentPane().add(testCategoryPanel);
+		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		displayFrame.pack();
+		displayFrame.show();
 	}
 }

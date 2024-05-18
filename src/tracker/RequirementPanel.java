@@ -38,19 +38,40 @@ public class RequirementPanel extends JPanel implements Completable
 	///// Constructor /////
 
 	/**
-	 * Constructs a RequirementPanel object with the specified requirement name.
+	 * Constructs a RequirementPanel with name.
 	 * 
 	 * @param requirementName The name of the requirement.
 	 */
-	public RequirementPanel(String requirementName)
+	public RequirementPanel(String name)
 	{
-		this._name = requirementName;
+		this._name = name;
+		initializeUI();
+	}
+	
+	/**
+	 * Constructs a RequirementPanel with name and reference to parentTask
+	 * 
+	 * @param requirementName
+	 * @param parentTask
+	 */
+	public RequirementPanel(String name, TaskPanel parentTask)
+	{
+		this._name = name;
+		this._parentTask = parentTask;
+		parentTask.add(this);
 		initializeUI();
 	}
 
-	public RequirementPanel(String requirementName, TaskPanel parentTask, TaskTrackerModel model)
+	/**
+	 * Constructs a RequirementPanel with name, reference to parentTask and reference to model
+	 * 
+	 * @param name
+	 * @param parentTask
+	 * @param model
+	 */
+	public RequirementPanel(String name, TaskPanel parentTask, TaskTrackerModel model)
 	{
-		this._name = requirementName;
+		this._name = name;
 		this._parentTask = parentTask;
 		this._model = model;
 		parentTask.add(this);
