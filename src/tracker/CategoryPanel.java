@@ -85,6 +85,8 @@ public class CategoryPanel extends JPanel
 		_tasksPanelContainer.setLayout((LayoutManager) new BoxLayout(_tasksPanelContainer, BoxLayout.Y_AXIS));
 		JScrollPane scrollPane = new JScrollPane(_tasksPanelContainer);
 		scrollPane.setBorder(new TitledBorder("Tasks"));
+		scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+		scrollPane.getVerticalScrollBar().setBlockIncrement(64);
 
 		// Add components to the category panel
 		this.add(_categoryHeader, BorderLayout.NORTH);
