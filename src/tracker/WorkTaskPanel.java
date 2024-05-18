@@ -1,5 +1,7 @@
 package tracker;
 
+import java.awt.Color;
+
 /**
  * Lead Author(s):
  * @author Branden Della bdella@email.com
@@ -20,8 +22,21 @@ public class WorkTaskPanel extends TaskPanel
 		super("Work Task: " + name);
 	}
 	
+	public WorkTaskPanel(String name, CategoryPanel parentCategory)
+	{
+		super("Work Task: " + name, parentCategory);
+	}
+	
 	public WorkTaskPanel(String name, CategoryPanel parentCategory, TaskTrackerModel model)
 	{
 		super("Work Task: " + name, parentCategory, model);
+	}
+	
+	@Override
+	protected void initializeUI()
+	{
+		super.initializeUI();
+		
+		setBackground(new Color(150,200,255));
 	}
 }
