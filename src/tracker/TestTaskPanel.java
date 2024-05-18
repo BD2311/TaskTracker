@@ -42,6 +42,7 @@ class TestTaskPanel
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
 		taskPanel.add(RequirementPanel);
+		assertFalse(taskPanel.isComplete());
 		taskPanel.setCompleteIfAllRequirementsAreComplete(true);
 		assertFalse(taskPanel.isComplete());
 		RequirementPanel.setComplete(true);

@@ -271,7 +271,7 @@ public class TaskPanel extends JPanel implements Completable
 				return false;
 			}
 		}
-		System.out.println("Setting task to true");
+		System.out.println("All requirements are complete");
 		return true;
 	}
 
@@ -282,7 +282,7 @@ public class TaskPanel extends JPanel implements Completable
 	 */
 	public void setCompleteIfAllRequirementsAreComplete(boolean complete)
 	{
-		if(checkIfAllRequirementsAreComplete() == true);
+		if(checkIfAllRequirementsAreComplete())
 		{
 			setComplete(complete);
 		}
