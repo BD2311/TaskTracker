@@ -52,51 +52,54 @@ public class CategoryPanelWithAddTaskButton extends CategoryPanel
 			{
 				TaskInputDialog inputDialog = new TaskInputDialog();
 
-				if(inputDialog.isInputValid())
+				if(inputDialog.getResult() == JOptionPane.OK_OPTION)
 				{
-					String taskName = inputDialog.getTaskName();
-					String taskType = inputDialog.getTaskType();
+					if(inputDialog.isInputValid())
+					{
+						String taskName = inputDialog.getTaskName();
+						String taskType = inputDialog.getTaskType();
 
-					try
-					{
-						switch (taskType) 
+						try
 						{
-						case "WorkTask":
-							new WorkTaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
-							break;
-						case "PersonalTask":
-							new PersonalTaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
-							break;
-						default:
-							throw new IllegalArgumentException("Unknown task type: " + taskType);
+							switch (taskType) 
+							{
+							case "WorkTask":
+								new WorkTaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
+								break;
+							case "PersonalTask":
+								new PersonalTaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
+								break;
+							default:
+								throw new IllegalArgumentException("Unknown task type: " + taskType);
+							}
+						}
+						catch(ModelNotFoundException exception)
+						{
+							switch (taskType) 
+							{
+							case "WorkTask":
+								new WorkTaskPanel(taskName, CategoryPanelWithAddTaskButton.this);
+								break;
+							case "PersonalTask":
+								new PersonalTaskPanel(taskName, CategoryPanelWithAddTaskButton.this);
+								break;
+							default:
+								throw new IllegalArgumentException("Unknown task type: " + taskType);
+							}
+						}
+						catch(IllegalArgumentException exception)
+						{
+							exception.getStackTrace();
 						}
 					}
-					catch(ModelNotFoundException exception)
+					else
 					{
-						switch (taskType) 
-						{
-						case "WorkTask":
-							new WorkTaskPanel(taskName, CategoryPanelWithAddTaskButton.this);
-							break;
-						case "PersonalTask":
-							new PersonalTaskPanel(taskName, CategoryPanelWithAddTaskButton.this);
-							break;
-						default:
-							throw new IllegalArgumentException("Unknown task type: " + taskType);
-						}
-					}
-					catch(IllegalArgumentException exception)
-					{
-						exception.getStackTrace();
+						JOptionPane.showMessageDialog(null, "You must specify a name and type for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 					}
 				}
-				else 
-				{
-	                JOptionPane.showMessageDialog(null, "You must specify a name and type for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-	            }
 			}
 		});
-		
+
 		getCategoryHeader().add(addTaskButton);
 	}
 
