@@ -414,7 +414,7 @@ public class TaskPanel extends JPanel implements Completable
 	@Override
 	public String toString()
 	{
-		return "Task: " + this.getName() + ", Status: " + getStatus()
+		return this.getName() + ", Status: " + getStatus()
 		+ "\n  ----------------"
 		+ "\n" + getRequirementsStatus();
 	}
