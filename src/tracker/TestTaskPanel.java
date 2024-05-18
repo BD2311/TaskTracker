@@ -42,12 +42,10 @@ class TestTaskPanel
 		RequirementPanel RequirementPanel = new RequirementPanel("Test RequirementPanel");
 
 		taskPanel.add(RequirementPanel);
-		if(taskPanel.checkIfAllRequirementsAreComplete()) // If all requirements are complete, set task to complete
-			taskPanel.setComplete(true);
+		taskPanel.setCompleteIfAllRequirementsAreComplete(true);
 		assertFalse(taskPanel.isComplete());
 		RequirementPanel.setComplete(true);
-		if(taskPanel.checkIfAllRequirementsAreComplete()) // If all requirements are complete, set task to complete
-			taskPanel.setComplete(true);
+		taskPanel.setCompleteIfAllRequirementsAreComplete(true);
 		assertTrue(taskPanel.isComplete());
 	}
 	
@@ -55,16 +53,11 @@ class TestTaskPanel
 	public void testTaskToString()
 	{
 		TaskPanel homework = new TaskPanel("Homework");
-		RequirementPanel math = new RequirementPanel("Math");
-		RequirementPanel english = new RequirementPanel("English");
-		RequirementPanel history = new RequirementPanel("History");
-		RequirementPanel science = new RequirementPanel("Science");
-		
+		RequirementPanel math = new RequirementPanel("Math", homework);
+		RequirementPanel english = new RequirementPanel("English", homework);
+		RequirementPanel history = new RequirementPanel("History", homework);
+		RequirementPanel science = new RequirementPanel("Science", homework);
 		math.setComplete(true);
-		homework.add(math);
-		homework.add(english);
-		homework.add(history);
-		homework.add(science);
 		
 		System.out.println(homework.toString());
 	}
