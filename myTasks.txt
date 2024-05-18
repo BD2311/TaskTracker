@@ -1,11 +1,10 @@
-myTasks exported on: 2024.05.17 19.42
+myTasks exported on: 2024.05.17 20.04
 Planning:
 --------------------------------
- > Task: Personal Task: 4r4, Status: Incomplete
+ > Work Task: 23e, Status: Incomplete
   ----------------
-   >> Requirement: 4t4, Status: Incomplete
 
- > Task: Personal Task: 4t3, Status: Incomplete
+ > Personal Task: 54t4, Status: Incomplete
   ----------------
 
 In Progress:
