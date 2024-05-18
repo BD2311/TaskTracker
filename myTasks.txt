@@ -1,17 +1,15 @@
-myTasks exported on: 2024.05.17 20.20
+myTasks exported on: 2024.05.17 22.36
 Planning:
 --------------------------------
+ > Work Task: 1, Status: Incomplete
+  ----------------
+
+ > Personal Task: 1, Status: Incomplete
+  ----------------
+   >> Requirement: 1, Status: Incomplete
+   >> Requirement: 1, Status: Incomplete
+
 In Progress:
 --------------------------------
- > Work Task: Clean store, Status: Incomplete
-  ----------------
-   >> Requirement: Sweep, Status: Complete
-   >> Requirement: Sort, Status: Incomplete
-
 Finished:
 --------------------------------
- > Personal Task: video games, Status: Complete
-  ----------------
-   >> Requirement: level up in game, Status: Complete
-   >> Requirement: xp, Status: Complete
-
