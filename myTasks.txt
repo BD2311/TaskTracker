@@ -1,15 +1,15 @@
-myTasks exported on: 2024.05.17 22.36
+myTasks exported on: 2024.05.17 22.50
+
 Planning:
 --------------------------------
- > Work Task: 1, Status: Incomplete
-  ----------------
-
- > Personal Task: 1, Status: Incomplete
-  ----------------
-   >> Requirement: 1, Status: Incomplete
-   >> Requirement: 1, Status: Incomplete
 
 In Progress:
 --------------------------------
+
 Finished:
 --------------------------------
+ > Work Task: t, Status: Complete
+  ----------------
+   >> Requirement: t, Status: Complete
+
+
