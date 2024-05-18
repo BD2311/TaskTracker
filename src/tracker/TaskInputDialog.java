@@ -53,7 +53,7 @@ public class TaskInputDialog
 		panel.add(taskNameField, BorderLayout.CENTER);
 
 		// Show the JOptionPane with the custom panel
-		int result = JOptionPane.showConfirmDialog(null, panel, "Input", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		int result = JOptionPane.showConfirmDialog(null, panel, "Create new task", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 		// Handle the user's input
 		if (result == JOptionPane.OK_OPTION) {
