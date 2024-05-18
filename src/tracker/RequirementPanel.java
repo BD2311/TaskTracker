@@ -96,7 +96,15 @@ public class RequirementPanel extends JPanel implements Completable
 			{
 				_parentTask.remove(RequirementPanel.this);
 				_parentTask.setCompleteIfAllRequirementsAreComplete(_complete);
-				RequirementPanel.this.getModel().sortTasks(RequirementPanel.this.getParentTask());
+				try 
+				{
+					RequirementPanel.this.getModel().sortTasks(RequirementPanel.this.getParentTask());
+				} 
+				catch (ModelNotFoundException exception) 
+				{
+					System.out.println(exception);
+					System.out.println("Could not sort task, model not found.");
+				}
 				_parentTask.revalidate(); // Update layout
 				_parentTask.repaint(); // Repaint the panel
 			}
@@ -112,7 +120,15 @@ public class RequirementPanel extends JPanel implements Completable
 			{
 				_complete = completionCheckBox.isSelected(); // Update completion status
 				_parentTask.setCompleteIfAllRequirementsAreComplete(_complete);
-				RequirementPanel.this.getModel().sortTasks(_parentTask);
+				try 
+				{
+					RequirementPanel.this.getModel().sortTasks(_parentTask);
+				} 
+				catch (ModelNotFoundException exception) 
+				{
+					System.out.println(exception);
+					System.out.println("Could not sort task, model not found.");
+				}
 			}
 		});
 		this.add(completionCheckBox); // Add requirementCheckbox to requirement panel
@@ -125,8 +141,10 @@ public class RequirementPanel extends JPanel implements Completable
 	 * 
 	 * @return
 	 */
-	public TaskTrackerModel getModel()
+	public TaskTrackerModel getModel() throws ModelNotFoundException
 	{
+		if(this._model == null)
+			throw new ModelNotFoundException();
 		return this._model;
 	}
 
