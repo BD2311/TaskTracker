@@ -95,7 +95,7 @@ public class RequirementPanel extends JPanel implements Completable
 			public void actionPerformed(ActionEvent buttonPress) 
 			{
 				_parentTask.remove(RequirementPanel.this);
-				_parentTask.setCompleteIfAllRequirementsAreComplete(_complete);
+				_parentTask.setCompleteIfAllRequirementsAreComplete(true);
 				try 
 				{
 					RequirementPanel.this.getModel().sortTasks(RequirementPanel.this.getParentTask());
