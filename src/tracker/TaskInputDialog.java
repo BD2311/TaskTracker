@@ -11,12 +11,12 @@ import javax.swing.JTextField;
 
 public class TaskInputDialog 
 {
-
 	private String taskName;
 	private String taskType;
 	private JTextField taskNameField;
 	private JRadioButton workTaskButton;
 	private JRadioButton personalTaskButton;
+	private int result;
 
 	/**
 	 * Constructs the TaskInputDialog and initializes the UI components.
@@ -53,7 +53,7 @@ public class TaskInputDialog
 		panel.add(taskNameField, BorderLayout.CENTER);
 
 		// Show the JOptionPane with the custom panel
-		int result = JOptionPane.showConfirmDialog(null, panel, "Create new task", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		result = JOptionPane.showConfirmDialog(null, panel, "Create new task", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 		// Handle the user's input
 		if (result == JOptionPane.OK_OPTION) {
@@ -71,6 +71,11 @@ public class TaskInputDialog
 				this.taskType = null;
 			}
 		}
+	}
+	
+	public int getResult()
+	{
+		return this.result;
 	}
 
 	/**
