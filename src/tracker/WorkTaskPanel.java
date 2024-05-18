@@ -15,11 +15,6 @@ package tracker;
 @SuppressWarnings("serial")
 public class WorkTaskPanel extends TaskPanel
 {
-
-	///// Fields /////
-
-	///// Constructor /////
-	
 	public WorkTaskPanel(String name) 
 	{
 		super("Work Task: " + name);
@@ -29,8 +24,4 @@ public class WorkTaskPanel extends TaskPanel
 	{
 		super("Work Task: " + name, parentCategory, model);
 	}
-
-	///// Methods /////
-
-	
 }

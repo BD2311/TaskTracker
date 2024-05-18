@@ -157,6 +157,11 @@ public class CategoryPanel extends JPanel
 		return this._tasks;
 	}
 
+	/**
+	 * Gets 
+	 * 
+	 * @return
+	 */
 	public String getTasksStatus()
 	{
 		StringBuilder listOfTasks = new StringBuilder();
@@ -177,6 +182,11 @@ public class CategoryPanel extends JPanel
 		return this._tasksPanelContainer;
 	}
 
+	/**
+	 * Gets the categoryHeader of this
+	 * 
+	 * @return
+	 */
 	public JPanel getCategoryHeader()
 	{
 		return this._categoryHeader;
