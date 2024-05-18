@@ -110,10 +110,28 @@ public class TaskPanel extends JPanel implements Completable
 				String requirementName = JOptionPane.showInputDialog("What is the name of your requirement?");
 				if (requirementName != null) // Check if user presses "OK"
 				{
-					if(!requirementName.isEmpty())
+					if(!requirementName.isEmpty()) // Check if requirement name is not empty
 					{
-						new RequirementPanel(requirementName, TaskPanel.this, TaskPanel.this.getModel());
-						TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+						try
+						{
+							new RequirementPanel(requirementName, TaskPanel.this, TaskPanel.this.getModel());
+						} 
+						catch (ModelNotFoundException exception) 
+						{
+							new RequirementPanel(requirementName, TaskPanel.this); // Add a RequirementPanel with no model reference.
+							System.out.println(exception);
+							System.out.println("Could not add requirement with reference to model, model Not Found.");
+						}
+						
+						try 
+						{
+							TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+						} 
+						catch (ModelNotFoundException exception) 
+						{
+							System.out.println(exception);
+							System.out.println("Could not sort task, model not found.");
+						}
 					}
 					else
 						JOptionPane.showMessageDialog(null, "You must specify a name for a requirement.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
@@ -151,7 +169,15 @@ public class TaskPanel extends JPanel implements Completable
 				TaskPanel.this.setComplete(completionCheckBox.isSelected()); // Update completion status
 				TaskPanel.this.setEnabledAllRequirements(_complete);
 				TaskPanel.this.setAllRequirementsComplete(_complete);
-				TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+				try 
+				{
+					TaskPanel.this.getModel().sortTasks(TaskPanel.this);
+				} 
+				catch (ModelNotFoundException exception) 
+				{
+					System.out.println(exception);
+					System.out.println("Could not sort task, model not found.");
+				}
 			}
 		});
 		taskHeader.add(completionCheckBox); // Add completeCheckBox to task header
@@ -174,8 +200,10 @@ public class TaskPanel extends JPanel implements Completable
 	 * 
 	 * @return model
 	 */
-	public TaskTrackerModel getModel()
+	public TaskTrackerModel getModel() throws ModelNotFoundException
 	{
+		if(this._model == null)
+			throw new ModelNotFoundException();
 		return this._model;
 	}
 
