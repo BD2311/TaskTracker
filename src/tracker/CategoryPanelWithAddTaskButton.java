@@ -50,30 +50,56 @@ public class CategoryPanelWithAddTaskButton extends CategoryPanel
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				String taskName = JOptionPane.showInputDialog("What is the name of your task?");
-				if (taskName != null) // Check if user has clicked "OK"
+				TaskInputDialog inputDialog = new TaskInputDialog();
+
+				if(inputDialog.isInputValid())
 				{
-					if(!taskName.isEmpty())
+					String taskName = inputDialog.getTaskName();
+					String taskType = inputDialog.getTaskType();
+
+					try
 					{
-						try 
+						switch (taskType) 
 						{
-							new TaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
-						} 
-						catch (ModelNotFoundException exception) 
-						{
-							new TaskPanel(taskName, CategoryPanelWithAddTaskButton.this); // Add a TaskPanel with no model reference.
-							System.out.println(exception);
-							System.out.println("Could not add task with reference to model, model not found.");
+						case "WorkTask":
+							new WorkTaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
+							break;
+						case "PersonalTask":
+							new PersonalTaskPanel(taskName, CategoryPanelWithAddTaskButton.this, CategoryPanelWithAddTaskButton.this.getModel());
+							break;
+						default:
+							throw new IllegalArgumentException("Unknown task type: " + taskType);
 						}
 					}
-					else
-						JOptionPane.showMessageDialog(null, "You must specify a name for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+					catch(ModelNotFoundException exception)
+					{
+						switch (taskType) 
+						{
+						case "WorkTask":
+							new WorkTaskPanel(taskName, CategoryPanelWithAddTaskButton.this);
+							break;
+						case "PersonalTask":
+							new PersonalTaskPanel(taskName, CategoryPanelWithAddTaskButton.this);
+							break;
+						default:
+							throw new IllegalArgumentException("Unknown task type: " + taskType);
+						}
+					}
+					catch(IllegalArgumentException exception)
+					{
+						exception.getStackTrace();
+					}
 				}
+				else 
+				{
+	                JOptionPane.showMessageDialog(null, "You must specify a name and type for a task.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+	            }
 			}
 		});
+		
 		getCategoryHeader().add(addTaskButton);
 	}
-	
+
 	/**
 	 * Main method for testing the CategoryPanel class.
 	 * - Tests visual representation of a Category
