@@ -1,20 +1,9 @@
 Planning:
 --------------------------------
+ > Task: 4, Status: Incomplete
+  ----------------
+
 In Progress:
 --------------------------------
 Finished:
 --------------------------------
- > Task: 4r, Status: Complete
-  ----------------
-   >> Requirement: 4r, Status: Complete
-
- > Task: 4r4, Status: Complete
-  ----------------
-   >> Requirement: 4t4t, Status: Complete
-
- > Task: 4t4t4, Status: Complete
-  ----------------
-
- > Task: 4t4zt4, Status: Complete
-  ----------------
-
