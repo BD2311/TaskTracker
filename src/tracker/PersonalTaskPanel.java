@@ -41,6 +41,6 @@ public class PersonalTaskPanel extends TaskPanel
 	{
 		super.initializeUI();
 		
-		setBackground(new Color(200,255,150));
+		setBackground(new Color(200,235,175));
 	}
 }

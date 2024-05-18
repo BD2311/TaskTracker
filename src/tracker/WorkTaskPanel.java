@@ -37,6 +37,6 @@ public class WorkTaskPanel extends TaskPanel
 	{
 		super.initializeUI();
 		
-		setBackground(new Color(150,200,255));
+		setBackground(new Color(175,200,235));
 	}
 }
