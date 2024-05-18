@@ -11,7 +11,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
@@ -185,12 +184,12 @@ public class TaskPanel extends JPanel implements Completable
 		// Create container panel for requirement panels with vertical box layout
 		requirementsPanelContainer = new JPanel();
 		requirementsPanelContainer.setLayout(new BoxLayout(requirementsPanelContainer, BoxLayout.Y_AXIS)); // Use BoxLayout with Y_AXIS alignment
-		JScrollPane scrollPane = new JScrollPane(requirementsPanelContainer);
-		scrollPane.setBorder(new TitledBorder("Requirements"));
+		requirementsPanelContainer.setBorder(new TitledBorder("Requirements"));
 
 		// Add components to the task panel
 		this.add(taskHeader, BorderLayout.NORTH);
-		this.add(scrollPane, BorderLayout.CENTER);
+		this.add(requirementsPanelContainer, BorderLayout.CENTER);
+//		this.add(scrollPane, BorderLayout.CENTER);
 
 		setVisible(true); // Make the task panel visible
 	}
