@@ -158,11 +158,11 @@ public class CategoryPanel extends JPanel
 	}
 
 	/**
-	 * Gets 
+	 * Gets status of all tasks in this Category
 	 * 
 	 * @return
 	 */
-	public String getTasksStatus()
+	public String getStatusOfTasks()
 	{
 		StringBuilder listOfTasks = new StringBuilder();
 		for (TaskPanel task : _tasks) 
@@ -209,7 +209,7 @@ public class CategoryPanel extends JPanel
 	{
 		return getName() + ":"
 				+ "\n--------------------------------"
-				+ "\n" + getTasksStatus();
+				+ "\n" + getStatusOfTasks();
 	}
 
 	/**
