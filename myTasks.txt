@@ -1,14 +1,22 @@
-myTasks exported on: 2024.05.17 22.50
+myTasks exported on: 2024.05.17 22.57
 
 Planning:
 --------------------------------
+ > Work Task: 4r4t, Status: Incomplete
+  ----------------
+
+ > Work Task: r4r4, Status: Incomplete
+  ----------------
+   >> Requirement: 4r4r, Status: Incomplete
+   >> Requirement: 4t4, Status: Incomplete
+
 
 In Progress:
 --------------------------------
 
 Finished:
 --------------------------------
- > Work Task: t, Status: Complete
+ > Work Task: 4, Status: Complete
   ----------------
    >> Requirement: t, Status: Complete
 
