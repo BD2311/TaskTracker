@@ -1,9 +1,18 @@
+myTasks exported on: 2024.05.17 18.51
 Planning:
 --------------------------------
- > Task: 4, Status: Incomplete
+ > Task: plan, Status: Incomplete
   ----------------
 
 In Progress:
 --------------------------------
+ > Task: machine learning, Status: Incomplete
+  ----------------
+   >> Requirement: data, Status: Incomplete
+   >> Requirement: code, Status: Complete
+
 Finished:
 --------------------------------
+ > Task: work, Status: Complete
+  ----------------
+
