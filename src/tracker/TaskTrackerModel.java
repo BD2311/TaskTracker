@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -74,16 +75,17 @@ public class TaskTrackerModel
 	 */
 	public void exportTasks()
 	{
-		try 
+		PrintWriter outputWriter = null;
+		String currentDate = new SimpleDateFormat("yyyy.MM.dd HH.mm").format(new Date());
+		String fileName = "myTasks.txt";
+
+		try
 		{
-			String fileName = "myTasks.txt";
-			String currentDate = new SimpleDateFormat("yyyy.MM.dd HH.mm").format(new Date());
-			BufferedWriter outputWriter = new BufferedWriter(new FileWriter(fileName));
-			outputWriter.write("myTasks exported on: " + currentDate + "\n");
-			outputWriter.write(planningPanel.toString());
-			outputWriter.write(inProgressPanel.toString());
-			outputWriter.write(finishedPanel.toString());
-			outputWriter.close();
+			outputWriter = new PrintWriter(new File("myTasks.txt"));
+			outputWriter.println("myTasks exported on: " + currentDate + "\n");
+			outputWriter.println(planningPanel.toString());
+			outputWriter.println(inProgressPanel.toString());
+			outputWriter.println(finishedPanel.toString());
 
 			// Open the file after writing
 			File file = new File(fileName);
@@ -96,9 +98,14 @@ public class TaskTrackerModel
 				}
 			} 
 		}
-		catch (IOException e) 
+		catch(IOException e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(outputWriter != null)
+				outputWriter.close();
 		}
 	}
 }
