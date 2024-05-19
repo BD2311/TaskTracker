@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class CategoryPanelWithAddTaskButton extends CategoryPanel
 {
+	///// Constructors /////
 
 	/**
 	 * Construct CategoryPanelWithAddTaskButton with given name.
@@ -46,6 +47,8 @@ public class CategoryPanelWithAddTaskButton extends CategoryPanel
 		super(name, model);
 		createPanel();
 	}
+
+	///// Methods /////
 
 	/**
 	 * Initializes the user interface of the category panel.

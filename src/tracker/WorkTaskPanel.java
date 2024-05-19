@@ -17,6 +17,8 @@ import java.awt.Color;
 @SuppressWarnings("serial")
 public class WorkTaskPanel extends TaskPanel
 {
+	///// Constructors /////
+	
 	/**
 	 * Constructs WorkTaskPanel with given name.
 	 * 
