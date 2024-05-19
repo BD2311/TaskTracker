@@ -19,16 +19,34 @@ public class PersonalTaskPanel extends TaskPanel
 {
 	///// Constructors /////
 	
+	/**
+	 * Constructs PersonalTaskPanel with given name
+	 * 
+	 * @param name
+	 */
 	public PersonalTaskPanel(String name) 
 	{
 		super("Personal Task: " + name);
 	}
 	
+	/**
+	 * Constructs PersonalTaskPanel with given name and parentCategory
+	 * 
+	 * @param name
+	 * @param parentCategory
+	 */
 	public PersonalTaskPanel(String name, CategoryPanel parentCategory)
 	{
 		super("Personal Task: " + name, parentCategory);
 	}
 	
+	/**
+	 * Constructs PersonalTaskPanel with given name, parentCategory, and model
+	 * 
+	 * @param name
+	 * @param parentCategory
+	 * @param model
+	 */
 	public PersonalTaskPanel(String name, CategoryPanel parentCategory, TaskTrackerModel model)
 	{
 		super("Personal Task: " + name, parentCategory, model);
