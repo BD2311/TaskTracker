@@ -37,9 +37,9 @@ public class PersonalTaskPanel extends TaskPanel
 	///// Methods /////
 	
 	@Override
-	protected void initializeUI()
+	protected void createPanel()
 	{
-		super.initializeUI();
+		super.createPanel();
 		
 		setBackground(new Color(200,235,175));
 	}

@@ -30,18 +30,16 @@ import javax.swing.JCheckBox;
  * 
  */
 @SuppressWarnings("serial")
-public class TaskPanel extends JPanel implements Completable
+public class TaskPanel extends CustomPanel implements Completable
 {
 	///// Fields /////
 
-	private String _name = "Task"; // Default task name
 	private boolean _complete; // Flag indicating whether the task is complete
 	private List<RequirementPanel> _requirements = new ArrayList<RequirementPanel>();  // List to store requirement panels
 	private JPanel requirementsPanelContainer; // Container panel for requirement panels
 	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
 	private JButton addRequirementButton;
 	private CategoryPanel _parentCategory; // Parent reference to CategoryPanel that holds this task
-	private TaskTrackerModel _model;
 
 	///// Constructor /////
 
@@ -52,8 +50,8 @@ public class TaskPanel extends JPanel implements Completable
 	 */
 	public TaskPanel(String name) 
 	{
-		this._name = name;
-		initializeUI();
+		super(name);
+		createPanel();
 	}
 	
 	/**
@@ -64,10 +62,10 @@ public class TaskPanel extends JPanel implements Completable
 	 */
 	public TaskPanel(String name, CategoryPanel parentCategory)
 	{
-		this._name = name;
+		super(name);
 		this._parentCategory = parentCategory;
 		parentCategory.add(this);
-		initializeUI();
+		createPanel();
 	}
 
 	/**
@@ -79,11 +77,11 @@ public class TaskPanel extends JPanel implements Completable
 	 */
 	public TaskPanel(String name, CategoryPanel parentCategory, TaskTrackerModel model) 
 	{
-		this._name = name;
+		super(name);
 		this._parentCategory = parentCategory;
 		this._model = model;
 		parentCategory.add(this);
-		initializeUI();
+		createPanel();
 	}
 
 	///// Methods /////
@@ -91,7 +89,7 @@ public class TaskPanel extends JPanel implements Completable
 	/**
 	 * Initializes the user interface of the task panel.
 	 */
-	protected void initializeUI() 
+	protected void createPanel() 
 	{	
 		this.setBorder(new TitledBorder(this.getName())); // Set border with task name
 		this.setLayout(new BorderLayout()); // Use border layout for components
@@ -189,21 +187,8 @@ public class TaskPanel extends JPanel implements Completable
 		// Add components to the task panel
 		this.add(taskHeader, BorderLayout.NORTH);
 		this.add(requirementsPanelContainer, BorderLayout.CENTER);
-//		this.add(scrollPane, BorderLayout.CENTER);
 
 		setVisible(true); // Make the task panel visible
-	}
-
-	/**
-	 * Get the model
-	 * 
-	 * @return model
-	 */
-	public TaskTrackerModel getModel() throws ModelNotFoundException
-	{
-		if(this._model == null)
-			throw new ModelNotFoundException();
-		return this._model;
 	}
 
 	/**
@@ -224,27 +209,6 @@ public class TaskPanel extends JPanel implements Completable
 	public void setParentCategory(CategoryPanel categoryPanel) 
 	{
 		this._parentCategory = categoryPanel;
-	}
-
-	/**
-	 * Sets the name of the task.
-	 * 
-	 * @param newName The new name for the task.
-	 */
-	public void setName(String newName)
-	{
-		this._name = newName;
-		((TitledBorder) this.getBorder()).setTitle(newName);
-	}
-
-	/**
-	 * Gets the name of the task.
-	 * 
-	 * @return The name of the task.
-	 */
-	public String getName()
-	{
-		return this._name;
 	}
 
 	/**
@@ -316,7 +280,7 @@ public class TaskPanel extends JPanel implements Completable
 	}
 
 	/**
-	 * Sets enabled all requirements within a task to complete
+	 * Sets enabled all requirements complete
 	 * 
 	 * @param complete
 	 */

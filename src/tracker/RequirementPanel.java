@@ -1,6 +1,5 @@
 package tracker;
 
-import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
@@ -24,16 +23,14 @@ import java.awt.event.ActionListener;
  * 
  */
 @SuppressWarnings("serial")
-public class RequirementPanel extends JPanel implements Completable
+public class RequirementPanel extends CustomPanel implements Completable
 {
 	///// Fields /////
 
-	private String _name = "Requirement"; // Default requirement name
 	private boolean _complete; // Flag indicating whether the requirement is complete
 	private JCheckBox completionCheckBox; // Reference to the completion checkbox component
 	private JButton removeRequirementButton; // Reference to the remove button component
 	private TaskPanel _parentTask; // Parent reference to TaskPanel that holds this requirement
-	private TaskTrackerModel _model;
 
 	///// Constructor /////
 
@@ -44,8 +41,8 @@ public class RequirementPanel extends JPanel implements Completable
 	 */
 	public RequirementPanel(String name)
 	{
-		this._name = name;
-		initializeUI();
+		super(name);
+		createPanel();
 	}
 	
 	/**
@@ -56,10 +53,10 @@ public class RequirementPanel extends JPanel implements Completable
 	 */
 	public RequirementPanel(String name, TaskPanel parentTask)
 	{
-		this._name = name;
+		super(name);
 		this._parentTask = parentTask;
 		parentTask.add(this);
-		initializeUI();
+		createPanel();
 	}
 
 	/**
@@ -71,11 +68,11 @@ public class RequirementPanel extends JPanel implements Completable
 	 */
 	public RequirementPanel(String name, TaskPanel parentTask, TaskTrackerModel model)
 	{
-		this._name = name;
+		super(name);
 		this._parentTask = parentTask;
 		this._model = model;
 		parentTask.add(this);
-		initializeUI();
+		createPanel();
 	}
 
 	///// Methods /////
@@ -83,7 +80,7 @@ public class RequirementPanel extends JPanel implements Completable
 	/**
 	 * Initializes the user interface of the requirement panel.
 	 */
-	protected void initializeUI()
+	protected void createPanel()
 	{
 		this.setBorder(new TitledBorder(this.getName())); // Set border with requirement name
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));  // Use flow layout with left alignment
@@ -137,18 +134,6 @@ public class RequirementPanel extends JPanel implements Completable
 	}
 
 	/**
-	 * Get the model of this
-	 * 
-	 * @return
-	 */
-	public TaskTrackerModel getModel() throws ModelNotFoundException
-	{
-		if(this._model == null)
-			throw new ModelNotFoundException();
-		return this._model;
-	}
-
-	/**
 	 * Get the parent task of this
 	 * 
 	 * @return
@@ -177,16 +162,6 @@ public class RequirementPanel extends JPanel implements Completable
 	{
 		return this.removeRequirementButton;
 	}
-
-	/**
-	 * Gets the name of the requirement.
-	 * 
-	 * @return The name of the requirement.
-	 */
-	public String getName()
-	{
-		return this._name;
-	}
 	
 	@Override
 	public void setEnabled(boolean enable)
@@ -213,7 +188,6 @@ public class RequirementPanel extends JPanel implements Completable
 	public void setComplete(boolean complete)
 	{
 		this._complete = complete;
-//		_parentTask.setCompleteIfAllRequirementsAreComplete(complete);
 		System.out.println(this.getName() + " is " + this.isComplete());
 	}
 

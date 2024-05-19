@@ -27,22 +27,22 @@ public class CategoryPanelWithAddTaskButton extends CategoryPanel
 	public CategoryPanelWithAddTaskButton(String name) 
 	{
 		super(name);
-		initializeUI();
+		createPanel();
 	}
 
 	public CategoryPanelWithAddTaskButton(String name, TaskTrackerModel model) 
 	{
 		super(name, model);
-		initializeUI();
+		createPanel();
 	}
 
 	/**
 	 * Initializes the user interface of the category panel.
 	 */
 	@Override
-	protected void initializeUI()
+	protected void createPanel()
 	{
-		super.initializeUI();
+		super.createPanel();
 
 		JButton addTaskButton = new JButton("New Task");
 		addTaskButton.addActionListener(new ActionListener()

@@ -27,15 +27,13 @@ import javax.swing.JFrame;
  * 
  */
 @SuppressWarnings("serial")
-public class CategoryPanel extends JPanel
+public class CategoryPanel extends CustomPanel
 {
 	///// Fields /////
 
-	private String _name = "Category"; // Default category name
 	private List<TaskPanel> _tasks = new ArrayList<TaskPanel>(); // List to store task panels
 	private JPanel _tasksPanelContainer; // Container panel for task panels
 	private JPanel _categoryHeader;
-	private TaskTrackerModel _model;
 
 	///// Constructor /////
 
@@ -46,8 +44,8 @@ public class CategoryPanel extends JPanel
 	 */
 	public CategoryPanel(String name)
 	{
-		this._name = name;
-		initializeUI();
+		super(name);
+		createPanel();
 	}
 
 	/**
@@ -58,9 +56,9 @@ public class CategoryPanel extends JPanel
 	 */
 	public CategoryPanel(String name, TaskTrackerModel model)
 	{
-		this._name = name;
+		super(name);
 		this._model = model;
-		initializeUI();
+		createPanel();
 	}
 
 	///// Methods /////
@@ -68,16 +66,16 @@ public class CategoryPanel extends JPanel
 	/**
 	 * Initializes the user interface of the category panel.
 	 */
-	protected void initializeUI()
+	protected void createPanel()
 	{
 
-		this.setBorder(new TitledBorder("Category")); // Set border with category name
+		this.setBorder(new TitledBorder("Category")); // Set border for separation purposes
 		this.setLayout(new BorderLayout()); // Use border layout for components
 		_categoryHeader = new JPanel();
 		_categoryHeader.setLayout(new FlowLayout(FlowLayout.LEFT));
 
 		// Create and configure category header
-		JLabel categoryLabel = new JLabel(this._name);
+		JLabel categoryLabel = new JLabel(this.getName());
 		_categoryHeader.add(categoryLabel);
 
 		// Create container panel for task panels with vertical box layout
@@ -93,13 +91,6 @@ public class CategoryPanel extends JPanel
 		this.add(scrollPane, BorderLayout.CENTER);
 
 		setVisible(true); // Make the category panel visible
-	}
-
-	public TaskTrackerModel getModel() throws ModelNotFoundException
-	{
-		if(this._model == null)
-			throw new ModelNotFoundException();
-		return this._model;
 	}
 
 	/**
@@ -127,26 +118,6 @@ public class CategoryPanel extends JPanel
 		_tasksPanelContainer.remove(taskPanel);
 		revalidate();
 		repaint();
-	}
-
-	/**
-	 * Gets the name of the category.
-	 * 
-	 * @return The name of the category.
-	 */
-	public String getName()
-	{
-		return this._name;
-	}
-
-	/**
-	 * Sets the name of the category.
-	 * 
-	 * @param newName The new name for the category.
-	 */
-	public void setName(String newName)
-	{
-		this._name = newName;
 	}
 
 	/**

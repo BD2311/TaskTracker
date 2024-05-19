@@ -1,23 +1,31 @@
-myTasks exported on: 2024.05.17 22.57
+myTasks exported on: 2024.05.18 21.23
 
 Planning:
 --------------------------------
- > Work Task: 4r4t, Status: Incomplete
+ > Work Task: Incomplete, Status: Incomplete
   ----------------
-
- > Work Task: r4r4, Status: Incomplete
-  ----------------
-   >> Requirement: 4r4r, Status: Incomplete
-   >> Requirement: 4t4, Status: Incomplete
+   >> Requirement: Plan, Status: Incomplete
 
 
 In Progress:
 --------------------------------
+ > Personal Task: Video game, Status: Incomplete
+  ----------------
+   >> Requirement: level up, Status: Complete
+   >> Requirement: level up 2, Status: Complete
+   >> Requirement: level up 3, Status: Incomplete
+
 
 Finished:
 --------------------------------
- > Work Task: 4, Status: Complete
+ > Work Task: Homework, Status: Complete
   ----------------
-   >> Requirement: t, Status: Complete
+   >> Requirement: Math, Status: Complete
+   >> Requirement: Science, Status: Complete
+   >> Requirement: History, Status: Complete
+   >> Requirement: English, Status: Complete
+   >> Requirement: Essay, Status: Complete
+   >> Requirement: Homework , Status: Complete
+   >> Requirement: Homework, Status: Complete
 
 

@@ -33,9 +33,9 @@ public class WorkTaskPanel extends TaskPanel
 	}
 	
 	@Override
-	protected void initializeUI()
+	protected void createPanel()
 	{
-		super.initializeUI();
+		super.createPanel();
 		
 		setBackground(new Color(175,200,235));
 	}
