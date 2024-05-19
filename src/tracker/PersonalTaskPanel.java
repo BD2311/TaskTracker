@@ -20,7 +20,7 @@ public class PersonalTaskPanel extends TaskPanel
 	///// Constructors /////
 	
 	/**
-	 * Constructs PersonalTaskPanel with given name
+	 * Constructs PersonalTaskPanel with given name.
 	 * 
 	 * @param name
 	 */
@@ -30,7 +30,7 @@ public class PersonalTaskPanel extends TaskPanel
 	}
 	
 	/**
-	 * Constructs PersonalTaskPanel with given name and parentCategory
+	 * Constructs PersonalTaskPanel with given name and parentCategory.
 	 * 
 	 * @param name
 	 * @param parentCategory
@@ -41,7 +41,7 @@ public class PersonalTaskPanel extends TaskPanel
 	}
 	
 	/**
-	 * Constructs PersonalTaskPanel with given name, parentCategory, and model
+	 * Constructs PersonalTaskPanel with given name, parentCategory, and model.
 	 * 
 	 * @param name
 	 * @param parentCategory

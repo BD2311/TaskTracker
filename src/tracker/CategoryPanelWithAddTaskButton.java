@@ -24,12 +24,23 @@ import javax.swing.JOptionPane;
 public class CategoryPanelWithAddTaskButton extends CategoryPanel
 {
 
+	/**
+	 * Construct CategoryPanelWithAddTaskButton with given name.
+	 * 
+	 * @param name
+	 */
 	public CategoryPanelWithAddTaskButton(String name) 
 	{
 		super(name);
 		createPanel();
 	}
 
+	/**
+	 * Construct CategoryPanelWithAddTaskButton with given name and model.
+	 * 
+	 * @param name
+	 * @param model
+	 */
 	public CategoryPanelWithAddTaskButton(String name, TaskTrackerModel model) 
 	{
 		super(name, model);

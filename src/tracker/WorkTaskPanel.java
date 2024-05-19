@@ -18,7 +18,7 @@ import java.awt.Color;
 public class WorkTaskPanel extends TaskPanel
 {
 	/**
-	 * Constructs WorkTaskPanel with given name
+	 * Constructs WorkTaskPanel with given name.
 	 * 
 	 * @param name
 	 */
@@ -28,7 +28,7 @@ public class WorkTaskPanel extends TaskPanel
 	}
 
 	/**
-	 * Constructs WorkTaskPanel with given name and parentCategory
+	 * Constructs WorkTaskPanel with given name and parentCategory.
 	 * 
 	 * @param name
 	 * @param parentCategory
@@ -39,7 +39,7 @@ public class WorkTaskPanel extends TaskPanel
 	}
 
 	/**
-	 * Constructs WorkTaskPanel with given name, parentCategory, and model
+	 * Constructs WorkTaskPanel with given name, parentCategory, and model.
 	 * 
 	 * @param name
 	 * @param parentCategory
