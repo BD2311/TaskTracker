@@ -81,7 +81,7 @@ public class TaskTrackerModel
 
 		try
 		{
-			outputWriter = new PrintWriter(new File("myTasks.txt"));
+			outputWriter = new PrintWriter(new File(fileName));
 			outputWriter.println("myTasks exported on: " + currentDate + "\n");
 			outputWriter.println(planningPanel.toString());
 			outputWriter.println(inProgressPanel.toString());
