@@ -17,6 +17,8 @@ import java.awt.Color;
 @SuppressWarnings("serial")
 public class WorkTaskPanel extends TaskPanel
 {
+	private static final Color PASTELBLUE = new Color(175,200,235);
+	
 	///// Constructors /////
 	
 	/**
@@ -59,6 +61,6 @@ public class WorkTaskPanel extends TaskPanel
 	{
 		super.createPanel();
 
-		setBackground(new Color(175,200,235));
+		setBackground(PASTELBLUE);
 	}
 }
