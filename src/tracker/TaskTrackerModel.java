@@ -37,6 +37,11 @@ public class TaskTrackerModel
 
 	///// Methods /////
 
+	/**
+	 * Sorts the tasks based on completion status
+	 * 
+	 * @param taskToSort
+	 */
 	public void sortTasks(TaskPanel taskToSort) 
 	{
 		if (taskToSort.isComplete()) // If a task is complete
