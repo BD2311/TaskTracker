@@ -15,6 +15,9 @@ package tracker;
 @SuppressWarnings("serial")
 public class ModelNotFoundException extends Exception
 {
+	/**
+	 * No argument constructor
+	 */
 	public ModelNotFoundException()
 	{
 
