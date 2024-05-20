@@ -69,7 +69,7 @@ public class CategoryPanel extends CustomPanel
 	protected void createPanel()
 	{
 
-		this.setBorder(new TitledBorder("Category")); // Set border for separation purposes
+		this.setBorder(new TitledBorder("")); // Set border for separation purposes
 		this.setLayout(new BorderLayout()); // Use border layout for components
 		_categoryHeader = new JPanel();
 		_categoryHeader.setLayout(new FlowLayout(FlowLayout.LEFT));
