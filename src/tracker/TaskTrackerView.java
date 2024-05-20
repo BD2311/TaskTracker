@@ -109,7 +109,7 @@ public class TaskTrackerView extends JFrame
 	}
 
 	/**
-	 * The main method to instantiate and display the Task Tracker application.
+	 * The main method to launch the Task Tracker application.
 	 * 
 	 * @param args Command line arguments (unused).
 	 */
