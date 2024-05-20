@@ -73,6 +73,11 @@ public class TaskInputDialog
 		}
 	}
 	
+	/**
+	 * Gets the result of the user's actions such as clicking ok option
+	 * 
+	 * @return result of user action
+	 */
 	public int getResult()
 	{
 		return this.result;
