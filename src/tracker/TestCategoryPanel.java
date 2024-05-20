@@ -75,10 +75,10 @@ public class TestCategoryPanel
 		TaskTrackerModel model = new TaskTrackerModel();
 		CategoryPanel inProgress = new CategoryPanel("In Progress", model);
 		TaskPanel homework = new TaskPanel("Homework", inProgress, model);
-		RequirementPanel math = new RequirementPanel("Math", homework, model);
-		RequirementPanel english = new RequirementPanel("English", homework, model);
-		RequirementPanel history = new RequirementPanel("History", homework, model);
-		RequirementPanel science = new RequirementPanel("Science", homework, model);
+		new RequirementPanel("Math", homework, model);
+		new RequirementPanel("English", homework, model);
+		new RequirementPanel("History", homework, model);
+		new RequirementPanel("Science", homework, model);
 		
 		TaskPanel videogames = new TaskPanel("Video Games", inProgress, model);
 		RequirementPanel levelUp = new RequirementPanel("Level Up", videogames, model);

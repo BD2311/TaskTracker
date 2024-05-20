@@ -55,9 +55,9 @@ class TestTaskPanel
 	{
 		TaskPanel homework = new TaskPanel("Homework");
 		RequirementPanel math = new RequirementPanel("Math", homework);
-		RequirementPanel english = new RequirementPanel("English", homework);
-		RequirementPanel history = new RequirementPanel("History", homework);
-		RequirementPanel science = new RequirementPanel("Science", homework);
+		new RequirementPanel("English", homework);
+		new RequirementPanel("History", homework);
+		new RequirementPanel("Science", homework);
 		math.setComplete(true);
 		
 		System.out.println(homework.toString());

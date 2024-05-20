@@ -12,6 +12,7 @@ package tracker;
  * - Flag when a method that gets a model and model is null
  * 
  */
+@SuppressWarnings("serial")
 public class ModelNotFoundException extends Exception
 {
 	public ModelNotFoundException()
